@@ -1,3 +1,9 @@
+import { Header } from "../components/Header";
+
 export const Calculate = () => {
-  return <>Calculate</>;
+  return (
+    <>
+      <Header></Header>
+    </>
+  );
 };

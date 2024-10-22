@@ -1,3 +1,7 @@
+import { Header } from "../components/Header";
+
 export const Info = () => {
-  return <>Info</>;
+  return <>
+  <Header></Header>
+  </>;
 };

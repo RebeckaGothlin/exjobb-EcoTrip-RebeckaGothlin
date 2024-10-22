@@ -1,3 +1,9 @@
+import { Header } from "../components/Header";
+
 export const Home = () => {
-  return <>Home</>;
+  return (
+    <>
+      <Header></Header>
+    </>
+  );
 };
