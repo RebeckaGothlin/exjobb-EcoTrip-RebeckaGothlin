@@ -1,5 +1,11 @@
 # EcoTrip - sustainable travel planner
 
+## 🔗 Link to the Project
+
+https://exjobb-eco-trip-rebecka-gothlin.vercel.app/
+
+---
+
 ## 📄 About The Project
 
 
