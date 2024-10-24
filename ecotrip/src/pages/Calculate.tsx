@@ -4,6 +4,7 @@ export const Calculate = () => {
   return (
     <>
       <Header></Header>
+      Calculate
     </>
   );
 };
