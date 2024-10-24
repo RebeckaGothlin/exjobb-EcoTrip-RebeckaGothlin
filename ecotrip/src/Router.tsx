@@ -6,6 +6,8 @@ import { Calculate } from "./pages/Calculate";
 import { Info } from "./pages/Info";
 import { About } from "./pages/About";
 
+export const repo = "/exjobb-EcoTrip-RebeckaGothlin/";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -30,4 +32,6 @@ export const router = createBrowserRouter([
       },
     ],
   },
-]);
+],
+{ basename: repo }
+);
