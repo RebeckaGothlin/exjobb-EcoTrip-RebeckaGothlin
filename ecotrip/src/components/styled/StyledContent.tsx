@@ -4,6 +4,7 @@ export const TextContainer = styled.section`
   background-color: #4b524d;
   color: white;
   padding: 40px;
+  text-align: left;
 `;
 
 export const TextTitle = styled.h2`
