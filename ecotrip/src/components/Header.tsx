@@ -13,6 +13,13 @@ import {
   
   export const Header = () => {
     const backgroundImageUrl = "../homepic.jpg";
+
+    const scrollDown = () => {
+      window.scrollBy({
+        top: 600,
+        behavior: "smooth",
+      })
+    }
   
     return (
       <>
@@ -34,7 +41,7 @@ import {
           <Title to="/">EcoTrip</Title>
           <Subtitle>sustainable travel planner</Subtitle>
           <ArrowDownContainer>
-            <ArrowDownIcon />
+            <ArrowDownIcon onClick={scrollDown} />
           </ArrowDownContainer>
         </HeaderContainer>
       </>
