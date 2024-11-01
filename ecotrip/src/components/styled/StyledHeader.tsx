@@ -89,7 +89,7 @@ export const NavLinkStyled = styled(NavLink)`
 `;
 
 export const Title = styled(NavLink)`
-  font-size: 7rem;
+  font-size: 6rem;
   font-weight: bold;
   color: white;
   text-decoration: none;
