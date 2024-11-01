@@ -15,8 +15,8 @@ export const HeaderContainer = styled.header`
   gap: 0;
 `;
 
-export const BackgroundImage = styled.div<{ backgroundImage: string }>`
-  background-image: url(${props => props.backgroundImage});
+export const BackgroundImage = styled.div<{ backgroundimage: string }>`
+  background-image: url(${props => props.backgroundimage});
   background-size: cover;
   background-position: center;
   position: absolute;

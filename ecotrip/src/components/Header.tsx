@@ -13,6 +13,7 @@ import {
   
   export const Header = () => {
     const backgroundImageUrl = "../homepic.jpg";
+    console.log(backgroundImageUrl);
 
     const scrollDown = () => {
       window.scrollBy({
@@ -24,7 +25,7 @@ import {
     return (
       <>
         <HeaderContainer>
-          <BackgroundImage backgroundImage={backgroundImageUrl} />
+          <BackgroundImage backgroundimage={backgroundImageUrl} />
           <Nav>
             <NavMenu>
               <NavItem>
