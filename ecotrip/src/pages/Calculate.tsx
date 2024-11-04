@@ -8,6 +8,7 @@ import { Form, Input, Para } from "../components/styled/StyledForm";
 import { Button } from "../components/styled/StyledButtons";
 import { FormEvent, useState } from "react";
 import axios from "axios";
+import Loader from "../components/Loader";
 
 // Funktion som beräknar avståndet mellan två geografiska punkter (lat/lon) genom haversine-formeln:
 const calculateDistance = (
@@ -48,6 +49,7 @@ export const Calculate = () => {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [result, setResult] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // funktion för att hämta koordinater för en stad från PpenStreetMap
   const fetchCoordinates = async (city: string) => {
@@ -62,6 +64,7 @@ export const Calculate = () => {
   };
 
   const handleClick = async () => {
+    setLoading(true);
     try {
       const fromCoords = await fetchCoordinates(from);
       const toCoords = await fetchCoordinates(to);
@@ -80,6 +83,8 @@ export const Calculate = () => {
         error
       );
       setResult("An error occurred. Please check spelling.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -119,7 +124,11 @@ export const Calculate = () => {
           />
           <Button onClick={handleClick}>Calculate</Button>
         </Form>
-        {result && <ParagraphText>{result}</ParagraphText>}
+        {loading ? (
+          <Loader size={100} />
+        ) : (
+          <Para>{result}</Para>
+        )}
       </TextContainer>
     </>
   );
