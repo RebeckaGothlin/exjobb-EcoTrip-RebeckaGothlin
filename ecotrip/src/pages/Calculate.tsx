@@ -9,6 +9,7 @@ import { Button } from "../components/styled/StyledButtons";
 import { FormEvent, useState } from "react";
 import axios from "axios";
 import Loader from "../components/Loader";
+import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 // Funktion som beräknar avståndet mellan två geografiska punkter (lat/lon) genom haversine-formeln:
 const calculateDistance = (
@@ -50,6 +51,13 @@ export const Calculate = () => {
   const [to, setTo] = useState("");
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([
+    { name: "Car", emissions: 0 },
+    { name: "Train", emissions: 0 },
+    { name: "Bus", emissions: 0 },
+    { name: "Plane", emissions: 0 },
+  ]);
+
 
   // funktion för att hämta koordinater för en stad från PpenStreetMap
   const fetchCoordinates = async (city: string) => {
@@ -74,6 +82,13 @@ export const Calculate = () => {
         toCoords.lat,
         toCoords.lon
       );
+      setData([
+        { name: "Car", emissions: distance * 0.12 },
+        { name: "Train", emissions: distance * 0.04 },
+        { name: "Bus", emissions: distance * 0.07 },
+        { name: "Plane", emissions: distance * 0.25 },
+      ]);
+
       setResult(
         `Distance between ${from} and ${to}: ${distance.toFixed(0)} km`
       );
@@ -127,7 +142,16 @@ export const Calculate = () => {
         {loading ? (
           <Loader size={100} />
         ) : (
-          <Para>{result}</Para>
+          <><Para>{result}</Para><ResponsiveContainer max-width="100%" height={400}>
+              <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                <CartesianGrid />
+                <XAxis dataKey="name" tick={{ fill: "white" }} />
+                <YAxis tick={{ fill: "white" }} />
+                <Tooltip formatter={(value: number) => `${Math.round(value)} co2`} />
+                <Legend />
+                <Bar dataKey="emissions" fill="#81988f" />
+              </BarChart>
+            </ResponsiveContainer></>
         )}
       </TextContainer>
     </>
