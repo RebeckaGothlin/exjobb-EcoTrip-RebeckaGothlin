@@ -7,7 +7,6 @@ import {
 import { Form, Input, Para } from "../components/styled/StyledForm";
 import { ContentButton } from "../components/styled/StyledButtons";
 import { FormEvent, useContext, useState } from "react";
-import axios from "axios";
 import Loader from "../components/Loader";
 import {
   Bar,
@@ -20,41 +19,8 @@ import {
   YAxis,
 } from "recharts";
 import { ThemeContext } from "../contexts/ThemeContext";
-
-// Funktion som beräknar avståndet mellan två geografiska punkter (lat/lon) genom haversine-formeln:
-const calculateDistance = (
-  lat1: number, // latitud för första punkten
-  lon1: number, // longitud för första punkten
-  lat2: number,
-  lon2: number
-) => {
-  // konvertera grader till radians. 180 = pi radians. multiplicerar med pi/180
-  const toRadians = (degree: number) => (degree * Math.PI) / 180;
-
-  // jordens radie i kilometer (omvandlar vinklar till avstånd)
-  const R = 6371;
-
-  // skillnaden i latitud mellan de två punkterna (omvandlad till radians)
-  const dLat = toRadians(lat2 - lat1);
-
-  const dLon = toRadians(lon1 - lon2);
-
-  // Haversine-formeln:
-  // mellanberäkning som använder trigonometriska funktioner för att hantera klotets yta
-  // Den tar hänsyn till både latitud- och longitudförändringar
-  const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) + // Beräkning för latitudskillnaden
-    Math.cos(toRadians(lat1)) * // Multipliceras med cosinus av den första latituden
-      Math.cos(toRadians(lat2)) * // Mulitpliceras med cosinus av den andra latituden
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2); // Beräkning för longitudskillnaden
-
-  // c är en annan mellanberäkning som använder arctangentfunktionen (atan2) för att beräkna den centrala vinkeln
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-  // avståndet i kilometer beräknas genom att multiplicera jordens radie med den centrala vinkeln (i radians)
-  return R * c; // returnera avståndet i kilometer
-};
+import { fetchCoordinates } from "../utils/locationUtil";
+import { calculateDistance } from "../utils/distanceUtil";
 
 export const Calculate = () => {
   const [from, setFrom] = useState("");
@@ -69,31 +35,21 @@ export const Calculate = () => {
   ]);
   const theme = useContext(ThemeContext);
   console.log(theme);
-  
-
-  // funktion för att hämta koordinater för en stad från PpenStreetMap
-  const fetchCoordinates = async (city: string) => {
-    const response = await axios.get(
-      `https://nominatim.openstreetmap.org/search?q=${city}&format=json&limit=1`
-    );
-
-    // Destrukturerar latitud och longitud från svaret
-    const { lat, lon } = response.data[0];
-    // Returnerar latitud och longitud som flyttal
-    return { lat: parseFloat(lat), lon: parseFloat(lon) };
-  };
 
   const handleClick = async () => {
     setLoading(true);
     try {
+      // Hämta koordinater (latitud och longitud) för både "from" och "to"-städerna
       const fromCoords = await fetchCoordinates(from);
       const toCoords = await fetchCoordinates(to);
+      // Beräkna avståndet mellan de två punkterna genom att använda haversine-formeln
       const distance = calculateDistance(
         fromCoords.lat,
         fromCoords.lon,
         toCoords.lat,
         toCoords.lon
       );
+      // Uppdatera data med koldioxidutsläpp för olika transportmedel baserat på avståndet
       setData([
         { name: "Car", emissions: distance * 0.12 },
         { name: "Train", emissions: distance * 0.04 },
@@ -167,13 +123,19 @@ export const Calculate = () => {
                   tick={{ fill: theme.name === "Light" ? "white" : "black" }}
                 />
                 <YAxis
-                   tick={{ fill: theme.name === "Light" ? "white" : "black" }}
+                  tick={{ fill: theme.name === "Light" ? "white" : "black" }}
                 />
                 <Tooltip
                   formatter={(value: number) => `${Math.round(value)} co2`}
-                  itemStyle={{ fill: theme.name === "Light" ? "white" : "black" }}
+                  itemStyle={{
+                    fill: theme.name === "Light" ? "white" : "black",
+                  }}
                 />
-                <Legend wrapperStyle={{ color: theme.name === "Light" ? "white" : "black" }} />
+                <Legend
+                  wrapperStyle={{
+                    color: theme.name === "Light" ? "white" : "black",
+                  }}
+                />
                 <Bar dataKey="emissions" fill="#81988f" />
               </BarChart>
             </ResponsiveContainer>
