@@ -30,6 +30,10 @@ export const Header = () => {
     });
   };
 
+  const handleThemeToggle = () => {
+    dispatch({ type: ThemeActionTypes.TOGGLED, payload: "" });
+  };
+
   return (
     <>
       <HeaderContainer>
@@ -45,7 +49,7 @@ export const Header = () => {
             <NavItem>
               <NavLinkStyled to="/about">About</NavLinkStyled>
             </NavItem>
-            <NavButton
+            {/* <NavButton
               onClick={() => {
                 dispatch({ type: ThemeActionTypes.TOGGLED, payload: "" });
               }}
@@ -55,6 +59,9 @@ export const Header = () => {
                   ? themes.light.name
                   : themes.dark.name}
               </>
+            </NavButton> */}
+            <NavButton onClick={handleThemeToggle}>
+              {theme?.name === themes.dark.name ? themes.light.name : themes.dark.name}
             </NavButton>
           </NavMenu>
         </Nav>

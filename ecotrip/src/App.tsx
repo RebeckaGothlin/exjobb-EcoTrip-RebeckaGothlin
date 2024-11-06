@@ -3,12 +3,26 @@ import "./App.css";
 import { router } from "./Router";
 import { ThemeContext } from "styled-components";
 import { themes } from "./models/Theme";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { ThemesReducer } from "./reducers/ThemesReducer";
 import { ThemeDispatchContext } from "./contexts/ThemeDispatchContext";
 
 function App() {
-  const [theme, dispatch] = useReducer(ThemesReducer, themes.dark);
+  const storedTheme = localStorage.getItem("theme");
+  let initialTheme;
+  try {
+    initialTheme = storedTheme ? JSON.parse(storedTheme) : themes.dark;
+  } catch (error) {
+    console.error("Error parsing theme from localStorage", error);
+    initialTheme = themes.dark;
+  }
+  const [theme, dispatch] = useReducer(ThemesReducer, initialTheme);
+
+  useEffect(() => {
+    localStorage.setItem("theme", JSON.stringify(theme));
+  }, [theme]);
+
+  
   return (
     <>
       <ThemeDispatchContext.Provider value={dispatch} >
