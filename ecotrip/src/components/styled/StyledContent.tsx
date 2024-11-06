@@ -11,12 +11,12 @@ export const TextContainer = styled.section`
 
 export const TextTitle = styled.h2`
   font-family: "Poppins", serif;
-  font-size: 36px;
+  font-size: 2.25rem;
   text-align: center;
 `;
 
 export const ParagraphText = styled.p`
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.6;
   font-family: "Poppins", serif;
 `;
