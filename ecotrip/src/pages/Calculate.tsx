@@ -5,11 +5,21 @@ import {
   TextTitle,
 } from "../components/styled/StyledContent";
 import { Form, Input, Para } from "../components/styled/StyledForm";
-import { Button } from "../components/styled/StyledButtons";
-import { FormEvent, useState } from "react";
+import { ContentButton } from "../components/styled/StyledButtons";
+import { FormEvent, useContext, useState } from "react";
 import axios from "axios";
 import Loader from "../components/Loader";
-import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 // Funktion som beräknar avståndet mellan två geografiska punkter (lat/lon) genom haversine-formeln:
 const calculateDistance = (
@@ -57,7 +67,9 @@ export const Calculate = () => {
     { name: "Bus", emissions: 0 },
     { name: "Plane", emissions: 0 },
   ]);
-
+  const theme = useContext(ThemeContext);
+  console.log(theme);
+  
 
   // funktion för att hämta koordinater för en stad från PpenStreetMap
   const fetchCoordinates = async (city: string) => {
@@ -137,21 +149,35 @@ export const Calculate = () => {
             placeholder="To.."
             onChange={(e) => setTo(e.target.value)}
           />
-          <Button onClick={handleClick}>Calculate</Button>
+          <ContentButton onClick={handleClick}>Calculate</ContentButton>
         </Form>
         {loading ? (
           <Loader size={100} />
         ) : (
-          <><Para>{result}</Para><ResponsiveContainer max-width="100%" height={400}>
-              <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+          <>
+            <Para>{result}</Para>
+            <ResponsiveContainer max-width="100%" height={400}>
+              <BarChart
+                data={data}
+                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+              >
                 <CartesianGrid />
-                <XAxis dataKey="name" tick={{ fill: "white" }} />
-                <YAxis tick={{ fill: "white" }} />
-                <Tooltip formatter={(value: number) => `${Math.round(value)} co2`} />
-                <Legend />
+                <XAxis
+                  dataKey="name"
+                  tick={{ fill: theme.name === "Light" ? "white" : "black" }}
+                />
+                <YAxis
+                   tick={{ fill: theme.name === "Light" ? "white" : "black" }}
+                />
+                <Tooltip
+                  formatter={(value: number) => `${Math.round(value)} co2`}
+                  itemStyle={{ fill: theme.name === "Light" ? "white" : "black" }}
+                />
+                <Legend wrapperStyle={{ color: theme.name === "Light" ? "white" : "black" }} />
                 <Bar dataKey="emissions" fill="#81988f" />
               </BarChart>
-            </ResponsiveContainer></>
+            </ResponsiveContainer>
+          </>
         )}
       </TextContainer>
     </>

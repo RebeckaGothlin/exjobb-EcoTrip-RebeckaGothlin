@@ -49,7 +49,7 @@ interface ILoaderProps {
     align-items: center;
     margin: 0 auto;
     margin-top: 80px;
-    background-color: #4b524d;
+    background-color: ${({ theme }) => theme.textContainerBackgroundColor};
   `;
   
   const StyledCircle = styled.div`
@@ -61,7 +61,7 @@ interface ILoaderProps {
   
     &.white {
       border-width: 3px 3px 0px 0px;
-      border-color: white white transparent transparent;
+      border-color: #000000 black transparent transparent;
       animation: 1s ${rotatewhite} linear infinite;
     }
   
@@ -73,7 +73,7 @@ interface ILoaderProps {
   
     &.orange {
       border-width: 0 3px 3px 0;
-      border-color: transparent #d9d9d9 transparent;
+      border-color: transparent #808080 transparent;
       animation: 1s ${rotateorange} linear infinite;
     }
   

@@ -31,4 +31,5 @@ export const Para = styled.p`
   margin-bottom: 0;
   font-size: 0.8rem;
   text-align: center;
+  font-family: "Poppins", serif;
 `;

@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
 export const TextContainer = styled.section`
-  background-color: #4b524d;
-  color: white;
+  /* background-color: #4b524d;
+  color: white; */
+  background-color: ${({ theme }) => theme.textContainerBackgroundColor};
+  color: ${({ theme }) => theme.textContainerTextColor};  
   padding: 40px;
   text-align: left;
 `;
 
 export const TextTitle = styled.h2`
-  font-family: "Abril Fatface", serif;
+  font-family: "Poppins", serif;
   font-size: 36px;
   text-align: center;
 `;
@@ -16,5 +18,5 @@ export const TextTitle = styled.h2`
 export const ParagraphText = styled.p`
   font-size: 18px;
   line-height: 1.6;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", serif;
 `;

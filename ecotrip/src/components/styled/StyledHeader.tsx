@@ -30,12 +30,23 @@ export const Nav = styled.nav`
   position: absolute;
   top: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  /* background-color: rgba(0, 0, 0, 0.6); */
+  background-color: ${({ theme }) => theme.navBackgroundColor}; 
+  color: ${({ theme }) => theme.navTextColor};
   display: flex;
   justify-content: center;
-  padding: 15px 0;
+  padding: 5px 0;
   z-index: 10;
-  font-family: 'Abril Fatface', serif; 
+  font-family: 'Poppins', serif;
+  /* display: flex;
+  justify-content: space-between; */
+  /* padding: 15px 20px; */
+  @media (min-width: 768px) {
+    padding: 12px 0;
+  }
+  @media (min-width: 1024px) {
+    padding: 14px 0;
+  }
 `;
 
 export const NavMenu = styled.ul`
@@ -46,26 +57,34 @@ export const NavMenu = styled.ul`
 `;
 
 export const NavItem = styled.li`
-  margin: 0 10px;
+  /* margin: 0 10px; */
   position: relative;
+  display: flex;
+  align-items: center;
+  margin: 20px;
 
-  &:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    right: -10px; 
-    top: 50%;
-    transform: translateY(-50%);
-    height: 20px; 
+  /* & + &::before {
+    content: ""; */
+    /* position: absolute; */
+    /* right: -10px;  */
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+    /* height: 20px; 
     width: 2px;
-    background-color: white;
+    margin-right: 10px;
+    margin-left: 10px; */
+    /* background-color: white; */
+    /* background-color: ${({ theme }) => theme.navTextColor};
     @media (min-width: 768px) {
-      right: -40px;
+      margin-right: 30px;
+      margin-left: 30px;
     }
 
     @media (min-width: 1024px) {
-      right: -90px;
-    }
-  }
+      margin-right: 30px;
+      margin-left: 30px;
+    } */
+  /* } */
 
   @media (min-width: 768px) {
     margin: 0 40px;
@@ -77,13 +96,15 @@ export const NavItem = styled.li`
 `;
 
 export const NavLinkStyled = styled(NavLink)`
-  color: white;
+  /* color: white; */
+  color: ${({ theme }) => theme.navTextColor}; 
   text-decoration: none;
-  font-size: 1.2rem;
-
+  font-size: 1rem;
+  font-weight: 400;
   &:hover {
     text-decoration: underline;
-    color: white;
+    /* color: white; */
+    color: ${({ theme }) => theme.navTextColor};
   }
 `;
 
