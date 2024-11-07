@@ -1,8 +1,3 @@
-import { useContext } from "react";
-import { ThemeContext } from "styled-components";
-import { ThemeDispatchContext } from "../contexts/ThemeDispatchContext";
-import { themes } from "../models/Theme";
-import { ThemeActionTypes } from "../reducers/ThemesReducer";
 import {
   HeaderContainer,
   BackgroundImage,
@@ -15,11 +10,9 @@ import {
   ArrowDownIcon,
   ArrowDownContainer,
 } from "./styled/StyledHeader";
-import { NavButton } from "./styled/StyledButtons";
+import ThemeToggle from "./ThemeToggle";
 
 export const Header = () => {
-  const dispatch = useContext(ThemeDispatchContext);
-  const theme = useContext(ThemeContext);
   const backgroundImageUrl = "../homepic.jpg";
   console.log(backgroundImageUrl);
 
@@ -28,10 +21,6 @@ export const Header = () => {
       top: 600,
       behavior: "smooth",
     });
-  };
-
-  const handleThemeToggle = () => {
-    dispatch({ type: ThemeActionTypes.TOGGLED, payload: "" });
   };
 
   return (
@@ -49,20 +38,9 @@ export const Header = () => {
             <NavItem>
               <NavLinkStyled to="/about">About</NavLinkStyled>
             </NavItem>
-            {/* <NavButton
-              onClick={() => {
-                dispatch({ type: ThemeActionTypes.TOGGLED, payload: "" });
-              }}
-            >
-              <>
-                {theme?.name === themes.dark.name
-                  ? themes.light.name
-                  : themes.dark.name}
-              </>
-            </NavButton> */}
-            <NavButton onClick={handleThemeToggle}>
-              {theme?.name === themes.dark.name ? themes.light.name : themes.dark.name}
-            </NavButton>
+            <NavItem className="last-item">
+              <ThemeToggle />
+            </NavItem>
           </NavMenu>
         </Nav>
         <Title to="/">EcoTrip</Title>

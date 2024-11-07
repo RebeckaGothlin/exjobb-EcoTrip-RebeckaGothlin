@@ -18,7 +18,7 @@ export const themes: IThemes = {
         name: "Dark",
         navBackgroundColor: "rgba(0, 0, 0, 0.6)",
         navTextColor: "white",
-        textContainerBackgroundColor: "#4b524d",
+        textContainerBackgroundColor: "linear-gradient(#1b2624, #1b2624, #1c5148, #1c5148, #1b2624)",
         textContainerTextColor: "white",
         buttonBackgroundColor: "#333",
         buttonTextColor: "white"

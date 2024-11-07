@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const TextContainer = styled.section`
   /* background-color: #4b524d;
   color: white; */
-  background-color: ${({ theme }) => theme.textContainerBackgroundColor};
+  background: ${({ theme }) => theme.textContainerBackgroundColor};
   color: ${({ theme }) => theme.textContainerTextColor};  
   padding: 40px;
   text-align: left;

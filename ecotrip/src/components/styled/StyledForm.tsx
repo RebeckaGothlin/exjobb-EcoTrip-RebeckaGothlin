@@ -9,6 +9,7 @@ export const Input = styled.input`
   background-color: #d9d9d9;
   color: #1e1e1e;
   padding-left: 5px;
+  font-family: "Poppins", serif;
 
   &:focus {
     outline: none;

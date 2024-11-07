@@ -30,7 +30,6 @@ export const Nav = styled.nav`
   position: absolute;
   top: 0;
   width: 100%;
-  /* background-color: rgba(0, 0, 0, 0.6); */
   background-color: ${({ theme }) => theme.navBackgroundColor}; 
   color: ${({ theme }) => theme.navTextColor};
   display: flex;
@@ -38,9 +37,6 @@ export const Nav = styled.nav`
   padding: 5px 0;
   z-index: 10;
   font-family: 'Poppins', serif;
-  /* display: flex;
-  justify-content: space-between; */
-  /* padding: 15px 20px; */
   @media (min-width: 768px) {
     padding: 12px 0;
   }
@@ -54,44 +50,28 @@ export const NavMenu = styled.ul`
   margin: 0;
   padding: 0;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 export const NavItem = styled.li`
-  /* margin: 0 10px; */
   position: relative;
   display: flex;
   align-items: center;
-  margin: 20px;
+  margin: 10px 10px;
 
-  /* & + &::before {
-    content: ""; */
-    /* position: absolute; */
-    /* right: -10px;  */
-    /* top: 50%; */
-    /* transform: translateY(-50%); */
-    /* height: 20px; 
-    width: 2px;
-    margin-right: 10px;
-    margin-left: 10px; */
-    /* background-color: white; */
-    /* background-color: ${({ theme }) => theme.navTextColor};
-    @media (min-width: 768px) {
-      margin-right: 30px;
-      margin-left: 30px;
-    }
-
-    @media (min-width: 1024px) {
-      margin-right: 30px;
-      margin-left: 30px;
-    } */
-  /* } */
+  &.last-item {
+    margin-left: auto;
+    margin-right: 30px;
+  }
 
   @media (min-width: 768px) {
-    margin: 0 40px;
+    margin: 10px 20px;
   }
 
   @media (min-width: 1024px) {
-    margin: 0 90px;
+    margin: 10px 30px;
   }
 `;
 
