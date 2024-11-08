@@ -7,7 +7,7 @@ import {
 import { Form, Input, Para } from "../components/styled/StyledForm";
 import { ContentButton } from "../components/styled/StyledButtons";
 import { FormEvent, useContext, useState } from "react";
-import Loader from "../components/Loader";
+// import Loader from "../components/Loader";
 import {
   Bar,
   BarChart,
@@ -21,6 +21,7 @@ import {
 import { ThemeContext } from "../contexts/ThemeContext";
 import { fetchCoordinates } from "../utils/locationUtil";
 import { calculateDistance } from "../utils/distanceUtil";
+import { StyledSpinner } from "../components/styled/StyledSpinner";
 
 export const Calculate = () => {
   const [from, setFrom] = useState("");
@@ -36,9 +37,17 @@ export const Calculate = () => {
   const theme = useContext(ThemeContext);
   const [hasError, setHasError] = useState(false);
 
+  const scrollDown = () => {
+    window.scrollBy({
+      top: 100,
+      behavior: "smooth",
+    });
+  };
+
   const handleClick = async () => {
     setLoading(true);
     setHasError(false);
+    scrollDown();
     try {
       // Hämta koordinater (latitud och longitud) för både "from" och "to"-städerna
       const fromCoords = await fetchCoordinates(from);
@@ -110,7 +119,8 @@ export const Calculate = () => {
           <ContentButton onClick={handleClick}>Calculate</ContentButton>
         </Form>
         {loading ? (
-          <Loader size={100} />
+          // <Loader size={100} />
+          <StyledSpinner size={120} />
         ) : (
           <>
             <Para>{result}</Para>
