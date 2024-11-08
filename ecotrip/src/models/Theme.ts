@@ -7,6 +7,8 @@ export interface ITheme {
     buttonBackgroundColor: string;
     buttonTextColor: string;
     buttonBorderColor: string;
+    sliderBackgroundColor: string;
+    sliderBorderColor: string;
 }
 
 interface IThemes {
@@ -24,6 +26,8 @@ export const themes: IThemes = {
         buttonBackgroundColor: "#c2fbd7",
         buttonTextColor: "white",
         buttonBorderColor: "rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px",
+        sliderBackgroundColor: "linear-gradient(#004E41, #51b8a7)", 
+        sliderBorderColor: "none",
     },
     light: {
         name: "Light",
@@ -34,5 +38,7 @@ export const themes: IThemes = {
         buttonBackgroundColor: "#fff",
         buttonTextColor: "black",
         buttonBorderColor: "black",
+        sliderBackgroundColor: "rgba(255, 255, 255, 0.2)",
+        sliderBorderColor: "2px solid black",
     },
 }
