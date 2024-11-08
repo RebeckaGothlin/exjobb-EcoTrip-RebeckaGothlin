@@ -34,10 +34,11 @@ export const Calculate = () => {
     { name: "Plane", emissions: 0 },
   ]);
   const theme = useContext(ThemeContext);
-  console.log(theme);
+  const [hasError, setHasError] = useState(false);
 
   const handleClick = async () => {
     setLoading(true);
+    setHasError(false);
     try {
       // Hämta koordinater (latitud och longitud) för både "from" och "to"-städerna
       const fromCoords = await fetchCoordinates(from);
@@ -66,6 +67,7 @@ export const Calculate = () => {
         error
       );
       setResult("An error occurred. Please check spelling.");
+      setHasError(true);
     } finally {
       setLoading(false);
     }
@@ -112,33 +114,35 @@ export const Calculate = () => {
         ) : (
           <>
             <Para>{result}</Para>
-            <ResponsiveContainer max-width="100%" height={400}>
-              <BarChart
-                data={data}
-                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-              >
-                <CartesianGrid />
-                <XAxis
-                  dataKey="name"
-                  tick={{ fill: theme.name === "Light" ? "white" : "black" }}
-                />
-                <YAxis
-                  tick={{ fill: theme.name === "Light" ? "white" : "black" }}
-                />
-                <Tooltip
-                  formatter={(value: number) => `${Math.round(value)} co2`}
-                  itemStyle={{
-                    fill: theme.name === "Light" ? "white" : "black",
-                  }}
-                />
-                <Legend
-                  wrapperStyle={{
-                    color: theme.name === "Light" ? "white" : "black",
-                  }}
-                />
-                <Bar dataKey="emissions" fill="#81988f" />
-              </BarChart>
-            </ResponsiveContainer>
+            {!hasError && result && (
+              <ResponsiveContainer max-width="100%" height={400}>
+                <BarChart
+                  data={data}
+                  margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                >
+                  <CartesianGrid />
+                  <XAxis
+                    dataKey="name"
+                    tick={{ fill: theme.name === "Light" ? "white" : "black" }}
+                  />
+                  <YAxis
+                    tick={{ fill: theme.name === "Light" ? "white" : "black" }}
+                  />
+                  <Tooltip
+                    formatter={(value: number) => `${Math.round(value)} co2`}
+                    itemStyle={{
+                      fill: theme.name === "Light" ? "white" : "black",
+                    }}
+                  />
+                  <Legend
+                    wrapperStyle={{
+                      color: theme.name === "Light" ? "white" : "black",
+                    }}
+                  />
+                  <Bar dataKey="emissions" fill="#81988f" />
+                </BarChart>
+              </ResponsiveContainer>
+            )}
           </>
         )}
       </TextContainer>
