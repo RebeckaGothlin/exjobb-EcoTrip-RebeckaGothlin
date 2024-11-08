@@ -6,6 +6,7 @@ export interface ITheme {
     textContainerTextColor: string;
     buttonBackgroundColor: string;
     buttonTextColor: string;
+    buttonBorderColor: string;
 }
 
 interface IThemes {
@@ -20,8 +21,9 @@ export const themes: IThemes = {
         navTextColor: "white",
         textContainerBackgroundColor: "linear-gradient(#1b2624, #1b2624, #1c5148, #1c5148, #1b2624)",
         textContainerTextColor: "white",
-        buttonBackgroundColor: "#333",
-        buttonTextColor: "white"
+        buttonBackgroundColor: "#c2fbd7",
+        buttonTextColor: "white",
+        buttonBorderColor: "rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px",
     },
     light: {
         name: "Light",
@@ -30,6 +32,7 @@ export const themes: IThemes = {
         textContainerBackgroundColor: "white",
         textContainerTextColor: "black",
         buttonBackgroundColor: "#fff",
-        buttonTextColor: "black"
+        buttonTextColor: "black",
+        buttonBorderColor: "black",
     },
 }
