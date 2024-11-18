@@ -1,3 +1,6 @@
+/*
+Uträkningen kommer härifrån: https://www.movable-type.co.uk/scripts/latlong.html
+*/
 
 // Funktion som beräknar avståndet mellan två geografiska punkter (lat/lon) genom haversine-formeln:
 export const calculateDistance = (
