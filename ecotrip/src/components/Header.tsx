@@ -9,6 +9,7 @@ import {
   Subtitle,
   ArrowDownIcon,
   ArrowDownContainer,
+  NavLinkStyledTitle,
 } from "./styled/StyledHeader";
 import ThemeToggle from "./ThemeToggle";
 
@@ -29,6 +30,9 @@ export const Header = () => {
         <BackgroundImage backgroundimage={backgroundImageUrl} />
         <Nav>
           <NavMenu>
+          <NavItem>
+              <NavLinkStyledTitle to="/">EcoTrip</NavLinkStyledTitle>
+            </NavItem>
             <NavItem>
               <NavLinkStyled to="/calculate">Calculate</NavLinkStyled>
             </NavItem>

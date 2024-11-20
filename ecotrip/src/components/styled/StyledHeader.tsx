@@ -128,7 +128,7 @@ export const Subtitle = styled.p`
   font-style: italic;
   color: white;
   margin-top: 0;
-  transform: translateX(-20px);
+  transform: translateX(-26px);
 
   @media (min-width: 768px) {
     font-size: 2rem;
