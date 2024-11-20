@@ -1,4 +1,4 @@
-import { HeaderNav } from "../components/HeaderNav";
+import { Header } from "../components/Header";
 import {
   ParagraphText,
   TextContainer,
@@ -8,7 +8,7 @@ import {
 export const About = () => {
   return (
     <>
-      <HeaderNav></HeaderNav>
+      <Header></Header>
       <TextContainer>
         <TextTitle>About</TextTitle>
         <ParagraphText>

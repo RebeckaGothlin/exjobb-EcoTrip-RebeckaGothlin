@@ -21,7 +21,7 @@ import { ThemeContext } from "../contexts/ThemeContext";
 import { fetchCoordinates } from "../utils/locationUtil";
 import { calculateDistance } from "../utils/distanceUtil";
 import { StyledSpinner } from "../components/styled/StyledSpinner";
-import { HeaderNav } from "../components/HeaderNav";
+import { Header } from "../components/Header";
 
 export const Calculate = () => {
   const [from, setFrom] = useState("");
@@ -91,7 +91,7 @@ export const Calculate = () => {
 
   return (
     <>
-      <HeaderNav></HeaderNav>
+      <Header></Header>
       <TextContainer>
         <TextTitle>Calculate</TextTitle>
         <ParagraphText>

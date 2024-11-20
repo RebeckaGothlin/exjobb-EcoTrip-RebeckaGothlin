@@ -2,6 +2,7 @@ export interface ITheme {
     name: string;
     navBackgroundColor: string;
     navTextColor: string;
+    activeNavTextColor: string;
     textContainerBackgroundColor: string;
     textContainerTextColor: string;
     buttonBackgroundColor: string;
@@ -21,6 +22,7 @@ export const themes: IThemes = {
         name: "Dark",
         navBackgroundColor: "rgba(0, 0, 0, 0.6)",
         navTextColor: "white",
+        activeNavTextColor: "orange",
         textContainerBackgroundColor: "linear-gradient(#1b2624, #1b2624, #1c5148, #1c5148, #1b2624)",
         textContainerTextColor: "white",
         buttonBackgroundColor: "#c2fbd7",
@@ -33,6 +35,7 @@ export const themes: IThemes = {
         name: "Light",
         navBackgroundColor: "rgba(255, 255, 255, 0.6)",
         navTextColor: "black",
+        activeNavTextColor: "blue",
         textContainerBackgroundColor: "white",
         textContainerTextColor: "black",
         buttonBackgroundColor: "#fff",

@@ -2,7 +2,7 @@ import { Header } from "../components/Header";
 import {
   ParagraphText,
   TextContainer,
-  TextTitleHome,
+  TextTitle,
 } from "../components/styled/StyledContent";
 
 export const Home = () => {
@@ -10,7 +10,7 @@ export const Home = () => {
     <>
       <Header></Header>
       <TextContainer>
-        <TextTitleHome>Introduction</TextTitleHome>
+        <TextTitle>Introduction</TextTitle>
         <ParagraphText>
           Traveling is a hobby for many, but it comes at a cost to the
           environment. Transport options like flights and cars release

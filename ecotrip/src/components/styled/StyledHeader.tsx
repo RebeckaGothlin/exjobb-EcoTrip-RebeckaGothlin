@@ -76,15 +76,21 @@ export const NavItem = styled.li`
 `;
 
 export const NavLinkStyled = styled(NavLink)`
-  /* color: white; */
   color: ${({ theme }) => theme.navTextColor};
   text-decoration: none;
   font-size: 1rem;
   font-weight: 400;
   margin-left: 3px;
+
   &:hover {
     text-decoration: underline;
-    /* color: white; */
+    color: ${({ theme }) => theme.navTextColor};
+  }
+
+  &.active {
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
     color: ${({ theme }) => theme.navTextColor};
   }
 `;
