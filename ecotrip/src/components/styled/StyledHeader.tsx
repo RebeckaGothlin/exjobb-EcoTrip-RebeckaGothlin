@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
-import { FaArrowDown } from 'react-icons/fa';
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import { FaArrowDown } from "react-icons/fa";
 
 export const HeaderContainer = styled.header`
   position: relative;
@@ -10,12 +10,12 @@ export const HeaderContainer = styled.header`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Abril Fatface', serif; 
+  font-family: "Abril Fatface", serif;
   gap: 0;
 `;
 
 export const BackgroundImage = styled.div<{ backgroundimage: string }>`
-  background-image: url(${props => props.backgroundimage});
+  background-image: url(${(props) => props.backgroundimage});
   background-size: cover;
   background-position: center;
   position: absolute;
@@ -30,13 +30,13 @@ export const Nav = styled.nav`
   position: absolute;
   top: 0;
   width: 100%;
-  background-color: ${({ theme }) => theme.navBackgroundColor}; 
+  background-color: ${({ theme }) => theme.navBackgroundColor};
   color: ${({ theme }) => theme.navTextColor};
   display: flex;
   justify-content: center;
   padding: 5px 0;
   z-index: 10;
-  font-family: 'Poppins', serif;
+  font-family: "Poppins", serif;
   @media (min-width: 768px) {
     padding: 12px 0;
   }
@@ -77,14 +77,31 @@ export const NavItem = styled.li`
 
 export const NavLinkStyled = styled(NavLink)`
   /* color: white; */
-  color: ${({ theme }) => theme.navTextColor}; 
+  color: ${({ theme }) => theme.navTextColor};
   text-decoration: none;
   font-size: 1rem;
   font-weight: 400;
+  margin-left: 3px;
   &:hover {
     text-decoration: underline;
     /* color: white; */
     color: ${({ theme }) => theme.navTextColor};
+  }
+`;
+
+export const NavLinkStyledTitle = styled(NavLink)`
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: ${({ theme }) => theme.navTextColor};
+  text-decoration: none;
+  margin-bottom: 0;
+  line-height: 0.8;
+  font-family: "Abril Fatface", serif;
+  margin-bottom: 4px;
+
+  &:hover {
+    text-decoration: underline;
+    color: ${({ theme }) => theme.navTextColor}; 
   }
 `;
 
@@ -123,7 +140,7 @@ export const ArrowDownContainer = styled.div`
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-`
+`;
 
 export const ArrowDownIcon = styled(FaArrowDown)`
   color: white;

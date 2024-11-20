@@ -1,4 +1,3 @@
-import { Header } from "../components/Header";
 import {
   ParagraphText,
   TextContainer,
@@ -22,6 +21,7 @@ import { ThemeContext } from "../contexts/ThemeContext";
 import { fetchCoordinates } from "../utils/locationUtil";
 import { calculateDistance } from "../utils/distanceUtil";
 import { StyledSpinner } from "../components/styled/StyledSpinner";
+import { HeaderNav } from "../components/HeaderNav";
 
 export const Calculate = () => {
   const [from, setFrom] = useState("");
@@ -91,7 +91,7 @@ export const Calculate = () => {
 
   return (
     <>
-      <Header></Header>
+      <HeaderNav></HeaderNav>
       <TextContainer>
         <TextTitle>Calculate</TextTitle>
         <ParagraphText>

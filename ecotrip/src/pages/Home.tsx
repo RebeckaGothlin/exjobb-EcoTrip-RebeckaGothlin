@@ -4,7 +4,6 @@ import {
   TextContainer,
   TextTitle,
 } from "../components/styled/StyledContent";
-import { StyledLink } from "../components/styled/StyledLinks";
 
 export const Home = () => {
   return (
@@ -20,8 +19,7 @@ export const Home = () => {
           emissions from different transport modes like flights, cars, and
           trains, helping you make more informed choices to reduce your
           environmental impact. Click on “Calculate” in the top navigation bar
-          to compare emissions for different transport options, or click{" "}
-          <StyledLink href="/calculate">here</StyledLink> to go there directly.
+          to compare emissions for different transport options.
         </ParagraphText>
       </TextContainer>
     </>

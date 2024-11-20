@@ -39,6 +39,6 @@ export const themes: IThemes = {
         buttonTextColor: "black",
         buttonBorderColor: "black",
         sliderBackgroundColor: "rgba(255, 255, 255, 0.2)",
-        sliderBorderColor: "2px solid black",
+        sliderBorderColor: "1px solid black",
     },
 }

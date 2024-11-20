@@ -48,7 +48,7 @@ describe('fetchCoordinates', () => {
 
         const city = 'UnknownCity';
 
-        // Förväntar sig att funktionen kastar ett fel
+        // Förväntar sig att funktionen "kastar ett fel"
         await expect(fetchCoordinates(city)).rejects.toThrow(
             'No coordinates found for the specified city'
         );
