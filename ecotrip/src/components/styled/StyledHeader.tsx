@@ -33,12 +33,19 @@ export const Nav = styled.nav`
   background-color: ${({ theme }) => theme.navBackgroundColor};
   color: ${({ theme }) => theme.navTextColor};
   display: flex;
-  justify-content: center;
-  padding: 5px 0;
+  align-items: center;
+  justify-content: space-between;
   z-index: 10;
   font-family: "Poppins", serif;
+
+  @media (max-width: 768px) {
+    justify-content: flex-end;
+    padding: 12px 30px;
+  }
+
   @media (min-width: 768px) {
     padding: 12px 0;
+    justify-content: center; 
   }
   @media (min-width: 1024px) {
     padding: 14px 0;
@@ -53,6 +60,10 @@ export const NavMenu = styled.ul`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const NavItem = styled.li`
@@ -104,12 +115,85 @@ export const NavLinkStyledTitle = styled(NavLink)`
   line-height: 0.8;
   font-family: "Abril Fatface", serif;
   margin-bottom: 4px;
+  margin-right: 20px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
 
   &:hover {
     text-decoration: underline;
     color: ${({ theme }) => theme.navTextColor}; 
   }
 `;
+
+export const HamburgerMenuButton = styled.div`
+  display: none; 
+
+  @media (max-width: 768px) {
+    display: flex; 
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 20;
+    margin-right: 10px;
+
+    span {
+      width: 100%;
+      height: 3px;
+      background-color: ${({ theme }) => theme.navTextColor};
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+  }
+`;
+
+export const OverlayMenu = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: ${({ theme }) => theme.navBackgroundColor};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 15;
+  animation: fadeIn 0.3s ease-in-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+`;
+
+export const OverlayMenuItem = styled.div`
+  font-size: 1.5rem;
+  font-weight: 500;
+
+  a {
+    color: ${({ theme }) => theme.navTextColor};
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+`;
+
+
 
 export const Title = styled(NavLink)`
   font-size: 6rem;

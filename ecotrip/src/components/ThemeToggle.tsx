@@ -8,7 +8,7 @@ import { FaSun, FaMoon } from "react-icons/fa";
 import styled from "styled-components";
 
 const ToggleContainer = styled.div`
-  margin-right: 10px;
+  /* margin-right: 10px; */
   margin-left: auto;
 `;
 
