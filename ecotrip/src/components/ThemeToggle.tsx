@@ -8,7 +8,7 @@ import { FaSun, FaMoon } from "react-icons/fa";
 import styled from "styled-components";
 
 const ToggleContainer = styled.div`
-  /* margin-right: 10px; */
+  margin-right: 15px;
   margin-left: auto;
 `;
 
@@ -55,7 +55,7 @@ const Slider = styled.span`
   }
 
   ${ToggleInput}:checked + &::before {
-    transform: translateX(36px);
+    transform: translateX(25px);
   }
 `;
 

@@ -38,6 +38,9 @@ export const Header = () => {
         <BackgroundImage backgroundimage={backgroundImageUrl} />
         <Nav>
           <NavMenu>
+            {/* <NavLinkStyledTitle to="/" onClick={toggleMenu}>
+              EcoTrip
+            </NavLinkStyledTitle> */}
             <NavItem>
               <NavLinkStyledTitle to="/">EcoTrip</NavLinkStyledTitle>
             </NavItem>
@@ -50,18 +53,13 @@ export const Header = () => {
             <NavItem>
               <NavLinkStyled to="/about">About</NavLinkStyled>
             </NavItem>
-            <NavItem className="last-item">
-              <ThemeToggle />
-            </NavItem>
+            <NavItem className="last-item">{/* <ThemeToggle /> */}</NavItem>
           </NavMenu>
           <HamburgerMenuButton onClick={toggleMenu}>
             <span />
             <span />
             <span />
           </HamburgerMenuButton>
-          <NavLinkStyledTitle to="/" onClick={toggleMenu}>
-            EcoTrip
-          </NavLinkStyledTitle>
           <ThemeToggle />
           {menuOpen && (
             <OverlayMenu>
