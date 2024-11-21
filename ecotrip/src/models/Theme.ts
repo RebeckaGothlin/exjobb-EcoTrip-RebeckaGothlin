@@ -40,10 +40,11 @@ export const themes: IThemes = {
     
 
         textContainerTextColor: "white",
-        buttonBackgroundColor: "#c2fbd7",
+        buttonBackgroundColor: "linear-gradient(45deg, rgba(128, 0, 128, 0.8), rgba(255, 105, 180, 0.8))", 
         buttonTextColor: "white",
         buttonBorderColor: "rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px",
-        sliderBackgroundColor: "linear-gradient(#004E41, #51b8a7)",
+        // sliderBackgroundColor: "linear-gradient(#004E41, #51b8a7)",
+        sliderBackgroundColor: "linear-gradient(45deg, rgba(128, 0, 128, 0.8), rgba(255, 105, 180, 0.8))", 
         sliderBorderColor: "none",
     },
     light: {
@@ -53,10 +54,11 @@ export const themes: IThemes = {
         activeNavTextColor: "blue",
         textContainerBackgroundColor: "white",
         textContainerTextColor: "black",
-        buttonBackgroundColor: "#fff",
+        buttonBackgroundColor: "linear-gradient(45deg, rgba(255, 165, 0, 0.8), rgba(255, 105, 180, 0.8))",
         buttonTextColor: "black",
         buttonBorderColor: "black",
-        sliderBackgroundColor: "rgba(255, 255, 255, 0.2)",
+        // sliderBackgroundColor: "rgba(255, 255, 255, 0.2)",
+        sliderBackgroundColor: "linear-gradient(45deg, rgba(255, 165, 0, 0.8), rgba(255, 105, 180, 0.8))",
         sliderBorderColor: "1px solid black",
     },
 }

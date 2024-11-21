@@ -38,7 +38,6 @@ const Slider = styled.span`
   cursor: pointer;
   
   ${ToggleInput}:checked + & {
-    /* background: linear-gradient(#51b8a7, #004E41); */
     background: ${({ theme }) => theme.name === "Light" ? theme.sliderBackgroundColor : "linear-gradient(#51b8a7, #004E41)"};
   }
 
