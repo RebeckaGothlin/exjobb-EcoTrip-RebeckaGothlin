@@ -28,5 +28,20 @@ export const ContentButton = styled.button`
 
   &:focus {
     outline: none;
+  }  
+`;
+export const NavButton = styled.button`
+  background-color: transparent;
+  font-weight: 400;
+  font-family: 'Poppins', serif;
+  padding: 0 25px;
+  height: 35px;
+  border: 1.5px solid ${({ theme }) => theme.name === 'Light' ? 'black' : 'white'};
+  color: ${({ theme }) => theme.name === 'Light' ? 'black' : 'white'};
+  margin-left: auto;
+  cursor: pointer;
+  &:hover {
+    border: 2px solid ${({ theme }) => theme.name === 'Light' ? 'black' : 'white'};;
   }
 `;
+
