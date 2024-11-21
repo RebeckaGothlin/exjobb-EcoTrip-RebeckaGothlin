@@ -1,9 +1,23 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const moveBackground = keyframes`
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+`;
 
 export const TextContainer = styled.section`
-  /* background-color: #4b524d;
-  color: white; */
+  /* background: ${({ theme }) => theme.textContainerBackgroundColor};
+  color: ${({ theme }) => theme.textContainerTextColor};   */
   background: ${({ theme }) => theme.textContainerBackgroundColor};
+  background-size: 200% 200%; /* Gör gradienterna större för att möjliggöra rörelse */
+  animation: ${moveBackground} 10s infinite linear; /* Animerar bakgrundens rörelse */
   color: ${({ theme }) => theme.textContainerTextColor};  
   padding: 40px;
   text-align: left;

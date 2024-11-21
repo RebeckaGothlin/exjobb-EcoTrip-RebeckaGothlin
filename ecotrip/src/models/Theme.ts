@@ -23,12 +23,27 @@ export const themes: IThemes = {
         navBackgroundColor: "rgba(0, 0, 0, 0.6)",
         navTextColor: "white",
         activeNavTextColor: "orange",
-        textContainerBackgroundColor: "linear-gradient(#1b2624, #1b2624, #1c5148, #1c5148, #1b2624)",
+        // textContainerBackgroundColor: `
+        // radial-gradient(circle at 30% 30%, rgba(128, 0, 128, 0.4), transparent 50%),
+        // radial-gradient(circle at 70% 70%, rgba(255, 105, 180, 0.3), transparent 60%),
+        // radial-gradient(circle at 50% 90%, rgba(255, 165, 0, 0.2), transparent 70%),
+        // #000000`,
+        
+        textContainerBackgroundColor: `
+        radial-gradient(circle at 30% 30%, rgba(128, 0, 128, 0.2), transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(255, 105, 180, 0.15), transparent 60%),
+        radial-gradient(circle at 50% 90%, rgba(255, 165, 0, 0.1), transparent 70%),
+        #000000;
+        background-size: 200% 200%;
+        animation: moveBackground 20s infinite linear;
+    `,
+    
+
         textContainerTextColor: "white",
         buttonBackgroundColor: "#c2fbd7",
         buttonTextColor: "white",
         buttonBorderColor: "rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px",
-        sliderBackgroundColor: "linear-gradient(#004E41, #51b8a7)", 
+        sliderBackgroundColor: "linear-gradient(#004E41, #51b8a7)",
         sliderBorderColor: "none",
     },
     light: {
