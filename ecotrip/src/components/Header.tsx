@@ -18,7 +18,7 @@ import {
 import ThemeToggle from "./ThemeToggle";
 
 export const Header = () => {
-  const backgroundImageUrl = "../homepic.jpg";
+  const backgroundImageUrl = "../homepic2.jpg";
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
