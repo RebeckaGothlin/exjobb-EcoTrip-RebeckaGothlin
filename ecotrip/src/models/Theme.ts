@@ -20,7 +20,7 @@ interface IThemes {
 export const themes: IThemes = {
     dark: {
         name: "Dark",
-        navBackgroundColor: "rgba(0, 0, 0, 0.6)",
+        navBackgroundColor: "rgba(0, 0, 0, 0.8)",
         navTextColor: "white",
         activeNavTextColor: "orange",
         // textContainerBackgroundColor: `
@@ -49,7 +49,7 @@ export const themes: IThemes = {
     },
     light: {
         name: "Light",
-        navBackgroundColor: "rgba(255, 255, 255, 0.6)",
+        navBackgroundColor: "rgba(255, 255, 255, 0.8)",
         navTextColor: "black",
         activeNavTextColor: "blue",
         textContainerBackgroundColor: "white",

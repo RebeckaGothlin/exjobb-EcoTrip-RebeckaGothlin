@@ -164,6 +164,7 @@ export const OverlayMenu = styled.div`
   gap: 20px;
   z-index: 15;
   animation: fadeIn 0.3s ease-in-out;
+  
 
   @keyframes fadeIn {
     from {
