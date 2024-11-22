@@ -59,6 +59,6 @@ export const themes: IThemes = {
         buttonBorderColor: "black",
         // sliderBackgroundColor: "rgba(255, 255, 255, 0.2)",
         sliderBackgroundColor: "linear-gradient(45deg, rgba(255, 165, 0, 0.8), rgba(255, 105, 180, 0.8))",
-        sliderBorderColor: "1px solid black",
+        sliderBorderColor: "1px solid gray",
     },
 }

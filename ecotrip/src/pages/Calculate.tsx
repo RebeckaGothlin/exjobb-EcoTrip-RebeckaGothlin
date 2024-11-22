@@ -1,3 +1,4 @@
+import React, { useState, useContext } from "react";
 import {
   ParagraphText,
   TextContainer,
@@ -5,23 +6,12 @@ import {
 } from "../components/styled/StyledContent";
 import { Form, Input, Para } from "../components/styled/StyledForm";
 import { ContentButton } from "../components/styled/StyledButtons";
-import { FormEvent, useContext, useState } from "react";
-// import Loader from "../components/Loader";
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Legend,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { fetchCoordinates } from "../utils/locationUtil";
 import { calculateDistance } from "../utils/distanceUtil";
 import { StyledSpinner } from "../components/styled/StyledSpinner";
 import { Header } from "../components/Header";
+import { ResponsiveBar } from "@nivo/bar";
 
 export const Calculate = () => {
   const [from, setFrom] = useState("");
@@ -82,7 +72,7 @@ export const Calculate = () => {
     }
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     handleClick();
     setFrom("");
@@ -119,39 +109,92 @@ export const Calculate = () => {
           <ContentButton onClick={handleClick}>Calculate</ContentButton>
         </Form>
         {loading ? (
-          // <Loader size={100} />
           <StyledSpinner size={120} />
         ) : (
           <>
             <Para>{result}</Para>
             {!hasError && result && (
-              <ResponsiveContainer max-width="100%" height={400}>
-                <BarChart
-                  data={data}
-                  margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                >
-                  <CartesianGrid />
-                  <XAxis
-                    dataKey="name"
-                    tick={{ fill: theme.name === "Light" ? "white" : "black" }}
-                  />
-                  <YAxis
-                    tick={{ fill: theme.name === "Light" ? "white" : "black" }}
-                  />
-                  <Tooltip
-                    formatter={(value: number) => `${Math.round(value)} co2`}
-                    itemStyle={{
-                      fill: theme.name === "Light" ? "white" : "black",
-                    }}
-                  />
-                  <Legend
-                    wrapperStyle={{
-                      color: theme.name === "Light" ? "white" : "black",
-                    }}
-                  />
-                  <Bar dataKey="emissions" fill="#81988f" />
-                </BarChart>
-              </ResponsiveContainer>
+              <div style={{ height: 400, width: "100%" }}>
+                <ResponsiveBar
+                  data={data.map((item) => ({
+                    transport: item.name,
+                    emissions: item.emissions,
+                  }))}
+                  keys={["emissions"]}
+                  indexBy="transport"
+                  margin={{ top: 50, right: 50, bottom: 50, left: 60 }}
+                  padding={0.3}
+                  valueScale={{ type: "linear" }}
+                  indexScale={{ type: "band", round: true }}
+                  colors="url(#barGradient)"
+                  axisTop={null}
+                  axisRight={null}
+                  axisBottom={{
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: 0,
+                    legend: "Transportation",
+                    legendPosition: "middle",
+                    legendOffset: 32,
+                  }}
+                  axisLeft={{
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: 0,
+                    legend: "Emissions (kg)",
+                    legendPosition: "middle",
+                    legendOffset: -40,
+                  }}
+                  theme={{
+                    axis: {
+                      ticks: {
+                        line: {
+                          stroke: theme.name === "Dark" ? "white" : "black",
+                        },
+                        text: {
+                          fill: theme.name === "Dark" ? "white" : "black",
+                        },
+                      },
+                      domain: {
+                        line: {
+                          stroke: theme.name === "Dark" ? "white" : "black",
+                        },
+                      },
+                    },
+                    labels: {
+                      text: {
+                        fill: theme.name === "Dark" ? "white" : "black",
+                      },
+                    },
+                    legends: {
+                      text: {
+                        fill: theme.name === "Dark" ? "white" : "black",
+                      },
+                    },
+                    tooltip: {
+                      container: {
+                        display: "none",
+                      },
+                    },
+                  }}
+                  label={(d) => (d.value ? `${d.value.toFixed(0)} kg` : "")}
+                />
+
+                <svg style={{ height: 0 }}>
+                  <defs>
+                    <linearGradient
+                      id="barGradient"
+                      x1="0%"
+                      y1="0%"
+                      x2="0%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stopColor="#ff7e5f" />
+                      <stop offset="100%" stopColor="#feb47b" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
             )}
           </>
         )}

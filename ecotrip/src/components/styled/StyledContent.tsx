@@ -16,11 +16,17 @@ export const TextContainer = styled.section`
   /* background: ${({ theme }) => theme.textContainerBackgroundColor};
   color: ${({ theme }) => theme.textContainerTextColor};   */
   background: ${({ theme }) => theme.textContainerBackgroundColor};
-  background-size: 200% 200%; /* Gör gradienterna större för att möjliggöra rörelse */
-  animation: ${moveBackground} 10s infinite linear; /* Animerar bakgrundens rörelse */
+  background-size: 200% 200%; 
+  animation: ${moveBackground} 10s infinite linear; 
   color: ${({ theme }) => theme.textContainerTextColor};  
   padding: 40px;
   text-align: left;
+// 
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 `;
 
 export const TextTitle = styled.h2`
