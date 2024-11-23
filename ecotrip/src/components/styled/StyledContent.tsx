@@ -13,21 +13,30 @@ const moveBackground = keyframes`
 `;
 
 export const TextContainer = styled.section`
-  /* background: ${({ theme }) => theme.textContainerBackgroundColor};
-  color: ${({ theme }) => theme.textContainerTextColor};   */
   background: ${({ theme }) => theme.textContainerBackgroundColor};
-  background-size: 200% 200%; 
-  animation: ${moveBackground} 10s infinite linear; 
-  color: ${({ theme }) => theme.textContainerTextColor};  
+  background-size: 200% 200%;
+  animation: ${moveBackground} 10s infinite linear;
+  color: ${({ theme }) => theme.textContainerTextColor};
   padding: 40px;
   text-align: left;
-// 
+//
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
 `;
+// export const TextContainer = styled.div`
+//   background: ${({ theme }) => theme.textContainerBackgroundColor};
+//   background-size: 200% 200%;
+//   animation: ${moveBackground} 10s infinite linear;
+//   color: ${({ theme }) => theme.textContainerTextColor};
+//   width: 100vw;
+//   margin: 0 auto; /* Centrerar innehållet */
+//   padding: 2rem;
+//   border: none; /* Se till att ingen ram finns */
+//   box-sizing: border-box;
+// `;
 
 export const TextTitle = styled.h2`
   font-family: "Poppins", serif;

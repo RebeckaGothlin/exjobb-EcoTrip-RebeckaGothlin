@@ -22,7 +22,7 @@ export const themes: IThemes = {
         name: "Dark",
         navBackgroundColor: "rgba(0, 0, 0, 0.8)",
         navTextColor: "white",
-        activeNavTextColor: "orange",
+        activeNavTextColor: "white",
         // textContainerBackgroundColor: `
         // radial-gradient(circle at 30% 30%, rgba(128, 0, 128, 0.4), transparent 50%),
         // radial-gradient(circle at 70% 70%, rgba(255, 105, 180, 0.3), transparent 60%),
@@ -51,7 +51,7 @@ export const themes: IThemes = {
         name: "Light",
         navBackgroundColor: "rgba(255, 255, 255, 0.8)",
         navTextColor: "black",
-        activeNavTextColor: "blue",
+        activeNavTextColor: "black",
         textContainerBackgroundColor: "white",
         textContainerTextColor: "black",
         buttonBackgroundColor: "linear-gradient(45deg, rgba(255, 165, 0, 0.8), rgba(255, 105, 180, 0.8))",

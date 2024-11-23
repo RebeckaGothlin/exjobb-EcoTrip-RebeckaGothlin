@@ -6,14 +6,15 @@ import {
   NavMenu,
   NavItem,
   NavLinkStyled,
-  Title,
-  Subtitle,
   ArrowDownIcon,
   ArrowDownContainer,
   NavLinkStyledTitle,
   HamburgerMenuButton,
   OverlayMenu,
   OverlayMenuItem,
+  NavLinkStyledTitleDesktop,
+  Subtitle,
+  Title,
 } from "./styled/StyledHeader";
 import ThemeToggle from "./ThemeToggle";
 
@@ -42,7 +43,7 @@ export const Header = () => {
               EcoTrip
             </NavLinkStyledTitle> */}
             <NavItem>
-              <NavLinkStyledTitle to="/">EcoTrip</NavLinkStyledTitle>
+              <NavLinkStyledTitleDesktop to="/">EcoTrip</NavLinkStyledTitleDesktop>
             </NavItem>
             <NavItem>
               <NavLinkStyled to="/calculate">Calculate</NavLinkStyled>
@@ -60,6 +61,9 @@ export const Header = () => {
             <span />
             <span />
           </HamburgerMenuButton>
+          <NavItem>
+              <NavLinkStyledTitle to="/">EcoTrip</NavLinkStyledTitle>
+            </NavItem>
           <ThemeToggle />
           {menuOpen && (
             <OverlayMenu>
@@ -82,6 +86,7 @@ export const Header = () => {
               <OverlayMenuItem></OverlayMenuItem>
             </OverlayMenu>
           )}
+          
         </Nav>
         <Title to="/">EcoTrip</Title>
         <Subtitle>sustainable travel planner</Subtitle>

@@ -124,6 +124,34 @@ export const NavLinkStyledTitle = styled(NavLink)`
     text-decoration: underline;
     color: ${({ theme }) => theme.navTextColor}; 
   }
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+export const NavLinkStyledTitleDesktop = styled(NavLink)`
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: ${({ theme }) => theme.navTextColor};
+  text-decoration: none;
+  margin-bottom: 0;
+  line-height: 0.8;
+  font-family: "Abril Fatface", serif;
+  margin-bottom: 4px;
+  margin-right: 20px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    text-decoration: underline;
+    color: ${({ theme }) => theme.navTextColor};
+  }
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 `;
 
 export const HamburgerMenuButton = styled.div`
@@ -195,7 +223,6 @@ export const OverlayMenuItem = styled.div`
 `;
 
 
-
 export const Title = styled(NavLink)`
   font-size: 6rem;
   font-weight: bold;
@@ -203,6 +230,7 @@ export const Title = styled(NavLink)`
   text-decoration: none;
   margin-bottom: 0;
   line-height: 0.8;
+  text-shadow: 2px 2px 4px #ffffff;
 
   &:hover {
     text-decoration: underline;
@@ -220,6 +248,7 @@ export const Subtitle = styled.p`
   color: white;
   margin-top: 0;
   transform: translateX(-26px);
+  text-shadow: 2px 2px 4px #ffffff;
 
   @media (min-width: 768px) {
     font-size: 2rem;

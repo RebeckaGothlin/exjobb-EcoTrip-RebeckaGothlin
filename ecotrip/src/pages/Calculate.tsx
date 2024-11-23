@@ -10,8 +10,8 @@ import { ThemeContext } from "../contexts/ThemeContext";
 import { fetchCoordinates } from "../utils/locationUtil";
 import { calculateDistance } from "../utils/distanceUtil";
 import { StyledSpinner } from "../components/styled/StyledSpinner";
-import { Header } from "../components/Header";
 import { ResponsiveBar } from "@nivo/bar";
+import HeaderNav from "../components/HeaderNav";
 
 export const Calculate = () => {
   const [from, setFrom] = useState("");
@@ -81,7 +81,7 @@ export const Calculate = () => {
 
   return (
     <>
-      <Header></Header>
+      <HeaderNav></HeaderNav>
       <TextContainer>
         <TextTitle>Calculate</TextTitle>
         <ParagraphText>
