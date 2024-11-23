@@ -11,7 +11,7 @@ import { fetchCoordinates } from "../utils/locationUtil";
 import { calculateDistance } from "../utils/distanceUtil";
 import { StyledSpinner } from "../components/styled/StyledSpinner";
 import { ResponsiveBar } from "@nivo/bar";
-import HeaderNav from "../components/HeaderNav";
+import { Navbar } from "../components/Navbar";
 
 export const Calculate = () => {
   const [from, setFrom] = useState("");
@@ -81,7 +81,7 @@ export const Calculate = () => {
 
   return (
     <>
-      <HeaderNav></HeaderNav>
+      <Navbar></Navbar>
       <TextContainer>
         <TextTitle>Calculate</TextTitle>
         <ParagraphText>

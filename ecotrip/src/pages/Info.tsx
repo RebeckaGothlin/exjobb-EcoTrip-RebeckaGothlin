@@ -1,4 +1,4 @@
-import HeaderNav from "../components/HeaderNav";
+import { Navbar } from "../components/Navbar";
 import {
   ParagraphText,
   TextContainer,
@@ -9,7 +9,7 @@ import { ParaSource, SourceLinks } from "../components/styled/StyledInfo";
 export const Info = () => {
   return (
     <>
-      <HeaderNav></HeaderNav>
+      <Navbar></Navbar>
       <TextContainer>
         <TextTitle>Information</TextTitle>
         <ParagraphText>
