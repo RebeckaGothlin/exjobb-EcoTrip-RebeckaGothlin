@@ -49,4 +49,9 @@ export const ParagraphText = styled.p`
   font-size: 1.125rem;
   line-height: 1.6;
   font-family: "Poppins", serif;
+
+  @media (min-width: 768px) {
+    width: 70%;
+    margin: 0 auto;
+  }
 `;

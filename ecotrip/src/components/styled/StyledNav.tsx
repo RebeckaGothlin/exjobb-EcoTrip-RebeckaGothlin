@@ -24,14 +24,14 @@ export const NavLinks = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 10px; /* Standard gap för små skärmar */
+  gap: 10px; 
 
   @media (min-width: 768px) {
-    gap: 20px; /* För tablets */
+    gap: 20px;
   }
 
   @media (min-width: 1024px) {
-    gap: 30px; /* För desktops */
+    gap: 30px; 
   }
 
   @media (max-width: 768px) {
@@ -41,14 +41,14 @@ export const NavLinks = styled.ul`
 
 
 export const NavLinkItem = styled.li`
-  margin: 10px 10px; /* Standardavstånd */
+  margin: 10px 10px;
 
   @media (min-width: 768px) {
-    margin: 10px 20px; /* Avstånd för tablets */
+    margin: 10px 20px;
   }
 
   @media (min-width: 1024px) {
-    margin: 10px 30px; /* Avstånd för desktops */
+    margin: 10px 30px;
   }
 
   a {

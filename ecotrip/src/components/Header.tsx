@@ -13,14 +13,17 @@ import {
   OverlayMenu,
   OverlayMenuItem,
   NavLinkStyledTitleDesktop,
-  Subtitle,
-  Title,
+  SubtitleDesktop,
+  SubtitleMobile,
 } from "./styled/StyledHeader";
 import ThemeToggle from "./ThemeToggle";
+import { NavButton } from "./styled/StyledButtons";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
-  const backgroundImageUrl = "../homepic2.jpg";
+  const backgroundImageUrl = "../planeticon.jpg";
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -33,6 +36,10 @@ export const Header = () => {
     });
   };
 
+  const navigateToCalculate = () => {
+    navigate('/calculate');
+  };
+
   return (
     <>
       <HeaderContainer>
@@ -43,7 +50,9 @@ export const Header = () => {
               EcoTrip
             </NavLinkStyledTitle> */}
             <NavItem>
-              <NavLinkStyledTitleDesktop to="/">EcoTrip</NavLinkStyledTitleDesktop>
+              <NavLinkStyledTitleDesktop to="/">
+                EcoTrip
+              </NavLinkStyledTitleDesktop>
             </NavItem>
             <NavItem>
               <NavLinkStyled to="/calculate">Calculate</NavLinkStyled>
@@ -62,8 +71,8 @@ export const Header = () => {
             <span />
           </HamburgerMenuButton>
           <NavItem>
-              <NavLinkStyledTitle to="/">EcoTrip</NavLinkStyledTitle>
-            </NavItem>
+            <NavLinkStyledTitle to="/">EcoTrip</NavLinkStyledTitle>
+          </NavItem>
           <ThemeToggle />
           {menuOpen && (
             <OverlayMenu>
@@ -86,10 +95,31 @@ export const Header = () => {
               <OverlayMenuItem></OverlayMenuItem>
             </OverlayMenu>
           )}
-          
         </Nav>
-        <Title to="/">EcoTrip</Title>
-        <Subtitle>sustainable travel planner</Subtitle>
+        {/* <Title to="/">EcoTrip</Title> */}
+        <SubtitleMobile>
+        <span>Traveling impacts the environment through</span>
+        <span>carbon emissions, but with EcoTrip,</span>
+        <span>you can compare emissions</span>
+        <span>from flights, cars, and</span>
+        <span>trains to make eco-</span>
+        <span>friendly travel</span>
+        <span>choices.</span>
+        <NavButton onClick={navigateToCalculate}>Calculate</NavButton>
+        </SubtitleMobile>
+
+        <SubtitleDesktop>
+        <span>Traveling impacts the environment</span>
+        <span>through carbon emissions,</span>
+        <span>but with EcoTrip, you can</span>
+        <span>compare emissions from</span>
+        <span> flights, cars, and</span>
+        <span>trains to make eco-</span>
+        <span>friendly travel</span>
+        <span>choices.</span>
+        <NavButton onClick={navigateToCalculate}>Calculate</NavButton>
+        </SubtitleDesktop>
+
         <ArrowDownContainer>
           <ArrowDownIcon onClick={scrollDown} />
         </ArrowDownContainer>

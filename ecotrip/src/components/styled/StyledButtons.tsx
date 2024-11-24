@@ -31,17 +31,24 @@ export const ContentButton = styled.button`
   }  
 `;
 export const NavButton = styled.button`
-  background-color: transparent;
+  background-color: white;
   font-weight: 400;
   font-family: 'Poppins', serif;
-  padding: 0 25px;
-  height: 35px;
-  border: 1.5px solid ${({ theme }) => theme.name === 'Light' ? 'black' : 'white'};
-  color: ${({ theme }) => theme.name === 'Light' ? 'black' : 'white'};
-  margin-left: auto;
+  padding: 0 3px;
+  height: 30px;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  color: black;
+  /* border: 1.5px solid ${({ theme }) => theme.name === 'Light' ? 'black' : 'white'};
+  color: ${({ theme }) => theme.name === 'Light' ? 'black' : 'white'}; */
   cursor: pointer;
-  &:hover {
-    border: 2px solid ${({ theme }) => theme.name === 'Light' ? 'black' : 'white'};;
+
+  @media (min-width: 768px) {
+    padding: 0 10px;
+    height: 40px;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    font-weight: 500;
   }
 `;
 

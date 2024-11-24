@@ -242,16 +242,47 @@ export const Title = styled(NavLink)`
   }
 `;
 
-export const Subtitle = styled.p`
-  font-size: 1.5rem;
-  font-style: italic;
+export const SubtitleMobile = styled.p`
+ font-size: 1rem;
+  font-family: 'Poppins';
   color: white;
-  margin-top: 0;
-  transform: translateX(-26px);
-  text-shadow: 2px 2px 4px #ffffff;
+  text-align: left;
+  position: absolute;
+  width: 100%;
+  top: 50px;
+  line-height: 1.5rem;
+  z-index: 1;
+  white-space: normal; 
+  margin-left: 15px;
 
   @media (min-width: 768px) {
-    font-size: 2rem;
+    display: none;
+  }
+  
+  span {
+    display: block;
+  }
+`;
+
+export const SubtitleDesktop = styled.p`
+  font-size: 1.6rem;
+  font-family: 'Poppins';
+  color: white;
+  text-align: left;
+  position: absolute;
+  width: 100%;
+  top: 60px;
+  line-height: 2rem;
+  z-index: 1;
+  white-space: normal; 
+  margin-left: 20px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+  
+  span {
+    display: block;
   }
 `;
 
@@ -272,3 +303,6 @@ export const ArrowDownIcon = styled(FaArrowDown)`
     transition: transition 0.2s;
   }
 `;
+
+
+
