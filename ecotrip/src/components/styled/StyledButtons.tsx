@@ -30,21 +30,20 @@ export const ContentButton = styled.button`
     outline: none;
   }  
 `;
-export const NavButton = styled.button`
+export const LinkButton = styled.button`
   background-color: white;
   font-weight: 400;
   font-family: 'Poppins', serif;
-  padding: 0 3px;
-  height: 30px;
+  padding: 0 15px;
+  height: 40px;
   font-size: 0.9rem;
   margin-top: 5px;
-  color: black;
-  /* border: 1.5px solid ${({ theme }) => theme.name === 'Light' ? 'black' : 'white'};
-  color: ${({ theme }) => theme.name === 'Light' ? 'black' : 'white'}; */
+  color: ${({ theme }) => theme.linkButtonTextColor};
+  background: ${({ theme }) => theme.linkButtonBackgroundColor};
   cursor: pointer;
 
   @media (min-width: 768px) {
-    padding: 0 10px;
+    padding: 0 20px;
     height: 40px;
     font-size: 1.2rem;
     margin-top: 10px;

@@ -15,9 +15,10 @@ import {
   NavLinkStyledTitleDesktop,
   SubtitleDesktop,
   SubtitleMobile,
+  CustomShapeDivider,
 } from "./styled/StyledHeader";
 import ThemeToggle from "./ThemeToggle";
-import { NavButton } from "./styled/StyledButtons";
+import { LinkButton } from "./styled/StyledButtons";
 import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
@@ -37,7 +38,7 @@ export const Header = () => {
   };
 
   const navigateToCalculate = () => {
-    navigate('/calculate');
+    navigate("/calculate");
   };
 
   return (
@@ -97,28 +98,35 @@ export const Header = () => {
           )}
         </Nav>
         {/* <Title to="/">EcoTrip</Title> */}
-        <SubtitleMobile>
-        <span>Traveling impacts the environment through</span>
-        <span>carbon emissions, but with EcoTrip,</span>
-        <span>you can compare emissions</span>
-        <span>from flights, cars, and</span>
-        <span>trains to make eco-</span>
-        <span>friendly travel</span>
-        <span>choices.</span>
-        <NavButton onClick={navigateToCalculate}>Calculate</NavButton>
-        </SubtitleMobile>
-
-        <SubtitleDesktop>
-        <span>Traveling impacts the environment</span>
-        <span>through carbon emissions,</span>
-        <span>but with EcoTrip, you can</span>
-        <span>compare emissions from</span>
-        <span> flights, cars, and</span>
-        <span>trains to make eco-</span>
-        <span>friendly travel</span>
-        <span>choices.</span>
-        <NavButton onClick={navigateToCalculate}>Calculate</NavButton>
-        </SubtitleDesktop>
+        <CustomShapeDivider>
+          <svg
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+              className="shape-fill"
+            ></path>
+          </svg>
+          <SubtitleMobile>
+            <span>
+              Traveling impacts the environment through carbon emissions, but
+              with EcoTrip, you can compare emissions from flights, cars, and
+              trains to make eco-friendly travel choices.
+            </span>
+            <LinkButton onClick={navigateToCalculate}>Calculate</LinkButton>
+          </SubtitleMobile>
+          <SubtitleDesktop>
+            <span>
+              Traveling impacts the environment through carbon emissions, but
+              with EcoTrip, you can compare emissions from flights, cars, and
+              trains to make eco-friendly travel choices.
+            </span>
+            <LinkButton onClick={navigateToCalculate}>Calculate</LinkButton>
+          </SubtitleDesktop>
+        </CustomShapeDivider>
 
         <ArrowDownContainer>
           <ArrowDownIcon onClick={scrollDown} />

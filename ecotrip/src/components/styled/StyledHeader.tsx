@@ -249,7 +249,7 @@ export const SubtitleMobile = styled.p`
   text-align: left;
   position: absolute;
   width: 100%;
-  top: 50px;
+  top: 10px;
   line-height: 1.5rem;
   z-index: 1;
   white-space: normal; 
@@ -271,7 +271,7 @@ export const SubtitleDesktop = styled.p`
   text-align: left;
   position: absolute;
   width: 100%;
-  top: 60px;
+  top: 10px;
   line-height: 2rem;
   z-index: 1;
   white-space: normal; 
@@ -305,4 +305,47 @@ export const ArrowDownIcon = styled(FaArrowDown)`
 `;
 
 
+export const CustomShapeDivider = styled.div`
+  position: absolute;
+  top: 63px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  color: ${({ theme }) => theme.textContainerTextColor};
 
+  svg {
+    position: relative;
+    display: block;
+    width: calc(223% + 1.3px);
+    height: 450px;
+    transform: rotateY(180deg);
+    fill: ${({ theme }) => theme.navBackgroundColor}; 
+  }
+
+  span {
+    top: 10%;
+    left: 0;
+    color: ${({ theme }) => theme.textContainerTextColor};
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+    z-index: 1;
+    max-width: 45%;
+  }
+
+  @media (min-width: 768px) {
+    top: 68px;
+    svg {
+      width: calc(244% + 1.3px);
+      height: 439px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    top: 72px;
+    svg {
+      width: calc(223% + 1.3px);
+      height: 449px;
+    }
+  }
+`;
