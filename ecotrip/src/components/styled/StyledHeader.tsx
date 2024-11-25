@@ -155,44 +155,24 @@ export const NavLinkStyledTitleDesktop = styled(NavLink)`
   }
 `;
 
-export const HamburgerMenuButton = styled.div<{ menuOpen: boolean }>`
-  display: none;
+export const HamburgerMenuButton = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  z-index: 20;
 
-  @media (max-width: 768px) {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 25px;
-    cursor: pointer;
-    z-index: 20;
-    margin-right: 10px;
-
-    span {
-      width: 100%;
-      height: 3px;
-      background-color: ${({ theme }) => theme.navTextColor};
-      border-radius: 2px;
-      transition: all 0.3s;
-
-      &:nth-child(1) {
-        transform: ${({ menuOpen }) =>
-          menuOpen ? "rotate(45deg) translate(7px, 7px)" : "none"};
-      }
-
-      &:nth-child(2) {
-        opacity: ${({ menuOpen }) => (menuOpen ? "0" : "1")};
-      }
-
-      &:nth-child(3) {
-        transform: ${({ menuOpen }) =>
-          menuOpen ? "rotate(-45deg) translate(5px, -5px)" : "none"};
-      }
-    }
+  span {
+    width: 100%;
+    height: 3px;
+    background-color: ${({ theme }) => theme.navTextColor};
+    border-radius: 2px;
+    transition: all 0.3s ease;
   }
 `;
-
 
 
 export const OverlayMenu = styled.div`

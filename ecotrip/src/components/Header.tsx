@@ -70,14 +70,21 @@ export const Header = () => {
             </NavItem>
             <NavItem className="last-item">{/* <ThemeToggle /> */}</NavItem>
           </NavMenu>
-          <HamburgerMenuButton
-            menuOpen={menuOpen as boolean}
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            <span />
-            <span />
-            <span />
-          </HamburgerMenuButton>
+          <HamburgerMenuButton onClick={toggleMenu}>
+          {menuOpen ? (
+            <>
+              <span className="line" style={{ transform: "rotate(45deg)", position: "relative", top: "8.5px" }} />
+              <span className="line" style={{ opacity: 0 }} />
+              <span className="line" style={{ transform: "rotate(-45deg)", position: "relative", top: "-8px" }} />
+            </>
+          ) : (
+            <>
+              <span className="line" />
+              <span className="line" />
+              <span className="line" />
+            </>
+          )}
+        </HamburgerMenuButton>
           <NavItem>
             <NavLinkStyledTitle to="/">EcoTrip</NavLinkStyledTitle>
           </NavItem>
