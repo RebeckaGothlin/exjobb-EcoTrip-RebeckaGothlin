@@ -70,7 +70,10 @@ export const Header = () => {
             </NavItem>
             <NavItem className="last-item">{/* <ThemeToggle /> */}</NavItem>
           </NavMenu>
-          <HamburgerMenuButton menuOpen={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
+          <HamburgerMenuButton
+            menuOpen={menuOpen as boolean}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             <span />
             <span />
             <span />
@@ -119,13 +122,14 @@ export const Header = () => {
             <Title>EcoTrip is your</Title>
             <UnderTitleMobile>sustainable travel planner.</UnderTitleMobile>
             <span>
-              With EcoTrip, you can compare emissions to make eco-friendly travel choices.
+              With EcoTrip, you can compare emissions to make eco-friendly
+              travel choices.
             </span>
             <LinkButton onClick={navigateToCalculate}>Calculate</LinkButton>
           </SubtitleMobile>
           <SubtitleDesktop>
-          <Title>EcoTrip is your</Title>
-          <UnderTitleDesktop>sustainable travel planner.</UnderTitleDesktop>
+            <Title>EcoTrip is your</Title>
+            <UnderTitleDesktop>sustainable travel planner.</UnderTitleDesktop>
             <span>
               Traveling impacts the environment through carbon emissions, but
               with EcoTrip, you can compare emissions from flights, cars, and
