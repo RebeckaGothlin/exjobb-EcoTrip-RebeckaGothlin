@@ -1,15 +1,18 @@
 import { Header } from "../components/Header";
 import {
-  ParagraphText,
-  TextContainer,
-  TextTitle,
+  GlobalWrapper,
+  // ParagraphText,
+  // TextContainer,
+  // TextTitle,
 } from "../components/styled/StyledContent";
 
 export const Home = () => {
   return (
     <>
-      <Header></Header>
-      <TextContainer>
+      <GlobalWrapper>
+        <Header></Header>
+      </GlobalWrapper>
+      {/* <TextContainer>
         <TextTitle>Introduction</TextTitle>
         <ParagraphText>
           Traveling is a hobby for many, but it comes at a cost to the
@@ -21,7 +24,7 @@ export const Home = () => {
           environmental impact. Click on “Calculate” in the top navigation bar
           to compare emissions for different transport options.
         </ParagraphText>
-      </TextContainer>
+      </TextContainer> */}
     </>
   );
 };

@@ -6,8 +6,8 @@ import {
   NavMenu,
   NavItem,
   NavLinkStyled,
-  ArrowDownIcon,
-  ArrowDownContainer,
+  // ArrowDownIcon,
+  // ArrowDownContainer,
   NavLinkStyledTitle,
   HamburgerMenuButton,
   OverlayMenu,
@@ -30,12 +30,12 @@ export const Header = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const scrollDown = () => {
-    window.scrollBy({
-      top: 600,
-      behavior: "smooth",
-    });
-  };
+  // const scrollDown = () => {
+  //   window.scrollBy({
+  //     top: 600,
+  //     behavior: "smooth",
+  //   });
+  // };
 
   const navigateToCalculate = () => {
     navigate("/calculate");
@@ -128,9 +128,9 @@ export const Header = () => {
           </SubtitleDesktop>
         </CustomShapeDivider>
 
-        <ArrowDownContainer>
+        {/* <ArrowDownContainer>
           <ArrowDownIcon onClick={scrollDown} />
-        </ArrowDownContainer>
+        </ArrowDownContainer> */}
       </HeaderContainer>
     </>
   );

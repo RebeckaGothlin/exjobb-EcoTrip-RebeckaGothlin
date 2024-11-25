@@ -12,6 +12,14 @@ const moveBackground = keyframes`
   }
 `;
 
+export const GlobalWrapper = styled.div`
+  width: 100%;
+  min-width: 320px;
+  margin: 0 auto;
+  box-sizing: border-box;
+`;
+
+
 export const TextContainer = styled.section`
   background: ${({ theme }) => theme.textContainerBackgroundColor};
   background-size: 200% 200%;
