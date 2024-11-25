@@ -16,6 +16,10 @@ import {
   SubtitleDesktop,
   SubtitleMobile,
   CustomShapeDivider,
+  // Title,
+  UnderTitleMobile,
+  UnderTitleDesktop,
+  Title,
 } from "./styled/StyledHeader";
 import ThemeToggle from "./ThemeToggle";
 import { LinkButton } from "./styled/StyledButtons";
@@ -111,14 +115,17 @@ export const Header = () => {
             ></path>
           </svg>
           <SubtitleMobile>
+            {/* <Title>EcoTrip</Title> */}
+            <Title>EcoTrip is your</Title>
+            <UnderTitleMobile>sustainable travel planner.</UnderTitleMobile>
             <span>
-              Traveling impacts the environment through carbon emissions, but
-              with EcoTrip, you can compare emissions from flights, cars, and
-              trains to make eco-friendly travel choices.
+              With EcoTrip, you can compare emissions to make eco-friendly travel choices.
             </span>
             <LinkButton onClick={navigateToCalculate}>Calculate</LinkButton>
           </SubtitleMobile>
           <SubtitleDesktop>
+          <Title>EcoTrip is your</Title>
+          <UnderTitleDesktop>sustainable travel planner.</UnderTitleDesktop>
             <span>
               Traveling impacts the environment through carbon emissions, but
               with EcoTrip, you can compare emissions from flights, cars, and

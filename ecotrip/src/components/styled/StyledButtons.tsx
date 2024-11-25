@@ -47,7 +47,7 @@ export const LinkButton = styled.button`
 
   @media (min-width: 768px) {
     padding: 0 20px;
-    height: 40px;
+    height: 50px;
     font-size: 1.2rem;
     margin-top: 10px;
     font-weight: 500;

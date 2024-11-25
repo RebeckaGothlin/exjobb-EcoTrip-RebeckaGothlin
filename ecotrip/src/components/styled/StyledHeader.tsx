@@ -12,6 +12,7 @@ export const HeaderContainer = styled.header`
   align-items: center;
   font-family: "Abril Fatface", serif;
   gap: 0;
+  overflow: hidden;
 `;
 
 export const BackgroundImage = styled.div<{ backgroundimage: string }>`
@@ -45,7 +46,7 @@ export const Nav = styled.nav`
 
   @media (min-width: 768px) {
     padding: 12px 0;
-    justify-content: center; 
+    justify-content: center;
   }
   @media (min-width: 1024px) {
     padding: 14px 0;
@@ -122,7 +123,7 @@ export const NavLinkStyledTitle = styled(NavLink)`
 
   &:hover {
     text-decoration: underline;
-    color: ${({ theme }) => theme.navTextColor}; 
+    color: ${({ theme }) => theme.navTextColor};
   }
 
   @media (min-width: 768px) {
@@ -155,10 +156,10 @@ export const NavLinkStyledTitleDesktop = styled(NavLink)`
 `;
 
 export const HamburgerMenuButton = styled.div`
-  display: none; 
+  display: none;
 
   @media (max-width: 768px) {
-    display: flex; 
+    display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-around;
@@ -192,7 +193,6 @@ export const OverlayMenu = styled.div`
   gap: 20px;
   z-index: 15;
   animation: fadeIn 0.3s ease-in-out;
-  
 
   @keyframes fadeIn {
     from {
@@ -222,51 +222,68 @@ export const OverlayMenuItem = styled.div`
   }
 `;
 
+// export const Title = styled.h3`
+//   margin-top: -20px;
+//   font-size: 1.5rem;
+//   font-weight: 200;
+//   color: ${({ theme }) => theme.textContainerTextColor};
+//   text-decoration: none;
+//   margin-bottom: -20px;
+//   /* font-family: "Abril Fatface", serif; */
+//   font-family: "Poppins";
+//   display: flex;
+//   align-items: center;
 
-export const Title = styled(NavLink)`
-  font-size: 6rem;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-  margin-bottom: 0;
-  line-height: 0.8;
-  text-shadow: 2px 2px 4px #ffffff;
+//   @media (min-width: 768px) {
+//     font-size: 1.5rem;
+//   }
+// `;
 
-  &:hover {
-    text-decoration: underline;
-    color: white;
-  }
+export const Title = styled.p`
+  color: ${({ theme }) => theme.textContainerTextColor};
+  margin-top: -20px;
+`;
 
-  @media (min-width: 768px) {
-    font-size: 10rem;
-  }
+export const UnderTitleMobile = styled.p`
+  color: ${({ theme }) => theme.textContainerTextColor};
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin-top: -10px;
+`;
+
+export const UnderTitleDesktop = styled.p`
+  color: ${({ theme }) => theme.textContainerTextColor};
+  font-weight: 500;
+  font-size: 3rem;
+  margin-top: -20px;
 `;
 
 export const SubtitleMobile = styled.p`
- font-size: 1rem;
-  font-family: 'Poppins';
+  font-size: 1rem;
+  font-family: "Poppins";
   color: white;
   text-align: left;
   position: absolute;
   width: 100%;
   top: 10px;
-  line-height: 1.5rem;
+  line-height: 1.2rem;
   z-index: 1;
-  white-space: normal; 
+  white-space: normal;
   margin-left: 15px;
 
   @media (min-width: 768px) {
     display: none;
   }
-  
+
   span {
     display: block;
+    margin-bottom: 10px;
   }
 `;
 
 export const SubtitleDesktop = styled.p`
   font-size: 1.6rem;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   color: white;
   text-align: left;
   position: absolute;
@@ -274,15 +291,17 @@ export const SubtitleDesktop = styled.p`
   top: 10px;
   line-height: 2rem;
   z-index: 1;
-  white-space: normal; 
+  white-space: normal;
   margin-left: 20px;
 
   @media (max-width: 768px) {
     display: none;
   }
-  
+
   span {
     display: block;
+    margin-top: -20px;
+    margin-bottom: 10px;
   }
 `;
 
@@ -304,7 +323,6 @@ export const ArrowDownIcon = styled(FaArrowDown)`
   }
 `;
 
-
 export const CustomShapeDivider = styled.div`
   position: absolute;
   top: 63px;
@@ -317,17 +335,17 @@ export const CustomShapeDivider = styled.div`
   svg {
     position: relative;
     display: block;
-    width: calc(223% + 1.3px);
-    height: 450px;
+    width: calc(263% + 1.3px);
+    height: 330px;
     transform: rotateY(180deg);
-    fill: ${({ theme }) => theme.navBackgroundColor}; 
+    fill: ${({ theme }) => theme.navBackgroundColor};
   }
 
   span {
     top: 10%;
     left: 0;
     color: ${({ theme }) => theme.textContainerTextColor};
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     text-align: left;
     z-index: 1;
     max-width: 45%;
@@ -337,7 +355,7 @@ export const CustomShapeDivider = styled.div`
     top: 68px;
     svg {
       width: calc(244% + 1.3px);
-      height: 439px;
+      height: 520px;
     }
   }
 
@@ -345,7 +363,7 @@ export const CustomShapeDivider = styled.div`
     top: 72px;
     svg {
       width: calc(223% + 1.3px);
-      height: 449px;
+      height: 459px;
     }
   }
 `;
