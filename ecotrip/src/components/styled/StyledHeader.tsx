@@ -5,7 +5,7 @@ import { FaArrowDown } from "react-icons/fa";
 export const HeaderContainer = styled.header`
   position: relative;
   text-align: center;
-  height: 500px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -34,22 +34,22 @@ export const Info = () => {
           nearly zero. Trains also have a longer lifespan and require less land
           use compared to airports and highways, making them the more
           sustainable choice for the future.
+          <ParaSource>Sources:</ParaSource>
+          <SourceLinks>
+            <a href="https://www.ipcc.ch/" target="_blank">
+              The Intergovernmental Panel on Climate Change (IPCC)
+            </a>
+            <a href="https://www.unep.org/" target="_blank">
+              United Nations Environment Programme (UNEP)
+            </a>
+            <a href="https://www.who.int/" target="_blank">
+              World Health Organization (WHO)
+            </a>
+            <a href="https://uic.org/" target="_blank">
+              International Union of Railways (UIC)
+            </a>
+          </SourceLinks>
         </ParagraphText>
-        <ParaSource>Sources:</ParaSource>
-        <SourceLinks>
-          <a href="https://www.ipcc.ch/" target="_blank">
-            The Intergovernmental Panel on Climate Change (IPCC)
-          </a>
-          <a href="https://www.unep.org/" target="_blank">
-            United Nations Environment Programme (UNEP)
-          </a>
-          <a href="https://www.who.int/" target="_blank">
-            World Health Organization (WHO)
-          </a>
-          <a href="https://uic.org/" target="_blank">
-            International Union of Railways (UIC)
-          </a>
-        </SourceLinks>
       </TextContainer>
     </>
   );

@@ -33,7 +33,9 @@ export const TextContainer = styled.section`
   flex-direction: column;
   width: 100%;
   max-width: 100%;
+  min-height: 100vh;
   box-sizing: border-box;
+
 `;
 // export const TextContainer = styled.div`
 //   background: ${({ theme }) => theme.textContainerBackgroundColor};
@@ -41,9 +43,9 @@ export const TextContainer = styled.section`
 //   animation: ${moveBackground} 10s infinite linear;
 //   color: ${({ theme }) => theme.textContainerTextColor};
 //   width: 100vw;
-//   margin: 0 auto; /* Centrerar innehållet */
+//   margin: 0 auto; 
 //   padding: 2rem;
-//   border: none; /* Se till att ingen ram finns */
+//   border: none; 
 //   box-sizing: border-box;
 // `;
 
@@ -52,6 +54,7 @@ export const TextTitle = styled.h2`
   font-size: 2.25rem;
   font-weight: 500;
   text-align: center;
+  margin-top: 60px;
 `;
 
 export const ParagraphText = styled.p`
