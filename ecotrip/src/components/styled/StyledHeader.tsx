@@ -205,7 +205,7 @@ export const OverlayMenu = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 60px;
   z-index: 15;
   animation: fadeIn 0.3s ease-in-out;
 
