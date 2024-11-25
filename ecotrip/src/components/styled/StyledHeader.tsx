@@ -155,7 +155,7 @@ export const NavLinkStyledTitleDesktop = styled(NavLink)`
   }
 `;
 
-export const HamburgerMenuButton = styled.div`
+export const HamburgerMenuButton = styled.div<{ menuOpen: boolean }>`
   display: none;
 
   @media (max-width: 768px) {
@@ -175,9 +175,24 @@ export const HamburgerMenuButton = styled.div`
       background-color: ${({ theme }) => theme.navTextColor};
       border-radius: 2px;
       transition: all 0.3s;
+
+      &:nth-child(1) {
+        transform: ${({ menuOpen }) =>
+          menuOpen ? "rotate(45deg) translate(7px, 7px)" : "none"};
+      }
+
+      &:nth-child(2) {
+        opacity: ${({ menuOpen }) => (menuOpen ? "0" : "1")};
+      }
+
+      &:nth-child(3) {
+        transform: ${({ menuOpen }) =>
+          menuOpen ? "rotate(-45deg) translate(5px, -5px)" : "none"};
+      }
     }
   }
 `;
+
 
 export const OverlayMenu = styled.div`
   position: fixed;

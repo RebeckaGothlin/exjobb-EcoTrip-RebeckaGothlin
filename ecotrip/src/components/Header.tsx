@@ -70,7 +70,7 @@ export const Header = () => {
             </NavItem>
             <NavItem className="last-item">{/* <ThemeToggle /> */}</NavItem>
           </NavMenu>
-          <HamburgerMenuButton onClick={toggleMenu}>
+          <HamburgerMenuButton menuOpen={menuOpen} onClick={toggleMenu}>
             <span />
             <span />
             <span />
