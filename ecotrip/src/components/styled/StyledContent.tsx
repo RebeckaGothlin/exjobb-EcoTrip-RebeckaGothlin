@@ -13,7 +13,8 @@ const moveBackground = keyframes`
 `;
 
 export const GlobalWrapper = styled.div`
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   min-width: 320px;
   margin: 0 auto;
   box-sizing: border-box;
