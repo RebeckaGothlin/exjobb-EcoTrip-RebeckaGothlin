@@ -42,10 +42,20 @@ export const Navbar = () => {
             <NavItem className="last-item">{/* <ThemeToggle /> */}</NavItem>
           </NavMenu>
           <HamburgerMenuButton onClick={toggleMenu}>
-            <span />
-            <span />
-            <span />
-          </HamburgerMenuButton>
+          {menuOpen ? (
+            <>
+              <span className="line" style={{ transform: "rotate(45deg)", position: "relative", top: "8.5px" }} />
+              <span className="line" style={{ opacity: 0 }} />
+              <span className="line" style={{ transform: "rotate(-45deg)", position: "relative", top: "-8px" }} />
+            </>
+          ) : (
+            <>
+              <span className="line" />
+              <span className="line" />
+              <span className="line" />
+            </>
+          )}
+        </HamburgerMenuButton>
           <NavItem>
               <NavLinkStyledTitle to="/">EcoTrip</NavLinkStyledTitle>
             </NavItem>
