@@ -5,7 +5,10 @@ import {
   TextTitle,
 } from "../components/styled/StyledContent";
 import { Form, Input, Para } from "../components/styled/StyledForm";
-import { ContentButton } from "../components/styled/StyledButtons";
+import {
+  ContentButton,
+  HistorySaveButton,
+} from "../components/styled/StyledButtons";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { fetchCoordinates } from "../utils/locationUtil";
 import { calculateDistance } from "../utils/distanceUtil";
@@ -13,19 +16,49 @@ import { StyledSpinner } from "../components/styled/StyledSpinner";
 import { ResponsiveBar } from "@nivo/bar";
 import { Navbar } from "../components/Navbar";
 
+// Definiera typer för data
+interface EmissionItem {
+  name: string;
+  emissions: number;
+}
+
+interface Search {
+  from: string;
+  to: string;
+  result: string;
+  data: EmissionItem[];
+  time: string;
+}
+
 export const Calculate = () => {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
+  const [savedFrom, setSavedFrom] = useState("");
+  const [savedTo, setSavedTo] = useState("");
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([
+  const [data, setData] = useState<EmissionItem[]>([
     { name: "Car", emissions: 0 },
     { name: "Train", emissions: 0 },
     { name: "Bus", emissions: 0 },
     { name: "Plane", emissions: 0 },
   ]);
-  const theme = useContext(ThemeContext);
   const [hasError, setHasError] = useState(false);
+  const [savedSearches, setSavedSearches] = useState<Search[]>(
+    JSON.parse(localStorage.getItem("savedSearches") || "[]").map(
+      (search: Partial<Search>) => ({
+        time: search.time || "",
+        from: search.from || "",
+        to: search.to || "",
+        result: search.result || "",
+        data: search.data || [],
+      })
+    )
+  );
+
+  const [showHistory, setShowHistory] = useState(false);
+
+  const theme = useContext(ThemeContext);
 
   const scrollDown = () => {
     window.scrollBy({
@@ -60,6 +93,8 @@ export const Calculate = () => {
       setResult(
         `Distance between ${from} and ${to}: ${distance.toFixed(0)} km`
       );
+      setSavedFrom(from);
+      setSavedTo(to);
     } catch (error) {
       console.error(
         "Error fetching coordinates or calculating distance:",
@@ -72,6 +107,21 @@ export const Calculate = () => {
     }
   };
 
+  const handleSave = () => {
+    const currentTime = new Date().toLocaleString();
+    const newSearch: Search = {
+      from: savedFrom,
+      to: savedTo,
+      result,
+      data: data || [],
+      time: currentTime,
+    };
+    const updatedSearches = [...savedSearches, newSearch];
+    setSavedSearches(updatedSearches);
+    localStorage.setItem("savedSearches", JSON.stringify(updatedSearches));
+    alert(`Saved search: from ${savedFrom} to ${savedTo}`);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     handleClick();
@@ -79,9 +129,18 @@ export const Calculate = () => {
     setTo("");
   };
 
+  const toggleHistory = () => {
+    setShowHistory(!showHistory);
+  };
+
+  const handleClearHistory = () => {
+    setSavedSearches([]);
+    localStorage.removeItem("savedSearches");
+  };
+
   return (
     <>
-      <Navbar></Navbar>
+      <Navbar />
       <TextContainer>
         <TextTitle>Calculate</TextTitle>
         <ParagraphText>
@@ -114,88 +173,137 @@ export const Calculate = () => {
           <>
             <Para>{result}</Para>
             {!hasError && result && (
-              <div style={{ height: 400, width: "100%" }}>
-                <ResponsiveBar
-                  data={data.map((item) => ({
-                    transport: item.name,
-                    emissions: item.emissions,
-                  }))}
-                  keys={["emissions"]}
-                  indexBy="transport"
-                  margin={{ top: 50, right: 50, bottom: 50, left: 60 }}
-                  padding={0.3}
-                  valueScale={{ type: "linear" }}
-                  indexScale={{ type: "band", round: true }}
-                  colors="url(#barGradient)"
-                  axisTop={null}
-                  axisRight={null}
-                  axisBottom={{
-                    tickSize: 5,
-                    tickPadding: 5,
-                    tickRotation: 0,
-                    legend: "Transportation",
-                    legendPosition: "middle",
-                    legendOffset: 32,
-                  }}
-                  axisLeft={{
-                    tickSize: 5,
-                    tickPadding: 5,
-                    tickRotation: 0,
-                    legend: "Emissions (kg)",
-                    legendPosition: "middle",
-                    legendOffset: -40,
-                  }}
-                  theme={{
-                    axis: {
-                      ticks: {
-                        line: {
-                          stroke: theme.name === "Dark" ? "white" : "black",
+              <>
+                <div style={{ height: 400, width: "100%" }}>
+                  <ResponsiveBar
+                    data={data.map((item) => ({
+                      transport: item.name,
+                      emissions: item.emissions,
+                    }))}
+                    keys={["emissions"]}
+                    indexBy="transport"
+                    margin={{ top: 50, right: 50, bottom: 50, left: 60 }}
+                    padding={0.3}
+                    valueScale={{ type: "linear" }}
+                    indexScale={{ type: "band", round: true }}
+                    colors="url(#barGradient)"
+                    axisTop={null}
+                    axisRight={null}
+                    axisBottom={{
+                      tickSize: 5,
+                      tickPadding: 5,
+                      tickRotation: 0,
+                      legend: "Transportation",
+                      legendPosition: "middle",
+                      legendOffset: 32,
+                    }}
+                    axisLeft={{
+                      tickSize: 5,
+                      tickPadding: 5,
+                      tickRotation: 0,
+                      legend: "Emissions (kg)",
+                      legendPosition: "middle",
+                      legendOffset: -40,
+                    }}
+                    theme={{
+                      axis: {
+                        ticks: {
+                          line: {
+                            stroke: theme.name === "Dark" ? "white" : "black",
+                          },
+                          text: {
+                            fill: theme.name === "Dark" ? "white" : "black",
+                          },
                         },
+                        domain: {
+                          line: {
+                            stroke: theme.name === "Dark" ? "white" : "black",
+                          },
+                        },
+                      },
+                      labels: {
                         text: {
                           fill: theme.name === "Dark" ? "white" : "black",
                         },
                       },
-                      domain: {
-                        line: {
-                          stroke: theme.name === "Dark" ? "white" : "black",
+                      legends: {
+                        text: {
+                          fill: theme.name === "Dark" ? "white" : "black",
                         },
                       },
-                    },
-                    labels: {
-                      text: {
-                        fill: theme.name === "Dark" ? "white" : "black",
+                      tooltip: {
+                        container: {
+                          display: "none",
+                        },
                       },
-                    },
-                    legends: {
-                      text: {
-                        fill: theme.name === "Dark" ? "white" : "black",
-                      },
-                    },
-                    tooltip: {
-                      container: {
-                        display: "none",
-                      },
-                    },
-                  }}
-                  label={(d) => (d.value ? `${d.value.toFixed(0)} kg` : "")}
-                />
-
-                <svg style={{ height: 0 }}>
-                  <defs>
-                    <linearGradient
-                      id="barGradient"
-                      x1="0%"
-                      y1="0%"
-                      x2="0%"
-                      y2="100%"
-                    >
-                      <stop offset="0%" stopColor="#ff7e5f" />
-                      <stop offset="100%" stopColor="#feb47b" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
+                    }}
+                    label={(d) => (d.value ? `${d.value.toFixed(0)} kg` : "")}
+                  />
+                  <svg style={{ height: 0 }}>
+                    <defs>
+                      <linearGradient
+                        id="barGradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="0%"
+                        y2="100%"
+                      >
+                        <stop offset="0%" stopColor="#ff7e5f" />
+                        <stop offset="100%" stopColor="#feb47b" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <HistorySaveButton onClick={handleSave}>
+                  ⭐ Save this search
+                </HistorySaveButton>
+              </>
             )}
+          </>
+        )}
+        <ContentButton onClick={toggleHistory}>
+          {showHistory ? "Hide History" : "Show History"}
+        </ContentButton>
+        {showHistory && (
+          <>
+            <table
+              style={{
+                width: "100%",
+                marginTop: "20px",
+                border: "1px solid #ccc",
+              }}
+            >
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>From</th>
+                  <th>To</th>
+                  <th>Distance</th>
+                  <th>Emissions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {savedSearches.map((search: Search, index: number) => (
+                  <tr key={index}>
+                    <td>{search.time}</td>
+                    <td>{search.from}</td>
+                    <td>{search.to}</td>
+                    <td>{search.result}</td>
+                    <td>
+                      {(search.data || []) 
+                        .map(
+                          (item: EmissionItem) =>
+                            `${item.name}: ${item.emissions.toFixed(0)} kg`
+                        )
+                        .join(", ")}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <HistorySaveButton onClick={handleClearHistory}>
+              ❌ Clear History
+            </HistorySaveButton>
           </>
         )}
       </TextContainer>
