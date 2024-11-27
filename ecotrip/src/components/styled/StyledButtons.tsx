@@ -6,8 +6,7 @@ export const ContentButton = styled.button`
       ? theme.buttonBackgroundColor
       : theme.buttonBackgroundColor};
   color: ${({ theme }) => theme.buttonTextColor};
-  border: ${({ theme }) =>
-    theme.name === "Light" ? theme.buttonBorderColor : "none"};
+  border: 1.5px solid ${({ theme }) => theme.buttonBorderColor};
   display: block;
   margin: 0 auto;
   margin-top: 20px;
@@ -42,8 +41,9 @@ export const LinkButton = styled.button`
   height: 40px;
   font-size: 0.9rem;
   margin-top: 5px;
+  border: 1.5px solid ${({ theme }) => theme.buttonBorderColor};
   color: ${({ theme }) => theme.linkButtonTextColor};
-  background: ${({ theme }) => theme.linkButtonBackgroundColor};
+  background: ${({ theme }) => theme.buttonBackgroundColor};
   cursor: pointer;
 
   @media (min-width: 768px) {
@@ -56,13 +56,12 @@ export const LinkButton = styled.button`
 `;
 
 export const NavButton = styled.button`
+  border: 1.5px solid ${({ theme }) => theme.buttonBorderColor};
   background-color: white;
   font-weight: 400;
   font-family: "Poppins", serif;
   padding: 0 25px;
   height: 35px;
-  border: 1.5px solid
-    ${({ theme }) => (theme.name === "Light" ? "black" : "white")};
   color: ${({ theme }) => (theme.name === "Light" ? "black" : "white")};
   margin-left: auto;
   padding: 0 3px;
@@ -88,13 +87,13 @@ export const NavButton = styled.button`
 `;
 
 export const HistorySaveButton = styled.button`
- background: ${({ theme }) =>
+  background: ${({ theme }) =>
     theme.name === "Dark"
       ? theme.buttonBackgroundColor
       : theme.buttonBackgroundColor};
   color: ${({ theme }) => theme.buttonTextColor};
-  border: ${({ theme }) =>
-    theme.name === "Light" ? theme.buttonBorderColor : "none"};
+  /* border: ${({ theme }) =>
+    theme.name === "Light" ? theme.buttonBorderColor : "none"}; */
   display: block;
   margin: 0 auto;
   margin-top: 20px;
@@ -107,6 +106,7 @@ export const HistorySaveButton = styled.button`
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  border: 1.5px solid ${({ theme }) => theme.buttonBorderColor};
 
   &:hover {
     /* box-shadow: ${({ theme }) =>
