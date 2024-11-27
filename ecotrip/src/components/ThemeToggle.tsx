@@ -39,6 +39,7 @@ const Slider = styled.span`
   
   ${ToggleInput}:checked + & {
     background: ${({ theme }) => theme.name === "Light" ? theme.sliderBackgroundColor : "linear-gradient(#51b8a7, #004E41)"};
+    /* background-color: black; */
   }
 
   &::before {
@@ -50,7 +51,9 @@ const Slider = styled.span`
     left: 4px;
     transition: 0.4s;
     /* background-color: white; */
-    background-color: ${({ theme }) => theme.name === "Light" ? "black" : "white"};
+    /* background-color: ${({ theme }) => theme.name === "Light" ? "black" : "white"};
+     */
+    background-color: black;
   }
 
   ${ToggleInput}:checked + &::before {
@@ -61,13 +64,15 @@ const Slider = styled.span`
 const SunIcon = styled(FaSun)`
   font-size: 18px;
   /* color: white; */
-  color: ${({ theme }) => theme.name === "Light" ? "black" : "white"};
+  /* color: ${({ theme }) => theme.name === "Light" ? "black" : "white"}; */
+  color: black;
 `;
 
 const MoonIcon = styled(FaMoon)`
   font-size: 18px;
   /* color: white; */
-  color: ${({ theme }) => theme.name === "Light" ? "black" : "white"};
+  /* color: ${({ theme }) => theme.name === "Light" ? "black" : "white"}; */
+  color: black;
 `;
 
 const ThemeToggle = () => {
