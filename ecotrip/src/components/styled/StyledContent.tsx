@@ -67,3 +67,45 @@ export const ParagraphText = styled.p`
     margin: 0 auto;
   }
 `;
+
+export const StyledTable = styled.table`
+  width: 100%;
+  max-width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse; 
+  border: 1px solid #fff;
+  table-layout: fixed;
+  word-wrap: break-word; 
+`;
+
+export const StyledTableHeader = styled.thead`
+  color: ${({ theme }) => theme.textContainerTextColor};
+`;
+
+export const StyledTableRow = styled.tr`
+  /* &:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  &:nth-child(odd) {
+    background-color: #fff; 
+  }
+  &:hover {
+    background-color: #f1f1f1;
+  } */
+`;
+
+export const StyledTableHeaderCell = styled.th`
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 2px solid #fff;
+  border-right: 1px solid #fff;
+  word-wrap: break-word;
+`;
+
+export const StyledTableDataCell = styled.td`
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff; 
+`;

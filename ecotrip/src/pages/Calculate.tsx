@@ -1,6 +1,11 @@
 import React, { useState, useContext } from "react";
 import {
   ParagraphText,
+  StyledTable,
+  StyledTableDataCell,
+  StyledTableHeader,
+  StyledTableHeaderCell,
+  StyledTableRow,
   TextContainer,
   TextTitle,
 } from "../components/styled/StyledContent";
@@ -266,41 +271,35 @@ export const Calculate = () => {
         </ContentButton>
         {showHistory && (
           <>
-            <table
-              style={{
-                width: "100%",
-                marginTop: "20px",
-                border: "1px solid #ccc",
-              }}
-            >
-              <thead>
-                <tr>
-                  <th>Time</th>
-                  <th>From</th>
-                  <th>To</th>
-                  <th>Distance</th>
-                  <th>Emissions</th>
-                </tr>
-              </thead>
+            <StyledTable>
+              <StyledTableHeader>
+                <StyledTableRow>
+                  <StyledTableHeaderCell>Time</StyledTableHeaderCell>
+                  <StyledTableHeaderCell>From</StyledTableHeaderCell>
+                  <StyledTableHeaderCell>To</StyledTableHeaderCell>
+                  <StyledTableHeaderCell>Distance</StyledTableHeaderCell>
+                  <StyledTableHeaderCell>Emissions</StyledTableHeaderCell>
+                </StyledTableRow>
+              </StyledTableHeader>
               <tbody>
                 {savedSearches.map((search: Search, index: number) => (
-                  <tr key={index}>
-                    <td>{search.time}</td>
-                    <td>{search.from}</td>
-                    <td>{search.to}</td>
-                    <td>{search.result}</td>
-                    <td>
-                      {(search.data || []) 
+                  <StyledTableRow key={index}>
+                    <StyledTableDataCell>{search.time}</StyledTableDataCell>
+                    <StyledTableDataCell>{search.from}</StyledTableDataCell>
+                    <StyledTableDataCell>{search.to}</StyledTableDataCell>
+                    <StyledTableDataCell>{search.result}</StyledTableDataCell>
+                    <StyledTableDataCell>
+                      {(search.data || [])
                         .map(
                           (item: EmissionItem) =>
                             `${item.name}: ${item.emissions.toFixed(0)} kg`
                         )
                         .join(", ")}
-                    </td>
-                  </tr>
+                    </StyledTableDataCell>
+                  </StyledTableRow>
                 ))}
               </tbody>
-            </table>
+            </StyledTable>
             <HistorySaveButton onClick={handleClearHistory}>
               ❌ Clear History
             </HistorySaveButton>
