@@ -27,7 +27,7 @@ dark: {
     navBackgroundColor: "rgba(20, 20, 20, 0.95)", 
     navTextColor: "white", 
     activeNavTextColor: "white",
-    textContainerBackgroundColor: "#1a1a1a",
+    textContainerBackgroundColor: "#191919",
     textContainerTextColor: "white", 
     buttonBackgroundColor: "transparent", 
     buttonTextColor: "white", 
