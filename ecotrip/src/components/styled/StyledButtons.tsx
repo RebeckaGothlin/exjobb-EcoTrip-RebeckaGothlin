@@ -43,7 +43,7 @@ export const LinkButton = styled.button`
   margin-top: 5px;
   border: 1.5px solid ${({ theme }) => theme.buttonBorderColor};
   color: ${({ theme }) => theme.linkButtonTextColor};
-  background: ${({ theme }) => theme.buttonBackgroundColor};
+  background: ${({ theme }) => theme.navBackgroundColor};
   cursor: pointer;
 
   @media (min-width: 768px) {
