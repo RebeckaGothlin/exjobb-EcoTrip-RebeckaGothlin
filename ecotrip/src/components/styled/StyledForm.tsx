@@ -6,7 +6,7 @@ export const Form = styled.form`
 
 export const Input = styled.input`
   padding: 10px 20px;
-  background-color: rgba(240, 230, 255, 0.8);
+  background-color: rgba(255, 251, 246, 0.8);
   color: #1e1e1e;
   padding-left: 5px;
   font-family: "Poppins", serif;
