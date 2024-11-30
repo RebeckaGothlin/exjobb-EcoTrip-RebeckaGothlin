@@ -42,7 +42,7 @@ dark: {
         name: "Light",
         linkButtonBackgroundColor: "#f7e8d0",
         linkButtonTextColor: "#242424", 
-        navBackgroundColor: "rgba(250, 240, 225, 0.8)",
+        navBackgroundColor: "rgba(250, 240, 225, 0.9)",
         navTextColor: "#242424", 
         activeNavTextColor: "#242424",
         textContainerBackgroundColor: "rgba(250, 240, 218)",
