@@ -21,7 +21,6 @@ import { StyledSpinner } from "../components/styled/StyledSpinner";
 import { ResponsiveBar } from "@nivo/bar";
 import { Navbar } from "../components/Navbar";
 
-// Definiera typer för data
 interface EmissionItem {
   name: string;
   emissions: number;
@@ -60,9 +59,7 @@ export const Calculate = () => {
       })
     )
   );
-
   const [showHistory, setShowHistory] = useState(false);
-
   const theme = useContext(ThemeContext);
 
   const scrollDown = () => {
