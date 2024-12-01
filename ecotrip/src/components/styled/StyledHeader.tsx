@@ -25,6 +25,9 @@ export const BackgroundImage = styled.div<{ backgroundimage: string }>`
   width: 100%;
   height: 100%;
   z-index: -1;
+  @media (max-width: 768px) {
+    background-position: 80% center;
+  }
 `;
 
 export const Nav = styled.nav`
