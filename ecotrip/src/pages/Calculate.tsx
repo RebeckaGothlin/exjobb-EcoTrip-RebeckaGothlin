@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext, FormEvent } from "react";
 import {
   ParagraphText,
   StyledTable,
@@ -20,6 +20,13 @@ import { calculateDistance } from "../utils/distanceUtil";
 import { StyledSpinner } from "../components/styled/StyledSpinner";
 import { ResponsiveBar } from "@nivo/bar";
 import { Navbar } from "../components/Navbar";
+import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+
+interface Coordinates {
+  lat: number;
+  lon: number;
+}
 
 interface EmissionItem {
   name: string;
@@ -33,6 +40,23 @@ interface Search {
   data: EmissionItem[];
   time: string;
 }
+
+const MapClickHandler = ({
+  setPoint,
+}: {
+  setPoint: (coords: Coordinates) => void;
+  isFrom: boolean;
+}) => {
+  useMapEvents({
+    click(e) {
+      setPoint({ lat: e.latlng.lat, lon: e.latlng.lng });
+    },
+  });
+  return null;
+};
+
+
+
 
 export const Calculate = () => {
   const [from, setFrom] = useState("");
@@ -61,6 +85,43 @@ export const Calculate = () => {
   );
   const [showHistory, setShowHistory] = useState(false);
   const theme = useContext(ThemeContext);
+  const [fromCoords, setFromCoords] = useState<Coordinates | null>(null);
+  const [toCoords, setToCoords] = useState<Coordinates | null>(null);
+  const [useMap, setUseMap] = useState(false);
+
+  const handleCalculate = async () => {
+    setLoading(true);
+    try {
+      const fromLocation =
+        useMap && fromCoords ? fromCoords : await fetchCoordinates(from);
+      const toLocation =
+        useMap && toCoords ? toCoords : await fetchCoordinates(to);
+
+      if (fromLocation && toLocation) {
+        const distance = calculateDistance(
+          fromLocation.lat,
+          fromLocation.lon,
+          toLocation.lat,
+          toLocation.lon
+        );
+
+        setData([
+          { name: "Car", emissions: distance * 0.12 },
+          { name: "Train", emissions: distance * 0.04 },
+          { name: "Bus", emissions: distance * 0.07 },
+          { name: "Plane", emissions: distance * 0.25 },
+        ]);
+        setResult(`Distance: ${distance.toFixed(0)} km`);
+      } else {
+        setResult("Coordinates are invalid.");
+      }
+    } catch (error) {
+      console.error(error);
+      setResult("An error occurred. Please check input or map.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const scrollDown = () => {
     window.scrollBy({
@@ -124,7 +185,7 @@ export const Calculate = () => {
     alert(`Saved search: from ${savedFrom} to ${savedTo}`);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
     handleClick();
     setFrom("");
@@ -152,23 +213,46 @@ export const Calculate = () => {
           button to estimate emissions for different travel methods – plane,
           car, bus, and train.
         </ParagraphText>
-        <Form onSubmit={handleSubmit}>
-          <Para>I want to travel from:</Para>
-          <Input
-            type="text"
-            value={from}
-            placeholder="From.."
-            onChange={(e) => setFrom(e.target.value)}
-          />
-          <Para>I want to travel to:</Para>
-          <Input
-            type="text"
-            value={to}
-            placeholder="To.."
-            onChange={(e) => setTo(e.target.value)}
-          />
-          <ContentButton onClick={handleClick}>Calculate</ContentButton>
-        </Form>
+        <ContentButton onClick={() => setUseMap(!useMap)}>
+          {useMap ? "Text input" : "Map"}
+        </ContentButton>
+        {!useMap ? (
+          <Form onSubmit={handleSubmit}>
+            <Para>I want to travel from:</Para>
+            <Input
+              type="text"
+              value={from}
+              placeholder="From.."
+              onChange={(e) => setFrom(e.target.value)}
+            />
+            <Para>I want to travel to:</Para>
+            <Input
+              type="text"
+              value={to}
+              placeholder="To.."
+              onChange={(e) => setTo(e.target.value)}
+            />
+            <ContentButton onClick={handleClick}>Calculate</ContentButton>
+          </Form>
+        ) : (
+          <div style={{ height: "500px" }}>
+            <MapContainer
+              style={{ height: "500px", width: "100%" }}
+              center={[51.505, -0.09]}
+              zoom={3}
+            >
+              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+              <MapClickHandler setPoint={setFromCoords} isFrom={true} />
+              {fromCoords && (
+                <Marker position={[fromCoords.lat, fromCoords.lon]} />
+              )}
+              <MapClickHandler setPoint={setToCoords} isFrom={true} />
+              {toCoords && <Marker position={[toCoords.lat, toCoords.lon]} />}
+            </MapContainer>
+
+            <ContentButton onClick={handleCalculate}>Calculate</ContentButton>
+          </div>
+        )}
         {loading ? (
           <StyledSpinner size={120} />
         ) : (
