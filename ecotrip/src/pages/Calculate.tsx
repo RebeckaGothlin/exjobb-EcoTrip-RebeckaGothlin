@@ -42,21 +42,29 @@ interface Search {
 }
 
 const MapClickHandler = ({
-  setPoint,
+  setFromPoint,
+  setToPoint,
 }: {
-  setPoint: (coords: Coordinates) => void;
-  isFrom: boolean;
+  setFromPoint: (coords: Coordinates) => void;
+  setToPoint: (coords: Coordinates) => void;
 }) => {
+  const [isFrom, setIsFrom] = useState(true);
+
   useMapEvents({
     click(e) {
-      setPoint({ lat: e.latlng.lat, lon: e.latlng.lng });
+      const point = { lat: e.latlng.lat, lon: e.latlng.lng };
+      if (isFrom) {
+        setFromPoint(point);
+        setIsFrom(false);
+      } else {
+        setToPoint(point);
+        setIsFrom(true);
+      }
     },
   });
+
   return null;
 };
-
-
-
 
 export const Calculate = () => {
   const [from, setFrom] = useState("");
@@ -92,10 +100,8 @@ export const Calculate = () => {
   const handleCalculate = async () => {
     setLoading(true);
     try {
-      const fromLocation =
-        useMap && fromCoords ? fromCoords : await fetchCoordinates(from);
-      const toLocation =
-        useMap && toCoords ? toCoords : await fetchCoordinates(to);
+      const fromLocation = fromCoords || (await fetchCoordinates(from));
+      const toLocation = toCoords || (await fetchCoordinates(to));
 
       if (fromLocation && toLocation) {
         const distance = calculateDistance(
@@ -111,7 +117,9 @@ export const Calculate = () => {
           { name: "Bus", emissions: distance * 0.07 },
           { name: "Plane", emissions: distance * 0.25 },
         ]);
-        setResult(`Distance: ${distance.toFixed(0)} km`);
+        setResult(
+          `Distance between ${from} and ${to}: ${distance.toFixed(0)} km`
+        );
       } else {
         setResult("Coordinates are invalid.");
       }
@@ -213,9 +221,25 @@ export const Calculate = () => {
           button to estimate emissions for different travel methods – plane,
           car, bus, and train.
         </ParagraphText>
-        <ContentButton onClick={() => setUseMap(!useMap)}>
+        <ContentButton
+          onClick={() => {
+            setUseMap(!useMap);
+            setResult(""); 
+            setData([
+              { name: "Car", emissions: 0 },
+              { name: "Train", emissions: 0 },
+              { name: "Bus", emissions: 0 },
+              { name: "Plane", emissions: 0 },
+            ]);
+            setFromCoords(null); 
+            setToCoords(null);
+            setFrom("");
+            setTo("");
+          }}
+        >
           {useMap ? "Text input" : "Map"}
         </ContentButton>
+
         {!useMap ? (
           <Form onSubmit={handleSubmit}>
             <Para>I want to travel from:</Para>
@@ -242,11 +266,13 @@ export const Calculate = () => {
               zoom={3}
             >
               <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-              <MapClickHandler setPoint={setFromCoords} isFrom={true} />
+              <MapClickHandler
+                setFromPoint={setFromCoords}
+                setToPoint={setToCoords}
+              />
               {fromCoords && (
                 <Marker position={[fromCoords.lat, fromCoords.lon]} />
               )}
-              <MapClickHandler setPoint={setToCoords} isFrom={true} />
               {toCoords && <Marker position={[toCoords.lat, toCoords.lon]} />}
             </MapContainer>
 
@@ -347,9 +373,9 @@ export const Calculate = () => {
             )}
           </>
         )}
-        <ContentButton onClick={toggleHistory}>
+        <HistorySaveButton onClick={toggleHistory}>
           {showHistory ? "Hide History" : "Show History"}
-        </ContentButton>
+        </HistorySaveButton>
         {showHistory && (
           <>
             <StyledTable>
