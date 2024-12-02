@@ -117,9 +117,7 @@ export const Calculate = () => {
           { name: "Bus", emissions: distance * 0.07 },
           { name: "Plane", emissions: distance * 0.25 },
         ]);
-        setResult(
-          `Distance: ${distance.toFixed(0)} km`
-        );
+        setResult(`Distance: ${distance.toFixed(0)} km`);
       } else {
         setResult("Coordinates are invalid.");
       }
@@ -179,17 +177,24 @@ export const Calculate = () => {
   };
 
   const handleSave = () => {
-
     const fromLocation =
-      savedFrom || (fromCoords ? `${fromCoords.lat.toFixed(3)}, ${fromCoords.lon.toFixed(3)}` : null);
+      savedFrom ||
+      (fromCoords
+        ? `${fromCoords.lat.toFixed(3)}, ${fromCoords.lon.toFixed(3)}`
+        : null);
     const toLocation =
-      savedTo || (toCoords ? `${toCoords.lat.toFixed(3)}, ${toCoords.lon.toFixed(3)}` : null);
-  
+      savedTo ||
+      (toCoords
+        ? `${toCoords.lat.toFixed(3)}, ${toCoords.lon.toFixed(3)}`
+        : null);
+
     if (!fromLocation || !toLocation) {
-      alert("Please provide input via text fields or select points on the map before saving.");
+      alert(
+        "Please provide input via text fields or select points on the map before saving."
+      );
       return;
     }
-  
+
     const currentTime = new Date().toLocaleString();
     const newSearch: Search = {
       from: fromLocation,
@@ -198,14 +203,12 @@ export const Calculate = () => {
       data: data || [],
       time: currentTime,
     };
-  
+
     const updatedSearches = [...savedSearches, newSearch];
     setSavedSearches(updatedSearches);
     localStorage.setItem("savedSearches", JSON.stringify(updatedSearches));
     alert(`Saved search: from ${fromLocation} to ${toLocation}`);
   };
-  
-  
 
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
@@ -230,22 +233,23 @@ export const Calculate = () => {
         <TextTitle>Calculate</TextTitle>
         <ParagraphText>
           Here you can calculate the carbon dioxide emissions from different
-          transportation options. Enter the name of the city you want to depart
-          from and the city you want to travel to, then press the "Calculate"
-          button to estimate emissions for different travel methods – plane,
-          car, bus, and train.
+          transportation options. You can either enter the name of the city you
+          want to depart from and the city you want to travel to, or select
+          locations directly on the map. Then press the "Calculate" button to
+          estimate emissions for different travel methods – plane, car, bus, and
+          train.
         </ParagraphText>
         <ContentButton
           onClick={() => {
             setUseMap(!useMap);
-            setResult(""); 
+            setResult("");
             setData([
               { name: "Car", emissions: 0 },
               { name: "Train", emissions: 0 },
               { name: "Bus", emissions: 0 },
               { name: "Plane", emissions: 0 },
             ]);
-            setFromCoords(null); 
+            setFromCoords(null);
             setToCoords(null);
             setFrom("");
             setTo("");
@@ -253,7 +257,7 @@ export const Calculate = () => {
             setSavedTo("");
           }}
         >
-          {useMap ? "Text input" : "Map"}
+          {useMap ? "Use text input" : "Select on map"}
         </ContentButton>
 
         {!useMap ? (
