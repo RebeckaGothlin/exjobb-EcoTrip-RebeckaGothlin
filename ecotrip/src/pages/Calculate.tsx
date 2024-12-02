@@ -118,7 +118,7 @@ export const Calculate = () => {
           { name: "Plane", emissions: distance * 0.25 },
         ]);
         setResult(
-          `Distance between ${from} and ${to}: ${distance.toFixed(0)} km`
+          `Distance: ${distance.toFixed(0)} km`
         );
       } else {
         setResult("Coordinates are invalid.");
@@ -179,19 +179,33 @@ export const Calculate = () => {
   };
 
   const handleSave = () => {
+
+    const fromLocation =
+      savedFrom || (fromCoords ? `${fromCoords.lat.toFixed(3)}, ${fromCoords.lon.toFixed(3)}` : null);
+    const toLocation =
+      savedTo || (toCoords ? `${toCoords.lat.toFixed(3)}, ${toCoords.lon.toFixed(3)}` : null);
+  
+    if (!fromLocation || !toLocation) {
+      alert("Please provide input via text fields or select points on the map before saving.");
+      return;
+    }
+  
     const currentTime = new Date().toLocaleString();
     const newSearch: Search = {
-      from: savedFrom,
-      to: savedTo,
+      from: fromLocation,
+      to: toLocation,
       result,
       data: data || [],
       time: currentTime,
     };
+  
     const updatedSearches = [...savedSearches, newSearch];
     setSavedSearches(updatedSearches);
     localStorage.setItem("savedSearches", JSON.stringify(updatedSearches));
-    alert(`Saved search: from ${savedFrom} to ${savedTo}`);
+    alert(`Saved search: from ${fromLocation} to ${toLocation}`);
   };
+  
+  
 
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
@@ -235,6 +249,8 @@ export const Calculate = () => {
             setToCoords(null);
             setFrom("");
             setTo("");
+            setSavedFrom("");
+            setSavedTo("");
           }}
         >
           {useMap ? "Text input" : "Map"}
@@ -259,11 +275,11 @@ export const Calculate = () => {
             <ContentButton onClick={handleClick}>Calculate</ContentButton>
           </Form>
         ) : (
-          <div style={{ height: "500px" }}>
+          <div style={{ marginBottom: "20px", height: "500px" }}>
             <MapContainer
               style={{ height: "500px", width: "100%" }}
-              center={[51.505, -0.09]}
-              zoom={3}
+              center={[40, 20]}
+              zoom={2}
             >
               <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
               <MapClickHandler
@@ -286,7 +302,7 @@ export const Calculate = () => {
             <Para>{result}</Para>
             {!hasError && result && (
               <>
-                <div style={{ height: 400, width: "100%" }}>
+                <div style={{ height: 400, width: "100%", marginTop: "30px" }}>
                   <ResponsiveBar
                     data={data.map((item) => ({
                       transport: item.name,
