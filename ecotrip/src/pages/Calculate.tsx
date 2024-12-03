@@ -25,6 +25,7 @@ import { ResponsiveBar } from "@nivo/bar";
 import { Navbar } from "../components/Navbar";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import L from "leaflet";
 
 interface Coordinates {
   lat: number;
@@ -43,6 +44,13 @@ interface Search {
   data: EmissionItem[];
   time: string;
 }
+
+const customIcon = L.icon({
+  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png', // Extern URL för pin-bilden
+  iconSize: [20, 32], 
+  iconAnchor: [10, 32], 
+});
+
 
 const MapClickHandler = ({
   setFromPoint,
@@ -321,9 +329,9 @@ export const Calculate = () => {
                 setToPoint={setToCoords}
               />
               {fromCoords && (
-                <Marker position={[fromCoords.lat, fromCoords.lon]} />
+                <Marker position={[fromCoords.lat, fromCoords.lon]} icon={customIcon}/>
               )}
-              {toCoords && <Marker position={[toCoords.lat, toCoords.lon]} />}
+              {toCoords && <Marker position={[toCoords.lat, toCoords.lon]} icon={customIcon} />}
             </MapContainer>
 
             <ContentButton onClick={handleCalculate}>Calculate</ContentButton>
