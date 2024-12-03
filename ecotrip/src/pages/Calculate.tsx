@@ -1,5 +1,8 @@
 import { useState, useContext, FormEvent } from "react";
 import {
+  CloseModalButton,
+  ModalContainer,
+  ModalOverlay,
   ParagraphText,
   StyledTable,
   StyledTableDataCell,
@@ -280,9 +283,17 @@ export const Calculate = () => {
                 setToPoint={setToCoords}
               />
               {fromCoords && (
-                <Marker position={[fromCoords.lat, fromCoords.lon]} icon={customIcon}/>
+                <Marker
+                  position={[fromCoords.lat, fromCoords.lon]}
+                  icon={customIcon}
+                />
               )}
-              {toCoords && <Marker position={[toCoords.lat, toCoords.lon]} icon={customIcon} />}
+              {toCoords && (
+                <Marker
+                  position={[toCoords.lat, toCoords.lon]}
+                  icon={customIcon}
+                />
+              )}
             </MapContainer>
 
             <ContentButton onClick={handleCalculate}>Calculate</ContentButton>
@@ -383,43 +394,53 @@ export const Calculate = () => {
           </>
         )}
         <HistorySaveButton onClick={toggleHistory}>
-          {showHistory ? "Hide History" : "Show History"}
+          {showHistory ? "Hide saved searches" : "Show saved searches"}
         </HistorySaveButton>
         {showHistory && (
-          <>
-            <StyledTable id="history-table">
-              <StyledTableHeader>
-                <StyledTableRow>
-                  <StyledTableHeaderCell>Time</StyledTableHeaderCell>
-                  <StyledTableHeaderCell>From</StyledTableHeaderCell>
-                  <StyledTableHeaderCell>To</StyledTableHeaderCell>
-                  <StyledTableHeaderCell>Distance</StyledTableHeaderCell>
-                  <StyledTableHeaderCell>Emissions</StyledTableHeaderCell>
-                </StyledTableRow>
-              </StyledTableHeader>
-              <tbody>
-                {savedSearches.map((search: Search, index: number) => (
-                  <StyledTableRow key={index}>
-                    <StyledTableDataCell>{search.time}</StyledTableDataCell>
-                    <StyledTableDataCell>{search.from}</StyledTableDataCell>
-                    <StyledTableDataCell>{search.to}</StyledTableDataCell>
-                    <StyledTableDataCell>{search.result}</StyledTableDataCell>
-                    <StyledTableDataCell>
-                      {(search.data || [])
-                        .map(
-                          (item: EmissionItem) =>
-                            `${item.name}: ${item.emissions.toFixed(0)} kg`
-                        )
-                        .join(", ")}
-                    </StyledTableDataCell>
-                  </StyledTableRow>
-                ))}
-              </tbody>
-            </StyledTable>
-            <HistorySaveButton onClick={handleClearHistory}>
-              ❌ Clear History
-            </HistorySaveButton>
-          </>
+          
+               <ModalOverlay onClick={() => setShowHistory(false)}>
+               <ModalContainer onClick={(e) => e.stopPropagation()}>
+               <CloseModalButton onClick={() => setShowHistory(false)}>
+                   Close
+                 </CloseModalButton>
+                 {savedSearches.length > 0 ? (
+                    <StyledTable>
+                    <StyledTableHeader>
+                      <StyledTableRow>
+                        <StyledTableHeaderCell>Time</StyledTableHeaderCell>
+                        <StyledTableHeaderCell>From</StyledTableHeaderCell>
+                        <StyledTableHeaderCell>To</StyledTableHeaderCell>
+                        <StyledTableHeaderCell>Distance</StyledTableHeaderCell>
+                        <StyledTableHeaderCell>Emissions</StyledTableHeaderCell>
+                      </StyledTableRow>
+                    </StyledTableHeader>
+                    <tbody>
+                      {savedSearches.map((search: Search, index: number) => (
+                        <StyledTableRow key={index}>
+                          <StyledTableDataCell>{search.time}</StyledTableDataCell>
+                          <StyledTableDataCell>{search.from}</StyledTableDataCell>
+                          <StyledTableDataCell>{search.to}</StyledTableDataCell>
+                          <StyledTableDataCell>{search.result}</StyledTableDataCell>
+                          <StyledTableDataCell>
+                            {(search.data || [])
+                              .map(
+                                (item: EmissionItem) =>
+                                  `${item.name}: ${item.emissions.toFixed(0)} kg`
+                              )
+                              .join(", ")}
+                          </StyledTableDataCell>
+                        </StyledTableRow>
+                      ))}
+                    </tbody>
+                  </StyledTable>
+                 ) : (
+                   <ParagraphText>No saved searches found.</ParagraphText>
+                 )}
+                 <HistorySaveButton onClick={handleClearHistory}>
+                   ❌ Clear History
+                 </HistorySaveButton>
+               </ModalContainer>
+             </ModalOverlay>
         )}
       </TextContainer>
     </>

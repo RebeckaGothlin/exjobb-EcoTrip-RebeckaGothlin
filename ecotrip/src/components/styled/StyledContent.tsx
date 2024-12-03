@@ -124,3 +124,45 @@ export const StyledTableDataCell = styled.td`
   border-right: 1px solid #fff; 
 `;
 
+export const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background: ${({ theme }) => theme.navBackgroundColor}; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; 
+`;
+
+export const ModalContainer = styled.div`
+  background: ${({ theme }) => theme.navBackgroundColor};
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 80%;
+  max-height: 80%;
+  overflow-y: auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  animation: ${shake} 0.3s ease-in-out;
+`;
+
+export const CloseModalButton = styled.button`
+  background-color: #ff4c4c;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #e03e3e;
+  }
+
+  &:active {
+    background-color: #cc3333;
+  }
+`;
