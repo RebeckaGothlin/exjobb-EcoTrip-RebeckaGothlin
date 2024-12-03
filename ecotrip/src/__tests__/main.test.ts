@@ -1,6 +1,6 @@
 import axios from "axios";
-import { calculateDistance } from "../utils/distanceUtil";
-import { fetchCoordinates } from "../utils/locationUtil";
+import { calculateDistance } from "../service/distanceUtil";
+import { fetchCoordinates } from "../service/fetchCoordinates";
 
 test('calculateDistance calculate the correct distance between two points', () => {
     // Stockholm

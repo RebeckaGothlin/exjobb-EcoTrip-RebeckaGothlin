@@ -18,64 +18,16 @@ import { ThemeContext } from "../contexts/ThemeContext";
 import {
   fetchCityFromCoordinates,
   fetchCoordinates,
-} from "../utils/locationUtil";
-import { calculateDistance } from "../utils/distanceUtil";
+} from "../service/fetchCoordinates";
+import { calculateDistance } from "../service/distanceUtil";
 import { StyledSpinner } from "../components/styled/StyledSpinner";
 import { ResponsiveBar } from "@nivo/bar";
 import { Navbar } from "../components/Navbar";
-import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
-
-interface Coordinates {
-  lat: number;
-  lon: number;
-}
-
-interface EmissionItem {
-  name: string;
-  emissions: number;
-}
-
-interface Search {
-  from: string;
-  to: string;
-  result: string;
-  data: EmissionItem[];
-  time: string;
-}
-
-const customIcon = L.icon({
-  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png', // Extern URL för pin-bilden
-  iconSize: [20, 32], 
-  iconAnchor: [10, 32], 
-});
-
-
-const MapClickHandler = ({
-  setFromPoint,
-  setToPoint,
-}: {
-  setFromPoint: (coords: Coordinates) => void;
-  setToPoint: (coords: Coordinates) => void;
-}) => {
-  const [isFrom, setIsFrom] = useState(true);
-
-  useMapEvents({
-    click(e) {
-      const point = { lat: e.latlng.lat, lon: e.latlng.lng };
-      if (isFrom) {
-        setFromPoint(point);
-        setIsFrom(false);
-      } else {
-        setToPoint(point);
-        setIsFrom(true);
-      }
-    },
-  });
-
-  return null;
-};
+import { Coordinates, MapClickHandler } from "../components/MapClickHandler";
+import { EmissionItem, Search } from "../models/types";
+import { customIcon } from "../icons/icon";
 
 export const Calculate = () => {
   const [from, setFrom] = useState("");
@@ -84,13 +36,18 @@ export const Calculate = () => {
   const [savedTo, setSavedTo] = useState("");
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
+  const theme = useContext(ThemeContext);
+  const [fromCoords, setFromCoords] = useState<Coordinates | null>(null);
+  const [toCoords, setToCoords] = useState<Coordinates | null>(null);
+  const [useMap, setUseMap] = useState(false);
   const [data, setData] = useState<EmissionItem[]>([
     { name: "Car", emissions: 0 },
     { name: "Train", emissions: 0 },
     { name: "Bus", emissions: 0 },
     { name: "Plane", emissions: 0 },
   ]);
-  const [hasError, setHasError] = useState(false);
   const [savedSearches, setSavedSearches] = useState<Search[]>(
     JSON.parse(localStorage.getItem("savedSearches") || "[]").map(
       (search: Partial<Search>) => ({
@@ -102,11 +59,6 @@ export const Calculate = () => {
       })
     )
   );
-  const [showHistory, setShowHistory] = useState(false);
-  const theme = useContext(ThemeContext);
-  const [fromCoords, setFromCoords] = useState<Coordinates | null>(null);
-  const [toCoords, setToCoords] = useState<Coordinates | null>(null);
-  const [useMap, setUseMap] = useState(false);
 
   const handleCalculate = async () => {
     setLoading(true);
@@ -130,7 +82,6 @@ export const Calculate = () => {
           toLocation.lat,
           toLocation.lon
         );
-
         setData([
           { name: "Car", emissions: distance * 0.12 },
           { name: "Train", emissions: distance * 0.04 },
