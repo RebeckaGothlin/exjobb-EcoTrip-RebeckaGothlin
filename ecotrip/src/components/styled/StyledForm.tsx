@@ -2,6 +2,16 @@ import styled from "styled-components";
 
 export const Form = styled.form`
   text-align: center;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 10px;
+  
+  @media screen and (min-width: 768px) {
+    flex-direction: row; 
+    justify-content: center; 
+    display: block;
+  }
 `;
 
 export const Input = styled.input`
@@ -10,6 +20,9 @@ export const Input = styled.input`
   color: #1e1e1e;
   padding-left: 5px;
   font-family: "Poppins", serif;
+  border-radius: 8px;
+  width: 100%;
+  margin-top: 10px;
 
   &:focus {
     outline: none;
@@ -17,13 +30,15 @@ export const Input = styled.input`
     box-shadow: 0 0 8px rgba(183, 255, 215, 0.6);
   }
 
-  @media screen and (min-width: 750px) {
+  @media (min-width: 768px) {
     padding: 10px 60px;
     padding-left: 5px;
+    width: auto;
+    margin: 0 10px;
   }
 
-  @media screen and (min-width: 1024px) {
-    padding: 10px 90px;
+  @media (min-width: 1024px) {
+    padding: 10px 100px;
     padding-left: 5px;
   }
 `;

@@ -8,8 +8,8 @@ export const ContentButton = styled.button`
   color: ${({ theme }) => theme.buttonTextColor};
   border: 1.5px solid ${({ theme }) => theme.buttonBorderColor};
   display: block;
-  margin: 0 auto;
-  margin-top: 20px;
+  margin: 20px auto;
+  /* margin-top: 20px; */
   cursor: pointer;
   padding: 7px 20px;
   text-align: center;
@@ -30,6 +30,10 @@ export const ContentButton = styled.button`
 
   &:focus {
     outline: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-top: 20px;
   }
 `;
 
