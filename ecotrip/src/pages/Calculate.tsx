@@ -15,7 +15,10 @@ import {
   HistorySaveButton,
 } from "../components/styled/StyledButtons";
 import { ThemeContext } from "../contexts/ThemeContext";
-import { fetchCoordinates } from "../utils/locationUtil";
+import {
+  fetchCityFromCoordinates,
+  fetchCoordinates,
+} from "../utils/locationUtil";
 import { calculateDistance } from "../utils/distanceUtil";
 import { StyledSpinner } from "../components/styled/StyledSpinner";
 import { ResponsiveBar } from "@nivo/bar";
@@ -104,6 +107,15 @@ export const Calculate = () => {
       const toLocation = toCoords || (await fetchCoordinates(to));
 
       if (fromLocation && toLocation) {
+        const fromCity = await fetchCityFromCoordinates(
+          fromLocation.lat,
+          fromLocation.lon
+        );
+        const toCity = await fetchCityFromCoordinates(
+          toLocation.lat,
+          toLocation.lon
+        );
+
         const distance = calculateDistance(
           fromLocation.lat,
           fromLocation.lon,
@@ -117,7 +129,9 @@ export const Calculate = () => {
           { name: "Bus", emissions: distance * 0.07 },
           { name: "Plane", emissions: distance * 0.25 },
         ]);
-        setResult(`Distance: ${distance.toFixed(0)} km`);
+        setResult(
+          `Distance from ${fromCity} to ${toCity}: ${distance.toFixed(0)} km`
+        );
       } else {
         setResult("Coordinates are invalid.");
       }
@@ -176,53 +190,53 @@ export const Calculate = () => {
     }
   };
 
-  const handleSave = () => {
-    const fromLocation =
-      savedFrom ||
-      (fromCoords
-        ? `${fromCoords.lat.toFixed(3)}, ${fromCoords.lon.toFixed(3)}`
-        : null);
-    const toLocation =
-      savedTo ||
-      (toCoords
-        ? `${toCoords.lat.toFixed(3)}, ${toCoords.lon.toFixed(3)}`
-        : null);
+  const handleSave = async () => {
+    try {
+      const fromLocation = fromCoords
+        ? await fetchCityFromCoordinates(fromCoords.lat, fromCoords.lon)
+        : savedFrom;
+      const toLocation = toCoords
+        ? await fetchCityFromCoordinates(toCoords.lat, toCoords.lon)
+        : savedTo;
 
-    if (!fromLocation || !toLocation) {
-      alert(
-        "Please provide input via text fields or select points on the map before saving."
-      );
-      return;
-    }
-
-    const currentTime = new Date().toLocaleString();
-    const newSearch: Search = {
-      from: fromLocation,
-      to: toLocation,
-      result,
-      data: data || [],
-      time: currentTime,
-    };
-
-    const updatedSearches = [...savedSearches, newSearch];
-    setSavedSearches(updatedSearches);
-    localStorage.setItem("savedSearches", JSON.stringify(updatedSearches));
-    // alert(`Saved search: from ${fromLocation} to ${toLocation}`);
-
-    if (!showHistory) {
-      setShowHistory(true);
-      setTimeout(() => {
-        const table = document.getElementById("history-table");
-        table?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    } else {
-      const table = document.getElementById("history-table");
-      if (table) {
-        table.classList.remove("shake");
-        void table.offsetWidth;
-        table.classList.add("shake");
+      if (!fromLocation || !toLocation) {
+        alert(
+          "Please provide input via text fields or select points on the map before saving."
+        );
+        return;
       }
-      table?.scrollIntoView({ behavior: "smooth" });
+
+      const currentTime = new Date().toLocaleString();
+      const newSearch: Search = {
+        from: fromLocation,
+        to: toLocation,
+        result,
+        data: data || [],
+        time: currentTime,
+      };
+
+      const updatedSearches = [...savedSearches, newSearch];
+      setSavedSearches(updatedSearches);
+      localStorage.setItem("savedSearches", JSON.stringify(updatedSearches));
+
+      if (!showHistory) {
+        setShowHistory(true);
+        setTimeout(() => {
+          const table = document.getElementById("history-table");
+          table?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      } else {
+        const table = document.getElementById("history-table");
+        if (table) {
+          table.classList.remove("shake");
+          void table.offsetWidth;
+          table.classList.add("shake");
+        }
+        table?.scrollIntoView({ behavior: "smooth" });
+      }
+    } catch (error) {
+      console.error("Error saving search with city names:", error);
+      alert("Failed to fetch city names. Please try again.");
     }
   };
 

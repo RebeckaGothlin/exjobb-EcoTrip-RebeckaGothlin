@@ -15,3 +15,19 @@ export const fetchCoordinates = async (city: string) => {
     // Returnerar latitud och longitud som flyttal
     return { lat: parseFloat(lat), lon: parseFloat(lon) };
 };
+
+export const fetchCityFromCoordinates = async (lat: number, lon: number) => {
+    const response = await axios.get(
+        `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`
+    );
+
+    if (!response.data || !response.data.address) {
+        throw new Error("No city found for the specified coordinates");
+    }
+
+    // Försök att hämta stadens namn från "address"-objektet
+    return response.data.address.city || 
+           response.data.address.town || 
+           response.data.address.village || 
+           "Unknown location";
+};
