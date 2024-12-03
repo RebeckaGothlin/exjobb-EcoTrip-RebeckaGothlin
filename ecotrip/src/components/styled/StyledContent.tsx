@@ -12,6 +12,17 @@ const moveBackground = keyframes`
   }
 `;
 
+const shake = keyframes`
+  0% { transform: translateX(0); }
+  15% { transform: translateX(-5px); }
+  30% { transform: translateX(5px); }
+  45% { transform: translateX(-5px); }
+  60% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+  90% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+`;
+
 export const GlobalWrapper = styled.div`
   width: 100vw;
   height: 100vh;
@@ -76,6 +87,9 @@ export const StyledTable = styled.table`
   border: 1px solid #fff;
   table-layout: fixed;
   word-wrap: break-word; 
+  &.shake {
+    animation: ${shake} 0.3s ease-in-out;
+  }
 `;
 
 export const StyledTableHeader = styled.thead`
@@ -109,3 +123,4 @@ export const StyledTableDataCell = styled.td`
   border-bottom: 1px solid #fff;
   border-right: 1px solid #fff; 
 `;
+

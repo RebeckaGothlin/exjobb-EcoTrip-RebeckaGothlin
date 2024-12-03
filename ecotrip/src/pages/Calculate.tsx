@@ -207,7 +207,23 @@ export const Calculate = () => {
     const updatedSearches = [...savedSearches, newSearch];
     setSavedSearches(updatedSearches);
     localStorage.setItem("savedSearches", JSON.stringify(updatedSearches));
-    alert(`Saved search: from ${fromLocation} to ${toLocation}`);
+    // alert(`Saved search: from ${fromLocation} to ${toLocation}`);
+
+    if (!showHistory) {
+      setShowHistory(true);
+      setTimeout(() => {
+        const table = document.getElementById("history-table");
+        table?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      const table = document.getElementById("history-table");
+      if (table) {
+        table.classList.remove("shake");
+        void table.offsetWidth;
+        table.classList.add("shake");
+      }
+      table?.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const handleSubmit = (e: FormEvent): void => {
@@ -398,7 +414,7 @@ export const Calculate = () => {
         </HistorySaveButton>
         {showHistory && (
           <>
-            <StyledTable>
+            <StyledTable id="history-table">
               <StyledTableHeader>
                 <StyledTableRow>
                   <StyledTableHeaderCell>Time</StyledTableHeaderCell>
