@@ -1,27 +1,4 @@
-import styled, { keyframes } from "styled-components";
-
-const moveBackground = keyframes`
-  0% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  100% {
-    background-position: 0% 0%;
-  }
-`;
-
-const shake = keyframes`
-  0% { transform: translateX(0); }
-  15% { transform: translateX(-5px); }
-  30% { transform: translateX(5px); }
-  45% { transform: translateX(-5px); }
-  60% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
-  90% { transform: translateX(-5px); }
-  100% { transform: translateX(0); }
-`;
+import styled from "styled-components";
 
 export const GlobalWrapper = styled.div`
   width: 100vw;
@@ -31,34 +8,19 @@ export const GlobalWrapper = styled.div`
   box-sizing: border-box;
 `;
 
-
 export const TextContainer = styled.section`
   background: ${({ theme }) => theme.textContainerBackgroundColor};
   background-size: 200% 200%;
-  animation: ${moveBackground} 10s infinite linear;
   color: ${({ theme }) => theme.textContainerTextColor};
   padding: 40px;
   text-align: left;
-//
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 100%;
   min-height: 100vh;
   box-sizing: border-box;
-
 `;
-// export const TextContainer = styled.div`
-//   background: ${({ theme }) => theme.textContainerBackgroundColor};
-//   background-size: 200% 200%;
-//   animation: ${moveBackground} 10s infinite linear;
-//   color: ${({ theme }) => theme.textContainerTextColor};
-//   width: 100vw;
-//   margin: 0 auto; 
-//   padding: 2rem;
-//   border: none; 
-//   box-sizing: border-box;
-// `;
 
 export const TextTitle = styled.h2`
   font-family: "Poppins", serif;
@@ -83,13 +45,10 @@ export const StyledTable = styled.table`
   width: 100%;
   max-width: 100%;
   margin-top: 20px;
-  border-collapse: collapse; 
+  border-collapse: collapse;
   border: 1px solid #fff;
   table-layout: fixed;
-  word-wrap: break-word; 
-  &.shake {
-    animation: ${shake} 0.3s ease-in-out;
-  }
+  word-wrap: break-word;
 `;
 
 export const StyledTableHeader = styled.thead`
@@ -121,7 +80,7 @@ export const StyledTableDataCell = styled.td`
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #fff;
-  border-right: 1px solid #fff; 
+  border-right: 1px solid #fff;
 `;
 
 export const ModalOverlay = styled.div`
@@ -130,11 +89,10 @@ export const ModalOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  /* background: ${({ theme }) => theme.navBackgroundColor}; */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; 
+  z-index: 1000;
 `;
 
 export const ModalContainer = styled.div`
@@ -145,7 +103,6 @@ export const ModalContainer = styled.div`
   max-height: 80%;
   overflow-y: auto;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  animation: ${shake} 0.3s ease-in-out;
 `;
 
 export const CloseModalButton = styled.button`
@@ -164,5 +121,47 @@ export const CloseModalButton = styled.button`
 
   &:active {
     background-color: #cc3333;
+  }
+`;
+
+export const TabNavigation = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme }) => theme.navBackgroundColor || "#f5f5f5"};
+  border-radius: 8px;
+  margin: 20px auto;
+  padding: 10px;
+  width: 300px;
+  border: 1px solid black;
+`;
+
+export const TabButton = styled.button<{ isActive: boolean }>`
+  flex: 1;
+  padding: 10px 20px;
+  background: none;
+  color: ${({ theme }) => theme.buttonTextColor};
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Poppins", serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 20%; 
+    width: ${({ isActive }) => (isActive ? "60%" : "0")}; 
+    height: 1.5px;
+      background: ${({ theme }) => theme.textContainerTextColor};
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    color:  ${({ isActive }) =>
+      isActive ? "none" : "#ad997a"};
   }
 `;

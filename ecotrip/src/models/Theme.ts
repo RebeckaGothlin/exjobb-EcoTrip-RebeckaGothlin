@@ -12,6 +12,7 @@ export interface ITheme {
     buttonBorderColor: string;
     sliderBackgroundColor: string;
     sliderBorderColor: string;
+    tabButtonTextColor: string;
 }
 
 interface IThemes {
@@ -35,6 +36,7 @@ dark: {
     // sliderBackgroundColor: "linear-gradient(45deg, #ED3975, #ff9f71)",
     sliderBackgroundColor: "#f7e8d0",
     sliderBorderColor: "none", 
+    tabButtonTextColor: "#f7e8d0",
 },
 
     
@@ -52,5 +54,6 @@ dark: {
         buttonBorderColor: "rgba(80, 60, 100, 0.9)", 
         sliderBackgroundColor: "#242424", 
         sliderBorderColor: "1px solid rgba(80, 60, 100, 0.9)",
+        tabButtonTextColor: "#1e1e1e",
     },
 }
