@@ -44,7 +44,7 @@ export const Input = styled.input`
 `;
 
 export const Para = styled.p`
-  margin-bottom: 0;
+  margin-top: 90px;
   font-size: 0.8rem;
   text-align: center;
   font-family: "Poppins", serif;
