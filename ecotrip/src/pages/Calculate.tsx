@@ -18,6 +18,7 @@ import {
 import { Form, Input, Para } from "../components/styled/StyledForm";
 import {
   CalculateButton,
+  HistoryButton,
   HistorySaveButton,
 } from "../components/styled/StyledButtons";
 import { ThemeContext } from "../contexts/ThemeContext";
@@ -34,6 +35,10 @@ import "leaflet/dist/leaflet.css";
 import { Coordinates, MapClickHandler } from "../components/MapClickHandler";
 import { EmissionItem, Search } from "../models/types";
 import { customIcon } from "../icons/icon";
+import { MdOutlineTextFields } from "react-icons/md";
+import { IoMdPin } from "react-icons/io";
+import { CiBookmark } from "react-icons/ci";
+import { IoBookmarksOutline } from "react-icons/io5";
 
 export const Calculate = () => {
   const [from, setFrom] = useState("");
@@ -266,15 +271,20 @@ export const Calculate = () => {
               isActive={activeTab === "map"}
               onClick={() => setActiveTab("map")}
             >
-              Map
+              <IoMdPin size="25px" title="Map" />
             </TabButton>
             <TabButton
               isActive={activeTab === "input"}
               onClick={() => setActiveTab("input")}
             >
-              Input
+              <MdOutlineTextFields
+                size="25px"
+                title="Input"
+                style={{ marginLeft: "10px" }}
+              />
             </TabButton>
           </TabNavigation>
+
           {activeTab === "input" ? (
             <Form onSubmit={handleSubmit}>
               {/* <Para>I want to travel from:</Para> */}
@@ -292,39 +302,47 @@ export const Calculate = () => {
                 onChange={(e) => setTo(e.target.value)}
               />
               <CalculateButton onClick={handleClick}>Calculate</CalculateButton>
+              <HistorySaveButton onClick={toggleHistory}><IoBookmarksOutline size="25px" title="Show saved searches" /></HistorySaveButton>
             </Form>
           ) : (
-            <div style={{ marginBottom: "20px", height: "500px" }}>
-              <MapContainer
-                style={{ height: "500px", width: "100%" }}
-                center={[40, 20]}
-                zoom={2}
-              >
-                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            <><div style={{ marginBottom: "20px", height: "500px" }}>
+                <MapContainer
+                  style={{ height: "500px", width: "100%" }}
+                  center={[40, 20]}
+                  zoom={2}
+                >
+                  <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-                <MapClickHandler
-                  setFromPoint={setFromCoords}
-                  setToPoint={setToCoords}
-                />
-                {fromCoords && (
-                  <Marker
-                    position={[fromCoords.lat, fromCoords.lon]}
-                    icon={customIcon}
-                  />
-                )}
-                {toCoords && (
-                  <Marker
-                    position={[toCoords.lat, toCoords.lon]}
-                    icon={customIcon}
-                  />
-                )}
-              </MapContainer>
-
-              <CalculateButton onClick={handleCalculate}>
-                Calculate
-              </CalculateButton>
-            </div>
+                  <MapClickHandler
+                    setFromPoint={setFromCoords}
+                    setToPoint={setToCoords} />
+                  {fromCoords && (
+                    <Marker
+                      position={[fromCoords.lat, fromCoords.lon]}
+                      icon={customIcon} />
+                  )}
+                  {toCoords && (
+                    <Marker
+                      position={[toCoords.lat, toCoords.lon]}
+                      icon={customIcon} />
+                  )}
+                </MapContainer>
+                {/* <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    > */}
+                <CalculateButton onClick={handleCalculate}>
+                  Calculate
+                </CalculateButton>
+              </div><HistoryButton onClick={toggleHistory}>
+                  {/* {showHistory ? "Hide saved searches" : "Show saved searches"} */}
+                  <IoBookmarksOutline size="25px" title="Show saved searches" />
+                </HistoryButton></>
           )}
+         
         </SearchContainer>
         {loading ? (
           <StyledSpinner size={120} />
@@ -421,15 +439,12 @@ export const Calculate = () => {
                     </svg>
                   </div>
                   <HistorySaveButton onClick={handleSave}>
-                    ⭐ Save this search
+                    <CiBookmark size="25px" title="Save this search" />
                   </HistorySaveButton>
                 </>
               )}
           </>
         )}
-        <HistorySaveButton onClick={toggleHistory}>
-          {showHistory ? "Hide saved searches" : "Show saved searches"}
-        </HistorySaveButton>
         {showHistory && (
           <ModalOverlay onClick={() => setShowHistory(false)}>
             <ModalContainer onClick={(e) => e.stopPropagation()}>
