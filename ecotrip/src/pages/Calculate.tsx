@@ -19,7 +19,9 @@ import { Form, Input, Para } from "../components/styled/StyledForm";
 import {
   CalculateButton,
   HistoryButton,
+  HistoryDeleteButton,
   HistorySaveButton,
+  HistorySaveButtonMap,
 } from "../components/styled/StyledButtons";
 import { ThemeContext } from "../contexts/ThemeContext";
 import {
@@ -35,10 +37,14 @@ import "leaflet/dist/leaflet.css";
 import { Coordinates, MapClickHandler } from "../components/MapClickHandler";
 import { EmissionItem, Search } from "../models/types";
 import { customIcon } from "../icons/icon";
-import { MdOutlineTextFields } from "react-icons/md";
-import { IoMdPin } from "react-icons/io";
+// import { MdOutlineTextFields } from "react-icons/md";
+// import { IoMdPin } from "react-icons/io";
 import { CiBookmark } from "react-icons/ci";
-import { IoBookmarksOutline } from "react-icons/io5";
+import { IoBookmarksOutline, IoClose } from "react-icons/io5";
+// import { RxInput } from "react-icons/rx";
+import { FaKeyboard, FaMapMarkedAlt } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+// import { IoMdCloseCircle } from "react-icons/io";
 
 export const Calculate = () => {
   const [from, setFrom] = useState("");
@@ -271,17 +277,13 @@ export const Calculate = () => {
               isActive={activeTab === "map"}
               onClick={() => setActiveTab("map")}
             >
-              <IoMdPin size="25px" title="Map" />
+              <FaMapMarkedAlt size="25px" title="Map" />
             </TabButton>
             <TabButton
               isActive={activeTab === "input"}
               onClick={() => setActiveTab("input")}
             >
-              <MdOutlineTextFields
-                size="25px"
-                title="Input"
-                style={{ marginLeft: "10px" }}
-              />
+              <FaKeyboard size="25px" title="Input" />
             </TabButton>
           </TabNavigation>
 
@@ -302,10 +304,13 @@ export const Calculate = () => {
                 onChange={(e) => setTo(e.target.value)}
               />
               <CalculateButton onClick={handleClick}>Calculate</CalculateButton>
-              <HistorySaveButton onClick={toggleHistory}><IoBookmarksOutline size="25px" title="Show saved searches" /></HistorySaveButton>
+              <HistorySaveButton onClick={toggleHistory}>
+                <IoBookmarksOutline size="25px" title="Show saved searches" />
+              </HistorySaveButton>
             </Form>
           ) : (
-            <><div style={{ marginBottom: "20px", height: "500px" }}>
+            <>
+              <div style={{ marginBottom: "20px", height: "500px" }}>
                 <MapContainer
                   style={{ height: "500px", width: "100%" }}
                   center={[40, 20]}
@@ -315,34 +320,31 @@ export const Calculate = () => {
 
                   <MapClickHandler
                     setFromPoint={setFromCoords}
-                    setToPoint={setToCoords} />
+                    setToPoint={setToCoords}
+                  />
                   {fromCoords && (
                     <Marker
                       position={[fromCoords.lat, fromCoords.lon]}
-                      icon={customIcon} />
+                      icon={customIcon}
+                    />
                   )}
                   {toCoords && (
                     <Marker
                       position={[toCoords.lat, toCoords.lon]}
-                      icon={customIcon} />
+                      icon={customIcon}
+                    />
                   )}
                 </MapContainer>
-                {/* <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    > */}
                 <CalculateButton onClick={handleCalculate}>
                   Calculate
                 </CalculateButton>
-              </div><HistoryButton onClick={toggleHistory}>
-                  {/* {showHistory ? "Hide saved searches" : "Show saved searches"} */}
-                  <IoBookmarksOutline size="25px" title="Show saved searches" />
-                </HistoryButton></>
+              </div>
+              <HistorySaveButtonMap onClick={toggleHistory}>
+                {/* {showHistory ? "Hide saved searches" : "Show saved searches"} */}
+                <IoBookmarksOutline size="25px" title="Show saved searches" />
+              </HistorySaveButtonMap>
+            </>
           )}
-         
         </SearchContainer>
         {loading ? (
           <StyledSpinner size={120} />
@@ -438,9 +440,9 @@ export const Calculate = () => {
                       </defs>
                     </svg>
                   </div>
-                  <HistorySaveButton onClick={handleSave}>
+                  <HistoryButton onClick={handleSave}>
                     <CiBookmark size="25px" title="Save this search" />
-                  </HistorySaveButton>
+                  </HistoryButton>
                 </>
               )}
           </>
@@ -449,7 +451,7 @@ export const Calculate = () => {
           <ModalOverlay onClick={() => setShowHistory(false)}>
             <ModalContainer onClick={(e) => e.stopPropagation()}>
               <CloseModalButton onClick={() => setShowHistory(false)}>
-                Close
+                <IoClose size="35px"/>
               </CloseModalButton>
               {savedSearches.length > 0 ? (
                 <StyledTable>
@@ -486,9 +488,9 @@ export const Calculate = () => {
               ) : (
                 <ParagraphText>No saved searches found.</ParagraphText>
               )}
-              <HistorySaveButton onClick={handleClearHistory}>
-                ❌ Clear History
-              </HistorySaveButton>
+              <HistoryDeleteButton onClick={handleClearHistory}>
+                <MdDelete size="25px" />
+              </HistoryDeleteButton>
             </ModalContainer>
           </ModalOverlay>
         )}

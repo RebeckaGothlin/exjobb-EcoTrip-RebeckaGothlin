@@ -106,21 +106,15 @@ export const ModalContainer = styled.div`
 `;
 
 export const CloseModalButton = styled.button`
-  background-color: #ff4c4c;
-  color: white;
+  background-color: transparent;
+  color: ${({theme}) => theme.textContainerTextColor};
   border: none;
-  padding: 10px;
-  border-radius: 4px;
-  font-size: 16px;
+  padding: 0;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #e03e3e;
-  }
-
-  &:active {
-    background-color: #cc3333;
+    color: #e03e3e;
   }
 `;
 
