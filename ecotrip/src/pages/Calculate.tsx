@@ -4,6 +4,7 @@ import {
   ModalContainer,
   ModalOverlay,
   ParagraphText,
+  SearchContainer,
   StyledTable,
   StyledTableDataCell,
   StyledTableHeader,
@@ -16,7 +17,7 @@ import {
 } from "../components/styled/StyledContent";
 import { Form, Input, Para } from "../components/styled/StyledForm";
 import {
-  ContentButton,
+  CalculateButton,
   HistorySaveButton,
 } from "../components/styled/StyledButtons";
 import { ThemeContext } from "../contexts/ThemeContext";
@@ -259,67 +260,72 @@ export const Calculate = () => {
           estimate emissions for different travel methods – plane, car, bus, and
           train.
         </ParagraphText>
-        <TabNavigation>
-          <TabButton
-            isActive={activeTab === "map"}
-            onClick={() => setActiveTab("map")}
-          >
-            Map
-          </TabButton>
-          <TabButton
-            isActive={activeTab === "input"}
-            onClick={() => setActiveTab("input")}
-          >
-            Input
-          </TabButton>
-        </TabNavigation>
-        {activeTab === "input" ? (
-          <Form onSubmit={handleSubmit}>
-            {/* <Para>I want to travel from:</Para> */}
-            <Input
-              type="text"
-              value={from}
-              placeholder="From.."
-              onChange={(e) => setFrom(e.target.value)}
-            />
-            {/* <Para>I want to travel to:</Para> */}
-            <Input
-              type="text"
-              value={to}
-              placeholder="To.."
-              onChange={(e) => setTo(e.target.value)}
-            />
-            <ContentButton onClick={handleClick}>Calculate</ContentButton>
-          </Form>
-        ) : (
-          <div style={{ marginBottom: "20px", height: "500px" }}>
-            <MapContainer
-              style={{ height: "500px", width: "100%" }}
-              center={[40, 20]}
-              zoom={2}
+        <SearchContainer>
+          <TabNavigation>
+            <TabButton
+              isActive={activeTab === "map"}
+              onClick={() => setActiveTab("map")}
             >
-              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-              <MapClickHandler
-                setFromPoint={setFromCoords}
-                setToPoint={setToCoords}
+              Map
+            </TabButton>
+            <TabButton
+              isActive={activeTab === "input"}
+              onClick={() => setActiveTab("input")}
+            >
+              Input
+            </TabButton>
+          </TabNavigation>
+          {activeTab === "input" ? (
+            <Form onSubmit={handleSubmit}>
+              {/* <Para>I want to travel from:</Para> */}
+              <Input
+                type="text"
+                value={from}
+                placeholder="From.."
+                onChange={(e) => setFrom(e.target.value)}
               />
-              {fromCoords && (
-                <Marker
-                  position={[fromCoords.lat, fromCoords.lon]}
-                  icon={customIcon}
-                />
-              )}
-              {toCoords && (
-                <Marker
-                  position={[toCoords.lat, toCoords.lon]}
-                  icon={customIcon}
-                />
-              )}
-            </MapContainer>
+              {/* <Para>I want to travel to:</Para> */}
+              <Input
+                type="text"
+                value={to}
+                placeholder="To.."
+                onChange={(e) => setTo(e.target.value)}
+              />
+              <CalculateButton onClick={handleClick}>Calculate</CalculateButton>
+            </Form>
+          ) : (
+            <div style={{ marginBottom: "20px", height: "500px" }}>
+              <MapContainer
+                style={{ height: "500px", width: "100%" }}
+                center={[40, 20]}
+                zoom={2}
+              >
+                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-            <ContentButton onClick={handleCalculate}>Calculate</ContentButton>
-          </div>
-        )}
+                <MapClickHandler
+                  setFromPoint={setFromCoords}
+                  setToPoint={setToCoords}
+                />
+                {fromCoords && (
+                  <Marker
+                    position={[fromCoords.lat, fromCoords.lon]}
+                    icon={customIcon}
+                  />
+                )}
+                {toCoords && (
+                  <Marker
+                    position={[toCoords.lat, toCoords.lon]}
+                    icon={customIcon}
+                  />
+                )}
+              </MapContainer>
+
+              <CalculateButton onClick={handleCalculate}>
+                Calculate
+              </CalculateButton>
+            </div>
+          )}
+        </SearchContainer>
         {loading ? (
           <StyledSpinner size={120} />
         ) : (

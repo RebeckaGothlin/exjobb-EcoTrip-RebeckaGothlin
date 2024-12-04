@@ -21,20 +21,20 @@ export const Input = styled.input`
   padding-left: 5px;
   font-family: "Poppins", serif;
   border-radius: 8px;
-  width: 100%;
+  width: calc(100% - 20px);
   margin-top: 10px;
+  border: 1px solid black;
 
   &:focus {
     outline: none;
-    border-color: #647872;
-    box-shadow: 0 0 8px rgba(183, 255, 215, 0.6);
+    box-shadow: 0 0 8px rgba(255, 235, 190, 0.6);
   }
 
   @media (min-width: 768px) {
     padding: 10px 60px;
     padding-left: 5px;
     width: auto;
-    margin: 0 10px;
+    margin: 10px 10px;
   }
 
   @media (min-width: 1024px) {

@@ -128,12 +128,12 @@ export const TabNavigation = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.navBackgroundColor || "#f5f5f5"};
+  background-color: ${({ theme }) => theme.textContainerBackgroundColor || "#f5f5f5"};
   border-radius: 8px;
   margin: 20px auto;
   padding: 10px;
-  width: 300px;
-  border: 1px solid black;
+  width: 280px;
+  border: 1px solid ${({ theme }) => theme.buttonBorderColor};
 `;
 
 export const TabButton = styled.button<{ isActive: boolean }>`
@@ -153,15 +153,24 @@ export const TabButton = styled.button<{ isActive: boolean }>`
     content: "";
     position: absolute;
     bottom: -2px;
-    left: 20%; 
-    width: ${({ isActive }) => (isActive ? "60%" : "0")}; 
+    left: 20%;
+    width: ${({ isActive }) => (isActive ? "60%" : "0")};
     height: 1.5px;
-      background: ${({ theme }) => theme.textContainerTextColor};
+    background: ${({ theme }) => theme.textContainerTextColor};
     transition: all 0.3s ease;
   }
 
   &:hover {
-    color:  ${({ isActive }) =>
-      isActive ? "none" : "#ad997a"};
+    color: ${({ isActive }) => (isActive ? "none" : "#ad997a")};
+  }
+`;
+
+export const SearchContainer = styled.div`
+  background-color: ${({ theme }) => theme.navBackgroundColor || "#f5f5f5"};
+  border-radius: 8px;
+  border: 1px solid black;
+
+  @media (min-width: 768px) {
+    margin: 50px;
   }
 `;
