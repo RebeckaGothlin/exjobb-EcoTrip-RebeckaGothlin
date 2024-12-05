@@ -160,7 +160,7 @@ export const TabButton = styled.button<{ isActive: boolean }>`
 `;
 
 export const SearchContainer = styled.div`
-  background-color: ${({ theme }) => theme.navBackgroundColor || "#f5f5f5"};
+  background: ${({ theme }) => theme.navBackgroundColor};
   border-radius: 8px;
   border: 1px solid black;
 
@@ -168,3 +168,31 @@ export const SearchContainer = styled.div`
     margin: 50px;
   }
 `;
+
+export const InfoCard = styled.div`
+  background: ${({ theme }) => theme.navBackgroundColor};
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+`;
+
+export const CardTitle = styled.h3`
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: ${({ theme }) => theme.textContainerTextColor};
+`;
+
+export const CardContent = styled.p`
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: ${({ theme }) => theme.textContainerTextColor};
+`;
+

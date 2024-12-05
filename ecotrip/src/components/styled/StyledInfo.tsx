@@ -12,7 +12,7 @@ export const SourceLinks = styled.section`
     text-align: left;
     font-size: 0.8rem;
     display: block;
-    color: ${({ theme }) => theme.name === 'Light' ? 'black' : 'white'};
+    color: ${({ theme }) => theme.textContainerTextColor};
 
     &:hover {
         text-decoration: underline;
