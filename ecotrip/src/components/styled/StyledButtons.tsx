@@ -54,6 +54,10 @@ export const LinkButton = styled.button`
     transform: scale(1.05);
   }
 
+  &:focus {
+    border: 1.5px solid ${({ theme }) => theme.buttonBorderColor};
+  }
+
   @media (min-width: 768px) {
     padding: 0 20px;
     height: 50px;
@@ -211,7 +215,8 @@ export const HistoryDeleteButton = styled.button`
   /* margin-top: 90px; */
 
   &:hover {
-    transform: scale(0.9);
+    transform: scale(1.1);
+    color: #e03e3e;
   }
 
   &:focus {
@@ -243,7 +248,7 @@ export const CalculateButton = styled.button`
   }
 
   &:focus {
-    outline: none;
+    border: 1.5px solid ${({ theme }) => theme.buttonBorderColor};
   }
 
   @media (min-width: 768px) {
