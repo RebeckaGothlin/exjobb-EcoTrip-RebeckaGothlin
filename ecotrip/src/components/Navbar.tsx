@@ -34,16 +34,16 @@ export const Navbar = () => {
               EcoTrip
             </NavLinkStyledTitle> */}
             <NavItem>
-              <NavLinkStyledTitleDesktop to="/">EcoTrip</NavLinkStyledTitleDesktop>
+              <NavLinkStyledTitleDesktop to="/" aria-label="Go to EcoTrip homepage">EcoTrip</NavLinkStyledTitleDesktop>
             </NavItem>
             <NavItem>
-              <NavLinkStyled to="/calculate">Calculate</NavLinkStyled>
+              <NavLinkStyled to="/calculate" aria-label="Go to the Calculate page">Calculate</NavLinkStyled>
             </NavItem>
             <NavItem>
-              <NavLinkStyled to="/info">Information</NavLinkStyled>
+              <NavLinkStyled to="/info" aria-label="Learn more about eco-friendly travel">Information</NavLinkStyled>
             </NavItem>
             <NavItem>
-              <NavLinkStyled to="/about">About</NavLinkStyled>
+              <NavLinkStyled to="/about" aria-label="About EcoTrip">About</NavLinkStyled>
             </NavItem>
             <NavItem className="last-item">{/* <ThemeToggle /> */}</NavItem>
           </NavMenu>

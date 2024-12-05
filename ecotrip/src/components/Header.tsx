@@ -61,7 +61,10 @@ export const Header = () => {
               EcoTrip
             </NavLinkStyledTitle> */}
             <NavItem>
-              <NavLinkStyledTitleDesktop to="/" aria-label="Go to EcoTrip homepage">
+              <NavLinkStyledTitleDesktop
+                to="/"
+                aria-label="Go to EcoTrip homepage"
+              >
                 EcoTrip
               </NavLinkStyledTitleDesktop>
             </NavItem>
