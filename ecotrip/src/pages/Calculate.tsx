@@ -276,12 +276,14 @@ export const Calculate = () => {
             <TabButton
               isActive={activeTab === "map"}
               onClick={() => setActiveTab("map")}
+              aria-label="Switch to map view"
             >
               <FaMapMarkedAlt size="25px" title="Map" />
             </TabButton>
             <TabButton
               isActive={activeTab === "input"}
               onClick={() => setActiveTab("input")}
+              aria-label="Switch to input view"
             >
               <FaKeyboard size="25px" title="Input" />
             </TabButton>
@@ -303,8 +305,8 @@ export const Calculate = () => {
                 placeholder="To.."
                 onChange={(e) => setTo(e.target.value)}
               />
-              <CalculateButton onClick={handleClick}>Calculate</CalculateButton>
-              <HistorySaveButton onClick={toggleHistory}>
+              <CalculateButton onClick={handleClick} aria-label="Calculate emissions">Calculate</CalculateButton>
+              <HistorySaveButton onClick={toggleHistory} aria-label="Show saved searches" tabIndex={0}>
                 <IoBookmarksOutline size="25px" title="Show saved searches" />
               </HistorySaveButton>
             </Form>
@@ -335,11 +337,11 @@ export const Calculate = () => {
                     />
                   )}
                 </MapContainer>
-                <CalculateButton onClick={handleCalculate}>
+                <CalculateButton onClick={handleCalculate} aria-label="Calculate emissions from map locations">
                   Calculate
                 </CalculateButton>
               </div>
-              <HistorySaveButtonMap onClick={toggleHistory}>
+              <HistorySaveButtonMap onClick={toggleHistory} aria-label="Show saved searches" tabIndex={0}>
                 {/* {showHistory ? "Hide saved searches" : "Show saved searches"} */}
                 <IoBookmarksOutline size="25px" title="Show saved searches" />
               </HistorySaveButtonMap>
@@ -440,7 +442,7 @@ export const Calculate = () => {
                       </defs>
                     </svg>
                   </div>
-                  <HistoryButton onClick={handleSave}>
+                  <HistoryButton onClick={handleSave} aria-label="Save this search" tabIndex={0}>
                     <CiBookmark size="25px" title="Save this search" />
                   </HistoryButton>
                 </>
@@ -450,8 +452,8 @@ export const Calculate = () => {
         {showHistory && (
           <ModalOverlay onClick={() => setShowHistory(false)}>
             <ModalContainer onClick={(e) => e.stopPropagation()}>
-              <CloseModalButton onClick={() => setShowHistory(false)}>
-                <IoClose size="35px"/>
+              <CloseModalButton onClick={() => setShowHistory(false)} aria-label="Close saved searches modal">
+                <IoClose size="35px" title="Close"/>
               </CloseModalButton>
               {savedSearches.length > 0 ? (
                 <StyledTable>
@@ -488,8 +490,8 @@ export const Calculate = () => {
               ) : (
                 <ParagraphText>No saved searches found.</ParagraphText>
               )}
-              <HistoryDeleteButton onClick={handleClearHistory}>
-                <MdDelete size="25px" />
+              <HistoryDeleteButton onClick={handleClearHistory} aria-label="Clear search history" tabIndex={0}>
+                <MdDelete size="25px" title="Delete searches"/>
               </HistoryDeleteButton>
             </ModalContainer>
           </ModalOverlay>

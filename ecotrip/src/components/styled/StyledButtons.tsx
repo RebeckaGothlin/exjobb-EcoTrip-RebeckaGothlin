@@ -125,8 +125,13 @@ export const HistorySaveButton = styled.button`
     transform: scale(0.9);
   }
 
-  &:focus {
+  /* &:focus {
     outline: none;
+  } */
+
+  svg {
+    width: 25px;
+    height: 25px;
   }
 `;
 
@@ -157,8 +162,13 @@ export const HistorySaveButtonMap = styled.button`
     transform: scale(0.9);
   }
 
-  &:focus {
+   /* &:focus {
     outline: none;
+  } */
+
+    svg {
+    width: 25px;
+    height: 25px;
   }
 `;
 
@@ -189,8 +199,13 @@ export const HistoryButton = styled.button`
     transform: scale(1.05);
   }
 
-  &:focus {
+    /* &:focus {
     outline: none;
+  } */
+
+    svg {
+    width: 25px;
+    height: 25px;
   }
 `;
 
@@ -219,8 +234,13 @@ export const HistoryDeleteButton = styled.button`
     color: #e03e3e;
   }
 
-  &:focus {
+    /* &:focus {
     outline: none;
+  } */
+
+    svg {
+    width: 25px;
+    height: 25px;
   }
 `;
 

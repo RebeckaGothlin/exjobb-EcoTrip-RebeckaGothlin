@@ -41,6 +41,12 @@ export const Header = () => {
   //   });
   // };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key == " ") {
+      toggleMenu();
+    }
+  };
+
   const navigateToCalculate = () => {
     navigate("/calculate");
   };
@@ -55,55 +61,103 @@ export const Header = () => {
               EcoTrip
             </NavLinkStyledTitle> */}
             <NavItem>
-              <NavLinkStyledTitleDesktop to="/">
+              <NavLinkStyledTitleDesktop to="/" aria-label="Go to EcoTrip homepage">
                 EcoTrip
               </NavLinkStyledTitleDesktop>
             </NavItem>
             <NavItem>
-              <NavLinkStyled to="/calculate">Calculate</NavLinkStyled>
+              <NavLinkStyled
+                to="/calculate"
+                aria-label="Go to the Calculate page"
+              >
+                Calculate
+              </NavLinkStyled>
             </NavItem>
             <NavItem>
-              <NavLinkStyled to="/info">Information</NavLinkStyled>
+              <NavLinkStyled
+                to="/info"
+                aria-label="Learn more about eco-friendly travel"
+              >
+                Information
+              </NavLinkStyled>
             </NavItem>
             <NavItem>
-              <NavLinkStyled to="/about">About</NavLinkStyled>
+              <NavLinkStyled to="/about" aria-label="About EcoTrip">
+                About
+              </NavLinkStyled>
             </NavItem>
             <NavItem className="last-item">{/* <ThemeToggle /> */}</NavItem>
           </NavMenu>
-          <HamburgerMenuButton onClick={toggleMenu}>
-          {menuOpen ? (
-            <>
-              <span className="line" style={{ transform: "rotate(45deg)", position: "relative", top: "8.5px" }} />
-              <span className="line" style={{ opacity: 0 }} />
-              <span className="line" style={{ transform: "rotate(-45deg)", position: "relative", top: "-8px" }} />
-            </>
-          ) : (
-            <>
-              <span className="line" />
-              <span className="line" />
-              <span className="line" />
-            </>
-          )}
-        </HamburgerMenuButton>
+          <HamburgerMenuButton
+            role="button"
+            onClick={toggleMenu}
+            onKeyDown={handleKeyDown}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            tabIndex={0}
+          >
+            {menuOpen ? (
+              <>
+                <span
+                  className="line"
+                  style={{
+                    transform: "rotate(45deg)",
+                    position: "relative",
+                    top: "8.5px",
+                  }}
+                />
+                <span className="line" style={{ opacity: 0 }} />
+                <span
+                  className="line"
+                  style={{
+                    transform: "rotate(-45deg)",
+                    position: "relative",
+                    top: "-8px",
+                  }}
+                />
+              </>
+            ) : (
+              <>
+                <span className="line" />
+                <span className="line" />
+                <span className="line" />
+              </>
+            )}
+          </HamburgerMenuButton>
           <NavItem>
-            <NavLinkStyledTitle to="/">EcoTrip</NavLinkStyledTitle>
+            <NavLinkStyledTitle to="/" aria-label="Go to EcoTrip homepage">
+              EcoTrip
+            </NavLinkStyledTitle>
           </NavItem>
-          <ThemeToggle />
+          <ThemeToggle aria-label="Switch theme" />
           {menuOpen && (
             <OverlayMenu>
               <OverlayMenuItem></OverlayMenuItem>
               <OverlayMenuItem>
-                <NavLinkStyled to="/calculate" onClick={toggleMenu}>
+                <NavLinkStyled
+                  to="/calculate"
+                  onClick={toggleMenu}
+                  aria-label="Go to the Calculate page"
+                  tabIndex={1}
+                >
                   Calculate
                 </NavLinkStyled>
               </OverlayMenuItem>
               <OverlayMenuItem>
-                <NavLinkStyled to="/info" onClick={toggleMenu}>
+                <NavLinkStyled
+                  to="/info"
+                  onClick={toggleMenu}
+                  aria-label="Learn more about eco-friendly travel"
+                  tabIndex={1}
+                >
                   Information
                 </NavLinkStyled>
               </OverlayMenuItem>
               <OverlayMenuItem>
-                <NavLinkStyled to="/about" onClick={toggleMenu}>
+                <NavLinkStyled
+                  to="/about"
+                  onClick={toggleMenu}
+                  aria-label="About EcoTrip"
+                >
                   About
                 </NavLinkStyled>
               </OverlayMenuItem>
@@ -132,7 +186,12 @@ export const Header = () => {
               With EcoTrip, you can compare emissions to make eco-friendly
               travel choices.
             </span>
-            <LinkButton onClick={navigateToCalculate}>Calculate</LinkButton>
+            <LinkButton
+              onClick={navigateToCalculate}
+              aria-label="Calculate your carbon emissions for different travel options"
+            >
+              Calculate
+            </LinkButton>
           </SubtitleMobile>
           <SubtitleDesktop>
             <Title>EcoTrip is your</Title>
@@ -142,7 +201,12 @@ export const Header = () => {
               with EcoTrip, you can compare emissions from flights, cars, and
               trains to make eco-friendly travel choices.
             </span>
-            <LinkButton onClick={navigateToCalculate}>Calculate</LinkButton>
+            <LinkButton
+              onClick={navigateToCalculate}
+              aria-label="Calculate your carbon emissions for different travel options"
+            >
+              Calculate
+            </LinkButton>
           </SubtitleDesktop>
         </CustomShapeDivider>
 

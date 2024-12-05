@@ -3,16 +3,19 @@ import { ThemeDispatchContext } from "../contexts/ThemeDispatchContext";
 import { ThemeContext } from "styled-components";
 import { ThemeActionTypes } from "../reducers/ThemesReducer";
 import { themes } from "../models/Theme";
-import { FaSun, FaMoon } from "react-icons/fa"; 
+import { FaSun, FaMoon } from "react-icons/fa";
 
 import styled from "styled-components";
 
-const ToggleContainer = styled.div`
+const ToggleContainer = styled.div<{
+  "aria-label"?: string;
+  tabIndex?: number;
+}>`
   margin-right: 15px;
   margin-left: auto;
 `;
 
-const ToggleLabel = styled.label`
+const ToggleLabel = styled.label<{ "aria-label"?: string; tabIndex?: number }>`
   position: relative;
   display: flex;
   align-items: center;
@@ -36,9 +39,12 @@ const Slider = styled.span`
   align-items: center;
   padding: 5px;
   cursor: pointer;
-  
+
   ${ToggleInput}:checked + & {
-    background: ${({ theme }) => theme.name === "Light" ? theme.sliderBackgroundColor : "linear-gradient(#51b8a7, #004E41)"};
+    background: ${({ theme }) =>
+      theme.name === "Light"
+        ? theme.sliderBackgroundColor
+        : "linear-gradient(#51b8a7, #004E41)"};
     /* background-color: black; */
   }
 
@@ -51,7 +57,8 @@ const Slider = styled.span`
     left: 4px;
     transition: 0.4s;
     /* background-color: white; */
-    /* background-color: ${({ theme }) => theme.name === "Light" ? "black" : "white"};
+    /* background-color: ${({ theme }) =>
+      theme.name === "Light" ? "black" : "white"};
      */
     background-color: ${({ theme }) => theme.textContainerBackgroundColor};
     /* background-color: black; */
@@ -65,7 +72,7 @@ const Slider = styled.span`
 const SunIcon = styled(FaSun)`
   font-size: 18px;
   /* color: white; */
-  /* color: ${({ theme }) => theme.name === "Light" ? "black" : "white"}; */
+  /* color: ${({ theme }) => (theme.name === "Light" ? "black" : "white")}; */
   /* color: black; */
   color: ${({ theme }) => theme.textContainerBackgroundColor};
 `;
@@ -73,7 +80,7 @@ const SunIcon = styled(FaSun)`
 const MoonIcon = styled(FaMoon)`
   font-size: 18px;
   /* color: white; */
-  /* color: ${({ theme }) => theme.name === "Light" ? "black" : "white"}; */
+  /* color: ${({ theme }) => (theme.name === "Light" ? "black" : "white")}; */
   /* color: black; */
   color: ${({ theme }) => theme.textContainerBackgroundColor};
 `;
@@ -86,9 +93,20 @@ const ThemeToggle = () => {
     dispatch({ type: ThemeActionTypes.TOGGLED, payload: "" });
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLLabelElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      handleToggle();
+    }
+  };
+
   return (
     <ToggleContainer>
-      <ToggleLabel>
+      <ToggleLabel
+        aria-label="Switch between light and dark theme" 
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
+      >
         <ToggleInput
           type="checkbox"
           checked={theme?.name === themes.light.name}

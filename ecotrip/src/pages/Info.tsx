@@ -36,16 +36,36 @@ export const Info = () => {
           sustainable choice for the future.
           <ParaSource>Sources:</ParaSource>
           <SourceLinks>
-            <a href="https://www.ipcc.ch/" target="_blank">
+            <a
+              href="https://www.ipcc.ch/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit the official website of the Intergovernmental Panel on Climate Change, opens in a new tab"
+            >
               The Intergovernmental Panel on Climate Change (IPCC)
             </a>
-            <a href="https://www.unep.org/" target="_blank">
+            <a
+              href="https://www.unep.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit the official website of the United Nations Environment Programme, opens in a new tab"
+            >
               United Nations Environment Programme (UNEP)
             </a>
-            <a href="https://www.who.int/" target="_blank">
+            <a
+              href="https://www.who.int/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit the official website of the World Health Organization, opens in a new tab"
+            >
               World Health Organization (WHO)
             </a>
-            <a href="https://uic.org/" target="_blank">
+            <a
+              href="https://uic.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit the official website of the International Union of Railways, opens in a new tab"
+            >
               International Union of Railways (UIC)
             </a>
           </SourceLinks>
