@@ -175,7 +175,7 @@ export const InfoCard = styled.div`
   padding: 20px;
   width: 100%;
   max-width: 500px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease;
 
   &:hover {
