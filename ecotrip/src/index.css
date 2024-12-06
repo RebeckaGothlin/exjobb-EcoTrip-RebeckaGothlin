@@ -62,6 +62,12 @@ button:focus-visible {
   margin-top: 20px;
 } 
 
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
 /* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
