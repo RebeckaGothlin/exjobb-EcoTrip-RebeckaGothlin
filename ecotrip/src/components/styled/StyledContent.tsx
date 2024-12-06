@@ -127,7 +127,7 @@ export const TabNavigation = styled.div`
   margin: 20px auto;
   padding: 10px;
   width: 280px;
-  border: 1px solid ${({ theme }) => theme.buttonBorderColor};
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 `;
 
 export const TabButton = styled.button<{ isActive: boolean }>`
@@ -162,7 +162,7 @@ export const TabButton = styled.button<{ isActive: boolean }>`
 export const SearchContainer = styled.div`
   background: ${({ theme }) => theme.navBackgroundColor};
   border-radius: 8px;
-  border: 1px solid black;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
   @media (min-width: 768px) {
     margin: 50px;
