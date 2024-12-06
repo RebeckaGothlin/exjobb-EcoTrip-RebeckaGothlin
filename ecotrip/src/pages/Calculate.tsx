@@ -1,15 +1,7 @@
 import { useState, useContext, FormEvent, useEffect } from "react";
 import {
-  CloseModalButton,
-  ModalContainer,
-  ModalOverlay,
   ParagraphText,
   SearchContainer,
-  StyledTable,
-  StyledTableDataCell,
-  StyledTableHeader,
-  StyledTableHeaderCell,
-  StyledTableRow,
   TextContainer,
   TextTitle,
 } from "../components/styled/StyledContent";
@@ -17,7 +9,6 @@ import { Form, Input, Para } from "../components/styled/StyledForm";
 import {
   CalculateButton,
   HistoryButton,
-  HistoryDeleteButton,
   HistorySaveButton,
   HistorySaveButtonMap,
 } from "../components/styled/StyledButtons";
@@ -38,11 +29,11 @@ import { customIcon } from "../icons/icon";
 // import { MdOutlineTextFields } from "react-icons/md";
 // import { IoMdPin } from "react-icons/io";
 import { CiBookmark } from "react-icons/ci";
-import { IoBookmarksOutline, IoClose } from "react-icons/io5";
+import { IoBookmarksOutline} from "react-icons/io5";
 // import { RxInput } from "react-icons/rx";
-import { MdDelete } from "react-icons/md";
 import { calculateEmissions } from "../components/calculateEmissions";
 import { TabNavigate } from "../components/TabNavigate";
+import { HistoryModal } from "../components/HistoryModal";
 // import { IoMdCloseCircle } from "react-icons/io";
 
 export const Calculate = () => {
@@ -436,58 +427,11 @@ export const Calculate = () => {
           </>
         )}
         {showHistory && (
-          <ModalOverlay onClick={() => setShowHistory(false)}>
-            <ModalContainer onClick={(e) => e.stopPropagation()}>
-              <CloseModalButton
-                onClick={() => setShowHistory(false)}
-                aria-label="Close saved searches modal"
-              >
-                <IoClose size="35px" title="Close" />
-              </CloseModalButton>
-              {savedSearches.length > 0 ? (
-                <StyledTable>
-                  <StyledTableHeader>
-                    <StyledTableRow>
-                      <StyledTableHeaderCell>Time</StyledTableHeaderCell>
-                      <StyledTableHeaderCell>From</StyledTableHeaderCell>
-                      <StyledTableHeaderCell>To</StyledTableHeaderCell>
-                      <StyledTableHeaderCell>Distance</StyledTableHeaderCell>
-                      <StyledTableHeaderCell>Emissions</StyledTableHeaderCell>
-                    </StyledTableRow>
-                  </StyledTableHeader>
-                  <tbody>
-                    {savedSearches.map((search: Search, index: number) => (
-                      <StyledTableRow key={index}>
-                        <StyledTableDataCell>{search.time}</StyledTableDataCell>
-                        <StyledTableDataCell>{search.from}</StyledTableDataCell>
-                        <StyledTableDataCell>{search.to}</StyledTableDataCell>
-                        <StyledTableDataCell>
-                          {search.result}
-                        </StyledTableDataCell>
-                        <StyledTableDataCell>
-                          {(search.data || [])
-                            .map(
-                              (item: EmissionItem) =>
-                                `${item.name}: ${item.emissions.toFixed(0)} kg`
-                            )
-                            .join(", ")}
-                        </StyledTableDataCell>
-                      </StyledTableRow>
-                    ))}
-                  </tbody>
-                </StyledTable>
-              ) : (
-                <ParagraphText>No saved searches found.</ParagraphText>
-              )}
-              <HistoryDeleteButton
-                onClick={handleClearHistory}
-                aria-label="Clear search history"
-                tabIndex={0}
-              >
-                <MdDelete size="25px" title="Delete searches" />
-              </HistoryDeleteButton>
-            </ModalContainer>
-          </ModalOverlay>
+            <HistoryModal
+            savedSearches={savedSearches}
+            onClose={() => setShowHistory(false)}
+            onClearHistory={handleClearHistory}
+          />
         )}
       </TextContainer>
     </>
