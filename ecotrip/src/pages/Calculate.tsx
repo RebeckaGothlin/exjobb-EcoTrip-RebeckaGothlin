@@ -44,6 +44,7 @@ import { IoBookmarksOutline, IoClose } from "react-icons/io5";
 // import { RxInput } from "react-icons/rx";
 import { FaKeyboard, FaMapMarkedAlt } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { calculateEmissions } from "../components/calculateEmissions";
 // import { IoMdCloseCircle } from "react-icons/io";
 
 export const Calculate = () => {
@@ -106,41 +107,13 @@ export const Calculate = () => {
   const handleCalculate = async () => {
     setLoading(true);
     try {
-      const fromLocation = fromCoords || (await fetchCoordinates(from));
-      const toLocation = toCoords || (await fetchCoordinates(to));
-
-      if (fromLocation && toLocation) {
-        const fromCity = await fetchCityFromCoordinates(
-          fromLocation.lat,
-          fromLocation.lon
-        );
-        const toCity = await fetchCityFromCoordinates(
-          toLocation.lat,
-          toLocation.lon
-        );
-
-        const distance = calculateDistance(
-          fromLocation.lat,
-          fromLocation.lon,
-          toLocation.lat,
-          toLocation.lon
-        );
-        setData([
-          { name: "Car", emissions: distance * 0.12 },
-          { name: "Train", emissions: distance * 0.04 },
-          { name: "Bus", emissions: distance * 0.07 },
-          { name: "Plane", emissions: distance * 0.25 },
-        ]);
-        setResult(
-          `Distance from ${fromCity} to ${toCity}: ${distance.toFixed(0)} km`
-        );
-        setGraphVisible(true);
-      } else {
-        setResult("Coordinates are invalid.");
-      }
+      const { data, distance, fromCity, toCity } = await calculateEmissions(from, to, fromCoords, toCoords);
+      setData(data);
+      setResult(`Distance from ${fromCity} to ${toCity}: ${distance.toFixed(0)} km`);
+      setGraphVisible(true);
     } catch (error) {
-      console.error(error);
-      setResult("An error occurred. Please check input or map.");
+      console.error("Error fetching coordinates or calculating distance:", error);
+      setResult("An error occurred. Please check input or map.");      
     } finally {
       setLoading(false);
     }
