@@ -19,3 +19,10 @@ export const SourceLinks = styled.section`
     }
   }
 `;
+
+export const FlexContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+`;

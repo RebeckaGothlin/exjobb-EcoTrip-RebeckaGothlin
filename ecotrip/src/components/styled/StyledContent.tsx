@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { MapContainer as LeafletMapContainer } from 'react-leaflet';
+
 
 export const GlobalWrapper = styled.div`
   width: 100vw;
@@ -196,3 +198,22 @@ export const CardContent = styled.p`
   color: ${({ theme }) => theme.textContainerTextColor};
 `;
 
+export const BarGraphContainer = styled.div`
+  height: 400px;
+  width: 100%;
+  margin-top: 30px;
+`;
+
+export const MapWrapper = styled.div`
+  margin-bottom: 20px;
+  height: 500px;
+`;
+
+export const StyledMapContainer = styled(LeafletMapContainer)`
+  height: 500px;
+  width: 100%;
+`;
+
+export const GradientDefs = styled.svg`
+  height: 0;
+`;

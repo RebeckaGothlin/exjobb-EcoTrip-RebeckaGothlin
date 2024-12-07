@@ -1,7 +1,11 @@
 import { useState, useContext, FormEvent, useEffect } from "react";
 import {
+  BarGraphContainer,
+  GradientDefs,
+  MapWrapper,
   ParagraphText,
   SearchContainer,
+  StyledMapContainer,
   TextContainer,
   TextTitle,
 } from "../components/styled/StyledContent";
@@ -21,7 +25,7 @@ import { calculateDistance } from "../service/distanceUtil";
 import { StyledSpinner } from "../components/styled/StyledSpinner";
 import { ResponsiveBar } from "@nivo/bar";
 import { Navbar } from "../components/Navbar";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { TileLayer, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Coordinates, MapClickHandler } from "../components/MapClickHandler";
 import { EmissionItem, Search } from "../models/types";
@@ -278,9 +282,8 @@ export const Calculate = () => {
             </Form>
           ) : (
             <>
-              <div style={{ marginBottom: "20px", height: "500px" }}>
-                <MapContainer
-                  style={{ height: "500px", width: "100%" }}
+              <MapWrapper>
+                <StyledMapContainer
                   center={[40, 20]}
                   zoom={2}
                 >
@@ -302,14 +305,14 @@ export const Calculate = () => {
                       icon={customIcon}
                     />
                   )}
-                </MapContainer>
+                </StyledMapContainer>
                 <CalculateButton
                   onClick={handleCalculate}
                   aria-label="Calculate emissions from map locations"
                 >
                   Calculate
                 </CalculateButton>
-              </div>
+              </MapWrapper>
               <HistorySaveButtonMap
                 onClick={toggleHistory}
                 aria-label="Show saved searches"
@@ -333,8 +336,7 @@ export const Calculate = () => {
               data.length > 0 &&
               graphVisible && (
                 <>
-                  <div
-                    style={{ height: 400, width: "100%", marginTop: "30px" }}
+                  <BarGraphContainer
                   >
                     <ResponsiveBar
                       data={data.map((item) => ({
@@ -400,7 +402,7 @@ export const Calculate = () => {
                       }}
                       label={(d) => (d.value ? `${d.value.toFixed(0)} kg` : "")}
                     />
-                    <svg style={{ height: 0 }}>
+                    <GradientDefs>
                       <defs>
                         <linearGradient
                           id="barGradient"
@@ -413,8 +415,8 @@ export const Calculate = () => {
                           <stop offset="100%" stopColor="#feb47b" />
                         </linearGradient>
                       </defs>
-                    </svg>
-                  </div>
+                    </GradientDefs>
+                  </BarGraphContainer>
                   <HistoryButton
                     onClick={handleSave}
                     aria-label="Save this search"

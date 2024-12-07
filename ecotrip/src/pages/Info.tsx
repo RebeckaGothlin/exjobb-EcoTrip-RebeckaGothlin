@@ -7,6 +7,7 @@ import {
   TextTitle,
 
 } from "../components/styled/StyledContent";
+import { FlexContainer } from "../components/styled/StyledInfo";
 // import { ParaSource, SourceLinks } from "../components/styled/StyledInfo";
 
 export const Info = () => {
@@ -16,7 +17,7 @@ export const Info = () => {
       <TextContainer>
         <TextTitle>Information</TextTitle>
 
-        <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "20px" }}>
+        <FlexContainer>
           <InfoCard>
             <img src="/homepic.jpg" alt="A river surrounded by forested hills under a clear sky." loading="lazy"/>
             <CardTitle>The Impact of Carbon Emissions on Nature and People</CardTitle>
@@ -32,7 +33,7 @@ export const Info = () => {
               Choosing trains over planes or cars is one way to significantly reduce your carbon footprint. Trains emit far less CO₂ per passenger and are more energy-efficient. Many trains are powered by electricity, and when that electricity comes from renewable sources, the emissions are nearly zero.
             </CardContent>
           </InfoCard>
-        </div>
+        </FlexContainer>
 
         {/* <ParaSource>Sources:</ParaSource>
         <SourceLinks>

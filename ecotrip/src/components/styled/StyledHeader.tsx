@@ -375,3 +375,27 @@ export const CustomShapeDivider = styled.div`
     }
   }
 `;
+
+export const Line = styled.span`
+  display: block;
+  height: 3px;
+  width: 25px;
+  background-color: #000; 
+  transition: all 0.3s ease;
+`;
+
+export const RotatedLineTop = styled(Line)`
+  transform: rotate(45deg);
+  position: relative;
+  top: 8.5px;
+`;
+
+export const RotatedLineBottom = styled(Line)`
+  transform: rotate(-45deg);
+  position: relative;
+  top: -8px;
+`;
+
+export const HiddenLine = styled(Line)`
+  opacity: 0;
+`;

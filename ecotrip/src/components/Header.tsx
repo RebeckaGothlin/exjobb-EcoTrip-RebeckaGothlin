@@ -20,6 +20,10 @@ import {
   UnderTitleMobile,
   UnderTitleDesktop,
   Title,
+  HiddenLine,
+  Line,
+  RotatedLineBottom,
+  RotatedLineTop,
 } from "./styled/StyledHeader";
 import ThemeToggle from "./ThemeToggle";
 import { LinkButton } from "./styled/StyledButtons";
@@ -100,32 +104,19 @@ export const Header = () => {
           >
             {menuOpen ? (
               <>
-                <span
-                  className="line"
-                  style={{
-                    transform: "rotate(45deg)",
-                    position: "relative",
-                    top: "8.5px",
-                  }}
-                />
-                <span className="line" style={{ opacity: 0 }} />
-                <span
-                  className="line"
-                  style={{
-                    transform: "rotate(-45deg)",
-                    position: "relative",
-                    top: "-8px",
-                  }}
-                />
+                <RotatedLineTop />
+                <HiddenLine />
+                <RotatedLineBottom />
               </>
             ) : (
               <>
-                <span className="line" />
-                <span className="line" />
-                <span className="line" />
+                <Line />
+                <Line />
+                <Line />
               </>
             )}
           </HamburgerMenuButton>
+
           <NavItem>
             <NavLinkStyledTitle to="/" aria-label="Go to EcoTrip homepage">
               EcoTrip
