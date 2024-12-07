@@ -25,9 +25,10 @@ export const fetchCityFromCoordinates = async (lat: number, lon: number) => {
         throw new Error("No city found for the specified coordinates");
     }
 
-    // Försök att hämta stadens namn från "address"-objektet
+    // Försök att hämta stadens namn från "address"-objektet, annars står det unknown location
     return response.data.address.city || 
            response.data.address.town || 
            response.data.address.village || 
+           response.data.address.hamlet ||
            "Unknown location";
 };
