@@ -84,10 +84,15 @@ export const Navbar = () => {
                 </NavLinkStyled>
               </OverlayMenuItem>
               <OverlayMenuItem>
+                <NavLinkStyled to="/faq" onClick={toggleMenu} aria-label="Frequently asked questions">
+                  FAQ
+                </NavLinkStyled>
+              </OverlayMenuItem>
+              {/* <OverlayMenuItem>
                 <NavLinkStyled to="/about" onClick={toggleMenu} aria-label="About EcoTrip">
                   About
                 </NavLinkStyled>
-              </OverlayMenuItem>
+              </OverlayMenuItem> */}
               <OverlayMenuItem></OverlayMenuItem>
             </OverlayMenu>
           )}

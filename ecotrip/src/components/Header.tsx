@@ -89,10 +89,20 @@ export const Header = () => {
               </NavLinkStyled>
             </NavItem>
             <NavItem>
+              <NavLinkStyled to="/faq" aria-label="Frequently asked questions">
+                FAQ
+              </NavLinkStyled>
+            </NavItem>
+            <NavItem>
+              <NavLinkStyled to="/faq" aria-label="Frequently asked questions">
+                FAQ
+              </NavLinkStyled>
+            </NavItem>
+            {/* <NavItem>
               <NavLinkStyled to="/about" aria-label="About EcoTrip">
                 About
               </NavLinkStyled>
-            </NavItem>
+            </NavItem> */}
             <NavItem className="last-item">{/* <ThemeToggle /> */}</NavItem>
           </NavMenu>
           <HamburgerMenuButton
@@ -148,13 +158,22 @@ export const Header = () => {
               </OverlayMenuItem>
               <OverlayMenuItem>
                 <NavLinkStyled
+                  to="/faq"
+                  onClick={toggleMenu}
+                  aria-label="Frequently asked questions"
+                >
+                  FAQ
+                </NavLinkStyled>
+              </OverlayMenuItem>
+              {/* <OverlayMenuItem>
+                <NavLinkStyled
                   to="/about"
                   onClick={toggleMenu}
                   aria-label="About EcoTrip"
                 >
                   About
                 </NavLinkStyled>
-              </OverlayMenuItem>
+              </OverlayMenuItem> */}
               <OverlayMenuItem></OverlayMenuItem>
             </OverlayMenu>
           )}
