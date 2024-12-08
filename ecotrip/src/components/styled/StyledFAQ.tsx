@@ -8,7 +8,7 @@ export const FAQContainer = styled.div`
 `;
 
 export const Question = styled.h2`
-  font-size: 1.2rem;
+ font-size: 1.2rem;
   font-weight: 400;
   color: ${({ theme }) => theme.textContainerTextColor};
   cursor: pointer;
@@ -17,10 +17,13 @@ export const Question = styled.h2`
   background: ${({ theme }) => theme.navBackgroundColor};
   transition: background-color 0.3s;
   border-bottom: 1px solid #b2a595;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-  &:hover {
+  /* &:hover {
     background-color: #b2a595;
-  }
+  } */
 `;
 
 export const Answer = styled.p`
@@ -29,4 +32,13 @@ export const Answer = styled.p`
   margin: 0;
   padding: 10px 20px;
   border-bottom: 1px solid #b2a595;
+  border-left: 4px solid #b2a595;
+`;
+
+export const Arrow = styled.span<{ isActive: boolean }>`
+  font-size: 1.2rem;
+  margin-left: 10px;
+  transition: transform 0.3s ease; 
+  transform: ${({ isActive }) => (isActive ? 'rotate(180deg)' : 'rotate(0deg)')};
+  will-change: transform; 
 `;
