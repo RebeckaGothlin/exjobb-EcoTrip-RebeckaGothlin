@@ -33,7 +33,6 @@ dark: {
     buttonBackgroundColor: "transparent", 
     buttonTextColor: "#f7e8d0", 
     buttonBorderColor: "#f7e8d0",
-    // sliderBackgroundColor: "linear-gradient(45deg, #ED3975, #ff9f71)",
     sliderBackgroundColor: "#f7e8d0",
     sliderBorderColor: "none", 
     tabButtonTextColor: "#f7e8d0",
