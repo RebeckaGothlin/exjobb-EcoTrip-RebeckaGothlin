@@ -30,15 +30,11 @@ import "leaflet/dist/leaflet.css";
 import { Coordinates, MapClickHandler } from "../components/MapClickHandler";
 import { EmissionItem, Search } from "../models/types";
 import { customIcon } from "../icons/icon";
-// import { MdOutlineTextFields } from "react-icons/md";
-// import { IoMdPin } from "react-icons/io";
 import { CiBookmark } from "react-icons/ci";
 import { IoBookmarksOutline} from "react-icons/io5";
-// import { RxInput } from "react-icons/rx";
 import { calculateEmissions } from "../components/calculateEmissions";
 import { TabNavigate } from "../components/TabNavigate";
 import { HistoryModal } from "../components/HistoryModal";
-// import { IoMdCloseCircle } from "react-icons/io";
 
 export const Calculate = () => {
   const [from, setFrom] = useState("");
@@ -52,7 +48,6 @@ export const Calculate = () => {
   const theme = useContext(ThemeContext);
   const [fromCoords, setFromCoords] = useState<Coordinates | null>(null);
   const [toCoords, setToCoords] = useState<Coordinates | null>(null);
-  // const [useMap, setUseMap] = useState(false);
   const [activeTab, setActiveTab] = useState<"map" | "input">("input");
   const [graphVisible, setGraphVisible] = useState(false);
   const [data, setData] = useState<EmissionItem[]>([
@@ -318,7 +313,6 @@ export const Calculate = () => {
                 aria-label="Show saved searches"
                 tabIndex={0}
               >
-                {/* {showHistory ? "Hide saved searches" : "Show saved searches"} */}
                 <IoBookmarksOutline size="25px" title="Show saved searches" />
               </HistorySaveButtonMap>
             </>
