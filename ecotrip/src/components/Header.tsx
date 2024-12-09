@@ -93,11 +93,6 @@ export const Header = () => {
                 FAQ
               </NavLinkStyled>
             </NavItem>
-            <NavItem>
-              <NavLinkStyled to="/faq" aria-label="Frequently asked questions">
-                FAQ
-              </NavLinkStyled>
-            </NavItem>
             {/* <NavItem>
               <NavLinkStyled to="/about" aria-label="About EcoTrip">
                 About
