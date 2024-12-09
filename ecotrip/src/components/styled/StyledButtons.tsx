@@ -9,7 +9,6 @@ export const ContentButton = styled.button`
   border: 1.5px solid ${({ theme }) => theme.buttonBorderColor};
   display: block;
   margin: 20px auto;
-  /* margin-top: 20px; */
   cursor: pointer;
   padding: 7px 20px;
   text-align: center;
@@ -21,10 +20,6 @@ export const ContentButton = styled.button`
   touch-action: manipulation;
 
   &:hover {
-    /* box-shadow: ${({ theme }) =>
-      theme.name === "Dark"
-        ? "rgba(255, 148, 7, 0.35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px"
-        : "0 0 10px rgba(0, 0, 0, 0.1)"}; */
     transform: scale(1.05);
   }
 
@@ -81,9 +76,6 @@ export const NavButton = styled.button`
   font-size: 0.9rem;
   margin-top: 5px;
   color: black;
-  /* border: 1.5px solid ${({ theme }) =>
-    theme.name === "Light" ? "black" : "white"};
-  color: ${({ theme }) => (theme.name === "Light" ? "black" : "white")}; */
   cursor: pointer;
   &:hover {
     border: 2px solid
@@ -104,11 +96,8 @@ export const HistorySaveButton = styled.button`
       ? theme.navBackgroundColor
       : theme.navBackgroundColor};
   color: ${({ theme }) => theme.buttonTextColor};
-  /* border: ${({ theme }) =>
-    theme.name === "Light" ? theme.buttonBorderColor : "none"}; */
   display: block;
   margin: 0 auto;
-  /* margin-top: 20px; */
   cursor: pointer;
   padding: 7px 20px;
   text-align: center;
@@ -118,16 +107,10 @@ export const HistorySaveButton = styled.button`
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  /* border: 1.5px solid ${({ theme }) => theme.buttonBorderColor}; */
-  /* margin-top: 90px; */
 
   &:hover {
     transform: scale(0.9);
   }
-
-  /* &:focus {
-    outline: none;
-  } */
 
   svg {
     width: 25px;
@@ -141,11 +124,8 @@ export const HistorySaveButtonMap = styled.button`
       ? theme.navBackgroundColor
       : theme.navBackgroundColor};
   color: ${({ theme }) => theme.buttonTextColor};
-  /* border: ${({ theme }) =>
-    theme.name === "Light" ? theme.buttonBorderColor : "none"}; */
   display: block;
   margin: 0 auto;
-  /* margin-top: 20px; */
   cursor: pointer;
   padding: 7px 20px;
   text-align: center;
@@ -155,18 +135,13 @@ export const HistorySaveButtonMap = styled.button`
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  /* border: 1.5px solid ${({ theme }) => theme.buttonBorderColor}; */
   margin-top: 90px;
 
   &:hover {
     transform: scale(0.9);
   }
 
-   /* &:focus {
-    outline: none;
-  } */
-
-    svg {
+  svg {
     width: 25px;
     height: 25px;
   }
@@ -178,11 +153,8 @@ export const HistoryButton = styled.button`
       ? theme.textContainerBackgroundColor
       : theme.textContainerBackgroundColor};
   color: ${({ theme }) => theme.buttonTextColor};
-  /* border: ${({ theme }) =>
-    theme.name === "Light" ? theme.buttonBorderColor : "none"}; */
   display: block;
   margin: 0 auto;
-  /* margin-top: 20px; */
   cursor: pointer;
   padding: 7px 20px;
   text-align: center;
@@ -192,18 +164,13 @@ export const HistoryButton = styled.button`
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  /* border: 1.5px solid ${({ theme }) => theme.buttonBorderColor}; */
   margin-top: 30px;
 
   &:hover {
     transform: scale(1.05);
   }
 
-    /* &:focus {
-    outline: none;
-  } */
-
-    svg {
+  svg {
     width: 25px;
     height: 25px;
   }
@@ -212,11 +179,8 @@ export const HistoryButton = styled.button`
 export const HistoryDeleteButton = styled.button`
   background: transparent;
   color: ${({ theme }) => theme.buttonTextColor};
-  /* border: ${({ theme }) =>
-    theme.name === "Light" ? theme.buttonBorderColor : "none"}; */
   display: block;
   margin: 0 auto;
-  /* margin-top: 20px; */
   cursor: pointer;
   padding: 7px 20px;
   text-align: center;
@@ -226,19 +190,13 @@ export const HistoryDeleteButton = styled.button`
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  /* border: 1.5px solid ${({ theme }) => theme.buttonBorderColor}; */
-  /* margin-top: 90px; */
 
   &:hover {
     transform: scale(1.1);
     color: #e03e3e;
   }
 
-    /* &:focus {
-    outline: none;
-  } */
-
-    svg {
+  svg {
     width: 25px;
     height: 25px;
   }
