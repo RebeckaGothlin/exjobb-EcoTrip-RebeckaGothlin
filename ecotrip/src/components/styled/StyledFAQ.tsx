@@ -21,9 +21,6 @@ export const Question = styled.h2`
   justify-content: space-between;
   align-items: center;
 
-  /* &:hover {
-    background-color: #b2a595;
-  } */
 `;
 
 export const Answer = styled.p`
