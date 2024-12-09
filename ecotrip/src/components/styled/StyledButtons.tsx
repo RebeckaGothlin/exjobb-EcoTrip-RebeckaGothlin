@@ -14,7 +14,7 @@ export const ContentButton = styled.button`
   text-align: center;
   text-decoration: none;
   transition: all 250ms;
-  font-size: 16px;
+  font-size: 1rem;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -103,7 +103,7 @@ export const HistorySaveButton = styled.button`
   text-align: center;
   text-decoration: none;
   transition: all 250ms;
-  font-size: 16px;
+  font-size: 1rem;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -131,7 +131,7 @@ export const HistorySaveButtonMap = styled.button`
   text-align: center;
   text-decoration: none;
   transition: all 250ms;
-  font-size: 16px;
+  font-size: 1rem;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -160,7 +160,7 @@ export const HistoryButton = styled.button`
   text-align: center;
   text-decoration: none;
   transition: all 250ms;
-  font-size: 16px;
+  font-size: 1rem;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -186,7 +186,7 @@ export const HistoryDeleteButton = styled.button`
   text-align: center;
   text-decoration: none;
   transition: all 250ms;
-  font-size: 16px;
+  font-size: 1rem;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -216,7 +216,7 @@ export const CalculateButton = styled.button`
   text-align: center;
   text-decoration: none;
   transition: all 250ms;
-  font-size: 16px;
+  font-size: 1rem;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
