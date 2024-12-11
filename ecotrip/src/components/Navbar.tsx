@@ -43,8 +43,11 @@ export const Navbar = () => {
               <NavLinkStyled to="/info" aria-label="Learn more about eco-friendly travel">Information</NavLinkStyled>
             </NavItem>
             <NavItem>
-              <NavLinkStyled to="/about" aria-label="About EcoTrip">About</NavLinkStyled>
+              <NavLinkStyled to="/faq" aria-label="About EcoTrip">FAQ</NavLinkStyled>
             </NavItem>
+            {/* <NavItem>
+              <NavLinkStyled to="/about" aria-label="About EcoTrip">About</NavLinkStyled>
+            </NavItem> */}
             <NavItem className="last-item">{/* <ThemeToggle /> */}</NavItem>
           </NavMenu>
           <HamburgerMenuButton             role="button"

@@ -5,6 +5,14 @@ export const FAQContainer = styled.div`
   margin: 0 auto;
   font-family: 'Poppins';
   border: 1px solid #b2a595;
+
+  @media (min-width: 768px) {
+    width: calc(100vw - 200px);
+  }
+
+  @media (min-width: 1024px) {
+    width: calc(100vw - 500px);
+  }
 `;
 
 export const Question = styled.h2`
