@@ -51,6 +51,14 @@ export const StyledTable = styled.table`
   border: 1px solid #fff;
   table-layout: fixed;
   word-wrap: break-word;
+
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 398px) {
+    font-size: 0.5rem;
+  }
 `;
 
 export const StyledTableHeader = styled.thead`

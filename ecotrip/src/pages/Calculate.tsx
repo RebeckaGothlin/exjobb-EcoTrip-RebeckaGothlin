@@ -31,7 +31,7 @@ import { Coordinates, MapClickHandler } from "../components/MapClickHandler";
 import { EmissionItem, Search } from "../models/types";
 import { customIcon } from "../icons/icon";
 import { CiBookmark } from "react-icons/ci";
-import { IoBookmarksOutline} from "react-icons/io5";
+import { IoBookmarksOutline } from "react-icons/io5";
 import { calculateEmissions } from "../components/calculateEmissions";
 import { TabNavigate } from "../components/TabNavigate";
 import { HistoryModal } from "../components/HistoryModal";
@@ -278,10 +278,7 @@ export const Calculate = () => {
           ) : (
             <>
               <MapWrapper>
-                <StyledMapContainer
-                  center={[40, 20]}
-                  zoom={2}
-                >
+                <StyledMapContainer center={[40, 20]} zoom={2}>
                   <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
                   <MapClickHandler
@@ -330,8 +327,7 @@ export const Calculate = () => {
               data.length > 0 &&
               graphVisible && (
                 <>
-                  <BarGraphContainer
-                  >
+                  <BarGraphContainer>
                     <ResponsiveBar
                       data={data.map((item) => ({
                         transport: item.name,
@@ -423,7 +419,7 @@ export const Calculate = () => {
           </>
         )}
         {showHistory && (
-            <HistoryModal
+          <HistoryModal
             savedSearches={savedSearches}
             onClose={() => setShowHistory(false)}
             onClearHistory={handleClearHistory}
