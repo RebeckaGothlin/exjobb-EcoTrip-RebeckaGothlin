@@ -266,7 +266,7 @@ export const UnderTitleDesktop = styled.p`
   margin-top: -20px;
 `;
 
-export const SubtitleMobile = styled.p`
+export const SubtitleMobile = styled.section`
   font-size: 1rem;
   font-family: "Poppins";
   color: white;
@@ -278,6 +278,7 @@ export const SubtitleMobile = styled.p`
   z-index: 1;
   white-space: normal;
   margin-left: 15px;
+  margin-top: 20px;
 
   @media (min-width: 768px) {
     display: none;
@@ -289,7 +290,7 @@ export const SubtitleMobile = styled.p`
   }
 `;
 
-export const SubtitleDesktop = styled.p`
+export const SubtitleDesktop = styled.section`
   font-size: 1.6rem;
   font-family: "Poppins";
   color: white;
@@ -301,6 +302,7 @@ export const SubtitleDesktop = styled.p`
   z-index: 1;
   white-space: normal;
   margin-left: 20px;
+  margin-top: 15px;
 
   @media (max-width: 768px) {
     display: none;
