@@ -7,6 +7,12 @@ interface TabNavigationProps {
   setActiveTab: (tab: "map" | "input") => void;
 }
 
+/**
+ * A navigation component for switching between "map" and "input" views.
+ *
+ * @param {TabNavigationProps} props - The component props.
+ * @returns {JSX.Element} - The rendered TabNavigate component.
+ */
 export const TabNavigate: React.FC<TabNavigationProps> = ({
   activeTab,
   setActiveTab,

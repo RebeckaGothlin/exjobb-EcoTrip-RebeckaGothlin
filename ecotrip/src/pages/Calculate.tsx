@@ -50,12 +50,20 @@ export const Calculate = () => {
   const [toCoords, setToCoords] = useState<Coordinates | null>(null);
   const [activeTab, setActiveTab] = useState<"map" | "input">("input");
   const [graphVisible, setGraphVisible] = useState(false);
+  /**
+   * Emission data for various transport types.
+   * @type {[EmissionItem[], React.Dispatch<React.SetStateAction<EmissionItem[]>>]}
+   */
   const [data, setData] = useState<EmissionItem[]>([
     { name: "Car", emissions: 0 },
     { name: "Train", emissions: 0 },
     { name: "Bus", emissions: 0 },
     { name: "Plane", emissions: 0 },
   ]);
+  /**
+   * List of saved searches from localStorage.
+   * @type {[Search[], React.Dispatch<React.SetStateAction<Search[]>>]}
+   */
   const [savedSearches, setSavedSearches] = useState<Search[]>(
     JSON.parse(localStorage.getItem("savedSearches") || "[]").map(
       (search: Partial<Search>) => ({
@@ -129,17 +137,17 @@ export const Calculate = () => {
     setHasError(false);
     scrollDown();
     try {
-      // Hämta koordinater (latitud och longitud) för både "from" och "to"-städerna
+      // Fetch coordinates (latitude and longitude) for both the "from" and "to" cities
       const fromCoords = await fetchCoordinates(from);
       const toCoords = await fetchCoordinates(to);
-      // Beräkna avståndet mellan de två punkterna genom att använda haversine-formeln
+      // Calculate the distance between the two points using the haversine formula
       const distance = calculateDistance(
         fromCoords.lat,
         fromCoords.lon,
         toCoords.lat,
         toCoords.lon
       );
-      // Uppdatera data med koldioxidutsläpp för olika transportmedel baserat på avståndet
+      // Update data with CO2 emissions for various modes of transport based on the distance
       setData([
         { name: "Car", emissions: distance * 0.12 },
         { name: "Train", emissions: distance * 0.04 },
@@ -213,6 +221,10 @@ export const Calculate = () => {
     }
   };
 
+  /**
+   * Handles form submission for input fields.
+   * @param {FormEvent} e The form submission event.
+   */
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
     handleClick();

@@ -1,6 +1,14 @@
 import axios from "axios";
 
-// funktion för att hämta koordinater för en stad från PpenStreetMap
+/**
+ * Fetches the coordinates (latitude and longitude) for a given city using OpenStreetMap.
+ *
+ * @param {string} city - The name of the city to fetch coordinates for.
+ * @returns {Promise<{ lat: number, lon: number }>} - A promise that resolves to an object containing:
+ *   - `lat`: The latitude of the city.
+ *   - `lon`: The longitude of the city.
+ * @throws {Error} - Throws an error if no coordinates are found for the specified city.
+ */
 export const fetchCoordinates = async (city: string) => {
     const response = await axios.get(
         `https://nominatim.openstreetmap.org/search?q=${city}&format=json&limit=1`
@@ -10,9 +18,9 @@ export const fetchCoordinates = async (city: string) => {
         throw new Error('No coordinates found for the specified city');
     }
 
-    // Destrukturerar latitud och longitud från svaret
+    // Destructure latitude and longitude from the response
     const { lat, lon } = response.data[0];
-    // Returnerar latitud och longitud som flyttal
+    // Return latitude and longitude as floats
     return { lat: parseFloat(lat), lon: parseFloat(lon) };
 };
 
@@ -25,7 +33,7 @@ export const fetchCityFromCoordinates = async (lat: number, lon: number) => {
         throw new Error("No city found for the specified coordinates");
     }
 
-    // Försök att hämta stadens namn från "address"-objektet, annars står det unknown location
+    // Attempt to retrieve the city name from the "address" object, or fallback to "unknown location"
     return response.data.address.city || 
            response.data.address.town || 
            response.data.address.village || 
