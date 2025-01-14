@@ -8,7 +8,6 @@ import {
 
 } from "../components/styled/StyledContent";
 import { FlexContainer } from "../components/styled/StyledInfo";
-// import { ParaSource, SourceLinks } from "../components/styled/StyledInfo";
 
 export const Info = () => {
   return (
@@ -34,42 +33,6 @@ export const Info = () => {
             </CardContent>
           </InfoCard>
         </FlexContainer>
-
-        {/* <ParaSource>Sources:</ParaSource>
-        <SourceLinks>
-          <a
-            href="https://www.ipcc.ch/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit the official website of the Intergovernmental Panel on Climate Change"
-          >
-            The Intergovernmental Panel on Climate Change (IPCC)
-          </a>
-          <a
-            href="https://www.unep.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit the official website of the United Nations Environment Programme"
-          >
-            United Nations Environment Programme (UNEP)
-          </a>
-          <a
-            href="https://www.who.int/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit the official website of the World Health Organization"
-          >
-            World Health Organization (WHO)
-          </a>
-          <a
-            href="https://uic.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit the official website of the International Union of Railways"
-          >
-            International Union of Railways (UIC)
-          </a>
-        </SourceLinks> */}
       </TextContainer>
     </>
   );

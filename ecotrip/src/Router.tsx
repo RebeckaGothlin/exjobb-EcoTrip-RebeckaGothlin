@@ -4,7 +4,6 @@ import { NotFound } from "./pages/NotFound";
 import { Home } from "./pages/Home";
 import { Calculate } from "./pages/Calculate";
 import { Info } from "./pages/Info";
-// import { About } from "./pages/About";
 import { FAQ } from "./pages/FAQ";
 
 export const router = createBrowserRouter([
@@ -29,10 +28,6 @@ export const router = createBrowserRouter([
         path: "/faq",
         element: <FAQ></FAQ>,
       },
-      // {
-      //   path: "/about",
-      //   element: <About></About>,
-      // },
     ],
   },
 ]);

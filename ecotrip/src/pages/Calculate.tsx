@@ -259,14 +259,12 @@ export const Calculate = () => {
 
           {activeTab === "input" ? (
             <Form onSubmit={handleSubmit}>
-              {/* <Para>I want to travel from:</Para> */}
               <Input
                 type="text"
                 value={from}
                 placeholder="From.."
                 onChange={(e) => setFrom(e.target.value)}
               />
-              {/* <Para>I want to travel to:</Para> */}
               <Input
                 type="text"
                 value={to}

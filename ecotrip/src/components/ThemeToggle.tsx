@@ -30,7 +30,6 @@ const Slider = styled.span`
   height: 34px;
   background: ${({ theme }) => theme.sliderBackgroundColor};
   border: ${({ theme }) => theme.sliderBorderColor};
-  /* background: linear-gradient(#004E41, #51b8a7); */
   border-radius: 50px;
   position: relative;
   transition: 0.4s;
@@ -44,8 +43,7 @@ const Slider = styled.span`
     background: ${({ theme }) =>
       theme.name === "Light"
         ? theme.sliderBackgroundColor
-        : "linear-gradient(#51b8a7, #004E41)"};
-    /* background-color: black; */
+        : "linear-gradient(#faf0e1, #faf0e1)"};
   }
 
   &::before {
@@ -56,12 +54,7 @@ const Slider = styled.span`
     border-radius: 50%;
     left: 4px;
     transition: 0.4s;
-    /* background-color: white; */
-    /* background-color: ${({ theme }) =>
-      theme.name === "Light" ? "black" : "white"};
-     */
     background-color: ${({ theme }) => theme.textContainerBackgroundColor};
-    /* background-color: black; */
   }
 
   ${ToggleInput}:checked + &::before {
@@ -71,17 +64,11 @@ const Slider = styled.span`
 
 const SunIcon = styled(FaSun)`
   font-size: 18px;
-  /* color: white; */
-  /* color: ${({ theme }) => (theme.name === "Light" ? "black" : "white")}; */
-  /* color: black; */
   color: ${({ theme }) => theme.textContainerBackgroundColor};
 `;
 
 const MoonIcon = styled(FaMoon)`
   font-size: 18px;
-  /* color: white; */
-  /* color: ${({ theme }) => (theme.name === "Light" ? "black" : "white")}; */
-  /* color: black; */
   color: ${({ theme }) => theme.textContainerBackgroundColor};
 `;
 

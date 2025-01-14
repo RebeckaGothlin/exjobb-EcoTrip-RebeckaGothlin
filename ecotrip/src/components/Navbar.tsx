@@ -91,11 +91,6 @@ export const Navbar = () => {
                   FAQ
                 </NavLinkStyled>
               </OverlayMenuItem>
-              {/* <OverlayMenuItem>
-                <NavLinkStyled to="/about" onClick={toggleMenu} aria-label="About EcoTrip">
-                  About
-                </NavLinkStyled>
-              </OverlayMenuItem> */}
               <OverlayMenuItem></OverlayMenuItem>
             </OverlayMenu>
           )}

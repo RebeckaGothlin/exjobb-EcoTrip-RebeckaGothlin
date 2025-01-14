@@ -59,25 +59,25 @@ interface ILoaderProps {
     border-radius: 50%;
     border-style: solid;
   
-    &.white {
+    &.black {
       border-width: 3px 3px 0px 0px;
       border-color: #000000 black transparent transparent;
       animation: 1s ${rotatewhite} linear infinite;
     }
   
-    &.red {
+    &.greengray {
       border-width: 0 0 3px 3px;
       border-color: transparent transparent #79817a;
       animation: 1s ${rotatered} linear infinite;
     }
   
-    &.orange {
+    &.beige {
       border-width: 0 3px 3px 0;
       border-color: transparent #808080 transparent;
       animation: 1s ${rotateorange} linear infinite;
     }
   
-    &.yellow {
+    &.greenish {
       border-width: 3px 0 0 3px;
       border-color: #81988f transparent transparent;
       animation: 1s ${rotateyellow} linear infinite;
@@ -87,10 +87,10 @@ interface ILoaderProps {
   const Loader = ({ size }: ILoaderProps) => {
     return (
       <StyledLoader size={size}>
-        <StyledCircle className="white"></StyledCircle>
-        <StyledCircle className="red"></StyledCircle>
-        <StyledCircle className="orange"></StyledCircle>
-        <StyledCircle className="yellow"></StyledCircle>
+        <StyledCircle className="black"></StyledCircle>
+        <StyledCircle className="greengray"></StyledCircle>
+        <StyledCircle className="beige"></StyledCircle>
+        <StyledCircle className="greenish"></StyledCircle>
       </StyledLoader>
     );
   };

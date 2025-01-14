@@ -230,23 +230,6 @@ export const OverlayMenuItem = styled.div`
   }
 `;
 
-// export const Title = styled.h3`
-//   margin-top: -20px;
-//   font-size: 1.5rem;
-//   font-weight: 200;
-//   color: ${({ theme }) => theme.textContainerTextColor};
-//   text-decoration: none;
-//   margin-bottom: -20px;
-//   /* font-family: "Abril Fatface", serif; */
-//   font-family: "Poppins";
-//   display: flex;
-//   align-items: center;
-
-//   @media (min-width: 768px) {
-//     font-size: 1.5rem;
-//   }
-// `;
-
 export const Title = styled.p`
   color: ${({ theme }) => theme.textContainerTextColor};
   margin-top: -20px;

@@ -38,13 +38,6 @@ export const Header = () => {
     setMenuOpen(!menuOpen);
   };
 
-  // const scrollDown = () => {
-  //   window.scrollBy({
-  //     top: 600,
-  //     behavior: "smooth",
-  //   });
-  // };
-
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" || event.key == " ") {
       toggleMenu();
@@ -61,9 +54,6 @@ export const Header = () => {
         <BackgroundImage backgroundimage={backgroundImageUrl} />
         <Nav>
           <NavMenu>
-            {/* <NavLinkStyledTitle to="/" onClick={toggleMenu}>
-              EcoTrip
-            </NavLinkStyledTitle> */}
             <NavItem>
               <NavLinkStyledTitleDesktop
                 to="/"
@@ -93,11 +83,6 @@ export const Header = () => {
                 FAQ
               </NavLinkStyled>
             </NavItem>
-            {/* <NavItem>
-              <NavLinkStyled to="/about" aria-label="About EcoTrip">
-                About
-              </NavLinkStyled>
-            </NavItem> */}
             <NavItem className="last-item">{/* <ThemeToggle /> */}</NavItem>
           </NavMenu>
           <HamburgerMenuButton
@@ -160,20 +145,10 @@ export const Header = () => {
                   FAQ
                 </NavLinkStyled>
               </OverlayMenuItem>
-              {/* <OverlayMenuItem>
-                <NavLinkStyled
-                  to="/about"
-                  onClick={toggleMenu}
-                  aria-label="About EcoTrip"
-                >
-                  About
-                </NavLinkStyled>
-              </OverlayMenuItem> */}
               <OverlayMenuItem></OverlayMenuItem>
             </OverlayMenu>
           )}
         </Nav>
-        {/* <Title to="/">EcoTrip</Title> */}
         <CustomShapeDivider>
           <svg
             data-name="Layer 1"
@@ -187,7 +162,6 @@ export const Header = () => {
             ></path>
           </svg>
           <SubtitleMobile>
-            {/* <Title>EcoTrip</Title> */}
             <Title>EcoTrip is your</Title>
             <UnderTitleMobile>sustainable travel planner.</UnderTitleMobile>
             <span>
@@ -217,10 +191,6 @@ export const Header = () => {
             </LinkButton>
           </SubtitleDesktop>
         </CustomShapeDivider>
-
-        {/* <ArrowDownContainer>
-          <ArrowDownIcon onClick={scrollDown} />
-        </ArrowDownContainer> */}
       </HeaderContainer>
     </>
   );
