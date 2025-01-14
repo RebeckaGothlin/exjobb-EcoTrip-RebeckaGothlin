@@ -47,8 +47,54 @@ https://exjobb-eco-trip-rebecka-gothlin.vercel.app/
 
 ---
 
-## Created by
+## 👩‍💻 Created by
 
 [![Github](https://img.shields.io/badge/Rebecka%20Göthlin-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/RebeckaGothlin) [![LinkdIn](https://img.shields.io/badge/Rebecka%20Göthlin-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rebecka-g%C3%B6thlin-963037280/)
 
-#### Published: 2025
+---
+
+## 📸 Screenshots
+
+#### Home page
+
+![Home page dark](ecotrip/src/assets/screenshots/ecotrip-home-desktop-dark.png "Home page dark")
+
+![Home page light](ecotrip/src/assets/screenshots/ecotrip-home-desktop-light.png "Home page light")
+
+#### Calculate page
+
+![Calculate page dark](ecotrip/src/assets/screenshots/calculate-desktop-dark.png "Calculate page dark")
+
+![Calculate page light](ecotrip/src/assets/screenshots/calculate-desktop-light.png "Calculate page light")
+
+![Calculate page dark](ecotrip/src/assets/screenshots/calculate-desktop-dark-input.png "Calculate page dark")
+
+![Calculate page dark](ecotrip/src/assets/screenshots/calculate-desktop-dark-map.png "Calculate page dark")
+
+![Calculate page dark](ecotrip/src/assets/screenshots/calculate-desktop-dark-result.png "Calculate page dark")
+
+![Calculate page dark](ecotrip/src/assets/screenshots/calculate-desktop-dark-input.png "Calculate page dark")
+
+![Calculate page dark](ecotrip/src/assets/screenshots/saved-searches-desktop.png "Calculate page dark")
+
+#### Information page
+
+![Information page dark](ecotrip/src/assets/screenshots/information-desktop-dark.png "Information page dark")
+
+![Information page light](ecotrip/src/assets/screenshots/information-desktop-light.png "Information page light")
+
+#### FAQ page
+
+![FAQ page dark](ecotrip/src/assets/screenshots/faq-desktop.png "FAQ page dark")
+
+#### Mobile version
+
+![Home page mobile dark](ecotrip/src/assets/screenshots/ecotrip-home-mobile-dark.png "Home page mobile dark")
+
+![Calculation page mobile light](ecotrip/src/assets/screenshots/calculate-mobile-dark.png "Calculation page mobile dark")
+
+![Information page mobile light](ecotrip/src/assets/screenshots/information-mobile-dark.png "Information page mobile dark")
+
+![FAQ page mobile light](ecotrip/src/assets/screenshots/faq-mobile-dark.png "FAQ page mobile dark")
+
+Published: 2025
