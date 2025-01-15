@@ -7,7 +7,7 @@ export const NotFound = () => {
         <>
             <NotFoundContainer>
                 <div className="img-container-404">
-                    <img src="./../404.png" alt="Error, page not found." />
+                    <img src="./src/assets/img/404.png" alt="Error, page not found." />
                 </div>
                 <Link to={"/"} className="back-a">
                     Go back to home page

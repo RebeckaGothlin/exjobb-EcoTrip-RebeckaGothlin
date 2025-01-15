@@ -6,8 +6,6 @@ import {
   NavMenu,
   NavItem,
   NavLinkStyled,
-  // ArrowDownIcon,
-  // ArrowDownContainer,
   NavLinkStyledTitle,
   HamburgerMenuButton,
   OverlayMenu,
@@ -16,7 +14,6 @@ import {
   SubtitleDesktop,
   SubtitleMobile,
   CustomShapeDivider,
-  // Title,
   UnderTitleMobile,
   UnderTitleDesktop,
   Title,
@@ -30,7 +27,7 @@ import { LinkButton } from "./styled/StyledButtons";
 import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
-  const backgroundImageUrl = "../headerpic-smaller.jpg";
+  const backgroundImageUrl = "./src/assets/img/headerpic-smaller.jpg";
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -83,7 +80,7 @@ export const Header = () => {
                 FAQ
               </NavLinkStyled>
             </NavItem>
-            <NavItem className="last-item">{/* <ThemeToggle /> */}</NavItem>
+            <NavItem className="last-item"></NavItem>
           </NavMenu>
           <HamburgerMenuButton
             role="button"
