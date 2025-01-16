@@ -27,7 +27,7 @@ import { LinkButton } from "./styled/StyledButtons";
 import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
-  const backgroundImageUrl = "./src/assets/img/headerpic-smaller.jpg";
+  const backgroundImageUrl = "../headerpic-smaller.jpg";
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
