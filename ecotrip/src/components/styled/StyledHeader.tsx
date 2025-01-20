@@ -1,6 +1,16 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { NavLink } from "react-router-dom";
-import { FaArrowDown } from "react-icons/fa";
+
+export const GlobalKeyframes = createGlobalStyle`
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`;
 
 export const HeaderContainer = styled.header`
   position: relative;
@@ -26,6 +36,7 @@ export const BackgroundImage = styled.div<{ backgroundimage: string }>`
   height: 100%;
   z-index: -1;
   will-change: opacity;
+  
   @media (max-width: 768px) {
     background-position: 80% center;
   }
@@ -42,6 +53,7 @@ export const Nav = styled.nav`
   justify-content: space-between;
   z-index: 10;
   font-family: "Poppins", serif;
+  animation: fadeIn 0.8s ease-out forwards;
 
   @media (max-width: 768px) {
     justify-content: flex-end;
@@ -172,6 +184,7 @@ export const HamburgerMenuButton = styled.div`
     cursor: pointer;
     z-index: 20;
     margin-right: 10px;
+    animation: fadeIn 1s ease-out forwards;
 
     span {
       width: 100%;
@@ -179,37 +192,38 @@ export const HamburgerMenuButton = styled.div`
       background-color: ${({ theme }) => theme.navTextColor};
       border-radius: 2px;
       transition: all 0.3s;
+      animation: fadeIn 1s ease-out forwards;
     }
   }
 `;
 
 export const OverlayMenu = styled.div`
-display: none;
+  display: none;
 
-@media (max-width: 768px) {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: ${({ theme }) => theme.navBackgroundColor};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 60px;
-  z-index: 15;
-  animation: fadeIn 0.3s ease-in-out;
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: ${({ theme }) => theme.navBackgroundColor};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    z-index: 15;
+    animation: fadeIn 0.3s ease-in-out;
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
   }
-}
 `;
 
 export const OverlayMenuItem = styled.div`
@@ -233,6 +247,7 @@ export const OverlayMenuItem = styled.div`
 export const Title = styled.p`
   color: ${({ theme }) => theme.textContainerTextColor};
   margin-top: -20px;
+  animation: fadeIn 1s ease-out forwards;
 `;
 
 export const UnderTitleMobile = styled.p`
@@ -240,6 +255,7 @@ export const UnderTitleMobile = styled.p`
   font-weight: 500;
   font-size: 1.4rem;
   margin-top: -10px;
+  animation: fadeIn 1s ease-out forwards;
 `;
 
 export const UnderTitleDesktop = styled.p`
@@ -247,6 +263,7 @@ export const UnderTitleDesktop = styled.p`
   font-weight: 500;
   font-size: 3rem;
   margin-top: -20px;
+  animation: fadeIn 1s ease-out forwards;
 `;
 
 export const SubtitleMobile = styled.section`
@@ -262,6 +279,7 @@ export const SubtitleMobile = styled.section`
   white-space: normal;
   margin-left: 15px;
   margin-top: 20px;
+  animation: fadeIn 1s ease-out forwards;
 
   @media (min-width: 768px) {
     display: none;
@@ -270,6 +288,7 @@ export const SubtitleMobile = styled.section`
   span {
     display: block;
     margin-bottom: 10px;
+    animation: fadeIn 1s ease-out forwards;
   }
 `;
 
@@ -286,6 +305,7 @@ export const SubtitleDesktop = styled.section`
   white-space: normal;
   margin-left: 20px;
   margin-top: 15px;
+  animation: fadeIn 1s ease-out forwards;
 
   @media (max-width: 768px) {
     display: none;
@@ -295,26 +315,27 @@ export const SubtitleDesktop = styled.section`
     display: block;
     margin-top: -20px;
     margin-bottom: 10px;
+    animation: fadeIn 1s ease-out forwards;
   }
 `;
 
-export const ArrowDownContainer = styled.div`
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-`;
+// export const ArrowDownContainer = styled.div`
+//   position: absolute;
+//   bottom: 20px;
+//   left: 50%;
+//   transform: translateX(-50%);
+// `;
 
-export const ArrowDownIcon = styled(FaArrowDown)`
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
+// export const ArrowDownIcon = styled(FaArrowDown)`
+//   color: white;
+//   font-size: 2rem;
+//   cursor: pointer;
 
-  &:hover {
-    transform: translateY(0.2rem);
-    transition: transition 0.2s;
-  }
-`;
+//   &:hover {
+//     transform: translateY(0.2rem);
+//     transition: transition 0.2s;
+//   }
+// `;
 
 export const CustomShapeDivider = styled.div`
   position: absolute;
@@ -324,6 +345,7 @@ export const CustomShapeDivider = styled.div`
   overflow: hidden;
   line-height: 0;
   color: ${({ theme }) => theme.textContainerTextColor};
+  animation: fadeIn 0.8s ease-out forwards;
 
   svg {
     position: relative;
@@ -365,7 +387,7 @@ export const Line = styled.span`
   display: block;
   height: 3px;
   width: 25px;
-  background-color: #000; 
+  background-color: #000;
   transition: all 0.3s ease;
 `;
 
