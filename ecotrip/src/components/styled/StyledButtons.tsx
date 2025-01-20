@@ -18,6 +18,7 @@ export const ContentButton = styled.button`
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  transition: transform 0.4s ease-in-out, background 0.4s ease;
 
   &:hover {
     transform: scale(1.05);
@@ -44,6 +45,7 @@ export const LinkButton = styled.button`
   color: ${({ theme }) => theme.linkButtonTextColor};
   background: ${({ theme }) => theme.navBackgroundColor};
   cursor: pointer;
+  transition: transform 0.4s ease-in-out, background 0.4s ease;
 
   &:hover {
     transform: scale(1.05);
@@ -220,6 +222,7 @@ export const CalculateButton = styled.button`
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  transition: transform 0.4s ease-in-out, background 0.4s ease;
 
   &:hover {
     transform: scale(1.05);
