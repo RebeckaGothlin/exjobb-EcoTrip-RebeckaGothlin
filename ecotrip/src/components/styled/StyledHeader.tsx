@@ -192,7 +192,6 @@ export const HamburgerMenuButton = styled.div`
       background-color: ${({ theme }) => theme.navTextColor};
       border-radius: 2px;
       transition: all 0.3s;
-      animation: fadeIn 1s ease-out forwards;
     }
   }
 `;
