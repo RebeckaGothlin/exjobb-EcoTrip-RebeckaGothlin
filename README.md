@@ -93,10 +93,10 @@ Light theme
 
 #### Calculate page
 
-![Calculate page dark](ecotrip/src/assets/screenshots/calculate-desktop-dark.png "Calculate page dark")
+![Calculate page dark](ecotrip/src/assets/screenshots/Calculate-desktop-dark.png "Calculate page dark")
 Dark theme
 
-![Calculate page light](ecotrip/src/assets/screenshots/calculate-desktop-light.png "Calculate page light")
+![Calculate page light](ecotrip/src/assets/screenshots/Calculate-desktop-light.png "Calculate page light")
 Light theme
 
 ![Calculate page dark](ecotrip/src/assets/screenshots/calculate-desktop-dark-input.png "Calculate page dark")
