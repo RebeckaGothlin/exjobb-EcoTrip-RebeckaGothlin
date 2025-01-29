@@ -318,24 +318,6 @@ export const SubtitleDesktop = styled.section`
   }
 `;
 
-// export const ArrowDownContainer = styled.div`
-//   position: absolute;
-//   bottom: 20px;
-//   left: 50%;
-//   transform: translateX(-50%);
-// `;
-
-// export const ArrowDownIcon = styled(FaArrowDown)`
-//   color: white;
-//   font-size: 2rem;
-//   cursor: pointer;
-
-//   &:hover {
-//     transform: translateY(0.2rem);
-//     transition: transition 0.2s;
-//   }
-// `;
-
 export const CustomShapeDivider = styled.div`
   position: absolute;
   top: 63px;

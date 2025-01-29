@@ -251,7 +251,7 @@ export const Calculate = () => {
           transportation options. You can either enter the name of the city you
           want to depart from and the city you want to travel to, or select
           locations directly on the map. Then press the "Calculate" button to
-          estimate emissions for different travel methods – plane, car, bus, and
+          estimate emissions for different travel methods – plane, car, bus and
           train.
         </ParagraphText>
         <SearchContainer>
@@ -364,7 +364,7 @@ export const Calculate = () => {
                         tickSize: 5,
                         tickPadding: 5,
                         tickRotation: 0,
-                        legend: "Emissions (kg)",
+                        legend: "Emissions (kg CO₂)",
                         legendPosition: "middle",
                         legendOffset: -40,
                       }}
@@ -387,6 +387,8 @@ export const Calculate = () => {
                         labels: {
                           text: {
                             fill: theme.name === "Dark" ? "white" : "black",
+                            whiteSpace: "pre",
+                            textAlign: "center",
                           },
                         },
                         legends: {
@@ -400,7 +402,7 @@ export const Calculate = () => {
                           },
                         },
                       }}
-                      label={(d) => (d.value ? `${d.value.toFixed(0)} kg` : "")}
+                      label={(d) => (d.value ? `${d.value.toFixed(0)} kg\nCO₂` : "")}
                     />
                     <GradientDefs>
                       <defs>
